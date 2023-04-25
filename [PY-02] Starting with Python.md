@@ -1,4 +1,4 @@
-# [PY-02] Starting with Python 
+# [QY-02] Starting with Python 
 
 ## Typing Python code
 
