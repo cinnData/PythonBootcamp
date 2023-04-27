@@ -127,66 +127,39 @@ In [17]: list(range(10))
 Out[17]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-## For loops
-
-As `while` loops, `for` loops are used to control the repeated execution of a code chunk. But, instead of repeating an action while a condition holds, in the `for` loop the number of repetitions is fixed. The process is controlled by extracting items from a data container, such as a list or a range. A typical syntax would be 
-
-```
-for i in list: action
-```
-
-An example:
-
-```
-In [18]: for i in range(3): print('Hello world!')
-Hello world!
-Hello world!
-Hello world!
-```
-
-If the action is specified in one or several separate lines, these have to be indented. Frequently, every execution involves extracting an item from a data container and using it in calculation. A trivial example:
-
-```
-In [19]: squares = []
-    ...: for i in range(1, 5):
-    ...:     squares = squares + [i**2]
-    ...: squares
-Out[19]: [1, 4, 9, 16]
-```
-
 ## Other data container types
 
 This course only uses lists and ranges, though Python provides other built-in types of data containers. A **tuple** is like a list, but represented with parentheses instead of square brackets:
 
 ```
-In [20]: mytuple = ('Messi', 'Cristiano', 'Neymar', 'Coutinho')
+In [18]: mytuple = ('Messi', 'Cristiano', 'Neymar', 'Coutinho')
 ```
 
 ```
-In [21]: mytuple[-2:]
-Out[21]: ('Neymar', 'Coutinho')
+In [18]: mytuple[-2:]
+Out[18]: ('Neymar', 'Coutinho')
 ```
 
 A **dictionary** is a set of pairs **key/value**. For instance, the following dictionary contains three features of an individual:
 
 ```
-In [22]: mydict = {'name': 'Joan', 'gender': 'F', 'age': 32}
+In [19]: mydict = {'name': 'Joan', 'gender': 'F', 'age': 32}
 ```
 
 The keys and the values can be extracted as:
 
 ```
-In [23]: mydict.keys()
-Out[23]: dict_keys(['name', 'gender', 'age'])
+In [19]: mydict.keys()
+Out[19]: dict_keys(['name', 'gender', 'age'])
 ```
 ```
-In [24]: mydict.values()
-Out[24]: dict_values(['Joan', 'F', 32])
+In [20]: mydict.values()
+Out[20]: dict_values(['Joan', 'F', 32])
 ```
 
 Or you can extract the value for a certain key as:
 
 ```
-In [25]: mydict['name']
-Out[25]: 'Joan'
+In [21]: mydict['name']
+Out[21]: 'Joan'
 ```
