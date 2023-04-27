@@ -154,7 +154,6 @@ In [19]: plt.figure(figsize=(6,6))
     ...: plt.plot(t, t**3, label='cubic', color='black', linestyle='dotted')
     ...: plt.legend();
 ```
-
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_5.1.png)
 
 Take care of running these lines of code together. The semicolon in the last line stops the Python output showing up. That output would correspond to `plt.legend` and would not say much to you. 
