@@ -156,7 +156,7 @@ In [19]: plt.figure(figsize=(6,6))
 ```
 ![](https://github.com/cinnData/MLearning/blob/main/Figures/fig_3.1.png)
 
-![](https://github.com/cinnData/MLearning/blob/main/Figures/fig_3.1.png)
+![](https://github.com/cinnData/PhytonBootcamp/blob/main/Figures/fig_5.1.png)
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_5.1.png)
 
