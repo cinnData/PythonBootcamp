@@ -101,6 +101,8 @@ In [14]: 2 not in yourlist
 Out[14]: True
 ```
 
+*Note*. These operators work in the same way for other data containers like ranges or tuples (see below), or NumPy arrays (see lecture Py-05).
+
 ## Ranges
 
 A **range** is like a sequence of integers, but the terms of the sequence are not saved as in a list. Instead, only the procedure to create the sequence is saved. The syntax is `myrange = range(start, end, step)`. Example:
@@ -152,55 +154,39 @@ In [19]: squares = []
 Out[19]: [1, 4, 9, 16]
 ```
 
-## List comprehensions
-
-When the purpose of the `for` loop is to transform a list into another list by means of an expression, you can pack everything in a single formula with a **list comprehension**. For instance, you can create the list of squares in a one shot with:
-
-```
-In [20]: [i**2 for i in range(1, 5)]
-Out[20]: [1, 4, 9, 16]
-```
-
-If you wish to filter out some items from the original list, you can do it with an `if` expression. For instance, suppose that you wish to get a list with the squares of the numbers which are not divisible by 3, up to 20. Taking advantage of the operator `%`, which returns the remainder of the division of two integers, you can use:
-
-```{r eval=FALSE}
-In [21]: [i**2 for i in range(1, 21) if i % 3 != 0]
-Out[21]: [1, 4, 16, 25, 49, 64, 100, 121, 169, 196, 256, 289, 361, 400]
-```
-
 ## Other data container types
 
 This course only uses lists and ranges, though Python provides other built-in types of data containers. A **tuple** is like a list, but represented with parentheses instead of square brackets:
 
 ```
-In [22]: mytuple = ('Messi', 'Cristiano', 'Neymar', 'Coutinho')
+In [20]: mytuple = ('Messi', 'Cristiano', 'Neymar', 'Coutinho')
 ```
 
 ```
-In [23]: mytuple[-2:]
-Out[23]: ('Neymar', 'Coutinho')
+In [21]: mytuple[-2:]
+Out[21]: ('Neymar', 'Coutinho')
 ```
 
 A **dictionary** is a set of pairs **key/value**. For instance, the following dictionary contains three features of an individual:
 
 ```
-In [24]: mydict = {'name': 'Joan', 'gender': 'F', 'age': 32}
+In [22]: mydict = {'name': 'Joan', 'gender': 'F', 'age': 32}
 ```
 
 The keys and the values can be extracted as:
 
 ```
-In [25]: mydict.keys()
-Out[25]: dict_keys(['name', 'gender', 'age'])
+In [23]: mydict.keys()
+Out[23]: dict_keys(['name', 'gender', 'age'])
 ```
 ```
-In [26]: mydict.values()
-Out[26]: dict_values(['Joan', 'F', 32])
+In [24]: mydict.values()
+Out[24]: dict_values(['Joan', 'F', 32])
 ```
 
 Or you can extract the value for a certain key as:
 
 ```
-In [27]: mydict['name']
-Out[27]: 'Joan'
+In [25]: mydict['name']
+Out[25]: 'Joan'
 ```
