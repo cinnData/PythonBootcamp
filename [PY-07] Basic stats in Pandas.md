@@ -20,9 +20,7 @@ Although defaults work in most cases satisfactorily, it is worth to comment a fe
 
 ## Summary statistics
 
-The method `describe` extracts a conventional statistical summary. Columns of type `object` are omitted, except when all the columns have that type. Then the report contains just counts. 
-
-Basic statistics can also be calculated separately. For instance, `df.mean()` returns the column means. Correlations are also pretty easy:
+The method `describe`, which has already appeared in the preceding lecture, extracts a conventional statistical summary. Basic statistics can also be calculated separately. For instance, `df.mean()` returns the column means. Correlations are also pretty easy:
 
 * `s1.corr(s2)` returns the **correlation** of `s1` and `s2`.
 
