@@ -7,7 +7,7 @@ A **function** takes a collection of **arguments** and performs an action. The f
 A simple example of a user-defined function follows. Note the indentation after the colon, which is created automatically by the Jupyter interface (either console or notebook).
 
 ```
-In [31]: def f(x):
+In [1]: def f(x):
     ...:     y = 1/(1 - x**2)
     ...:     return y
 ```
@@ -15,14 +15,14 @@ In [31]: def f(x):
 When you define a function, Python just takes note of the definition, accepting it when it is syntactically correct (parentheses, commas, etc). The function can be applied later to different arguments (during the same session).
 
 ```
-In [32]: f(2)
-Out[32]: -0.3333333333333333
+In [2]: f(2)
+Out[2]: -0.3333333333333333
 ```
 
 If you apply the function to an argument for which it does not make sense, Python will return an error message which depends on the values supplied for the argument.
 
 ```
-In [33]: f(1)
+In [3]: f(1)
 ---------------------------------------------------------------------------
 ZeroDivisionError                         Traceback (most recent call last)
 /var/folders/40/fkkkv7qd7zj634br7rfl46qh0000gn/T/ipykernel_40368/1567560659.py in <module>
@@ -37,7 +37,7 @@ ZeroDivisionError: division by zero
 ```
 
 ```
-In [34]: f('Mary')
+In [4]: f('Mary')
 ---------------------------------------------------------------------------
 TypeError                                 Traceback (most recent call last)
 /var/folders/40/fkkkv7qd7zj634br7rfl46qh0000gn/T/ipykernel_40368/2381081837.py in <module>
@@ -54,12 +54,12 @@ TypeError: unsupported operand type(s) for ** or pow(): 'str' and 'int'
 Functions can have more than one argument, as in:
 
 ```
-In [35]: def g(x, y): return x*y/(x**2 + y**2)
+In [5]: def g(x, y): return x*y/(x**2 + y**2)
 ````
 
 ```
-In [36]: g(1, 1)
-Out[36]: 0.5
+In [6]: g(1, 1)
+Out[6]: 0.5
 ```
 
 Note that, in the definition of `g`, I have used a shorter way. Many programmers would prefer to make it longer, with more than one line, as I did previously for `f`.
@@ -75,7 +75,7 @@ if condition: action
 A simple example follows.
 
 ```
-In [37]: if 3 < 5: print('Minor')
+In [7]: if 3 < 5: print('Minor')
 Minor
 ```
 
@@ -86,10 +86,10 @@ if condition: action1
 else: action2
 ```
 
-An example:
+An example follows.
 
 ```
-In [38]: if 3 == 5: print('Equal')
+In [8]: if 3 == 5: print('Equal')
     ...: else: print('Not equal')
 Not equal
 ```
@@ -102,10 +102,10 @@ elif: action2
 else: action3
 ```
 
-You can add as many `elif` clauses as needed. Example:
+You can add as many `elif` clauses as needed. An example follows, with one `elif` clause.
 
 ```
-In [39]: if math.sqrt(1) < 1: print('Minor')
+In [9]: if math.sqrt(1) < 1: print('Minor')
     ...: elif math.sqrt(1) == 1: print('Equal')
     ...: else: print('Major')
 Equal
@@ -120,26 +120,26 @@ Equal
 Again, if the action is specified in separate lines, these have to be indented. A simple example follows. Suppose that you wish to find the first integer whose square is higher than 1,000. You start with:
 
 ```
-In [40]: x = 1
+In [10]: x = 1
 ```
 
 Then, you increase `x` until `x**2` exceeds the threshold value:
 
 ```
-In [41]: while x**2 <= 1000: x = x + 1
+In [11]: while x**2 <= 1000: x = x + 1
 ```
 
 Indeed, you got 32, whose square is 1,024:
 
 ```
-In [42]: x
-Out[42]: 32
+In [12]: x
+Out[12]: 32
 ```
 
-What if the condition is never met? Then, the loop will go on until you interrupt the process (*Ctrl+C*) or restart the kernel (*Ctrl+.*). An example follows, in which I have allowed the process to run for a few seconds:
+What if the condition is never met? Then, the loop will go on until you interrupt the process (*Ctrl+C*) or restart the kernel (*Ctrl+.*). An example follows, allowing the process to run for a few seconds.
 
 ```
-In [43]: x = 1
+In [13]: x = 1
     ...: while x > 0: x = x + 1
 ---------------------------------------------------------------------------
 KeyboardInterrupt                         Traceback (most recent call last)
@@ -151,8 +151,8 @@ KeyboardInterrupt:
 ````
 
 ```
-In [44]: x
-Out[44]: 277583313
+In [14]: x
+Out[14]: 277583313
 ```
 
 ## For loops
@@ -166,7 +166,7 @@ for i in list: action
 An example:
 
 ```
-In [18]: for i in range(3): print('Hello world!')
+In [15]: for i in range(3): print('Hello world!')
 Hello world!
 Hello world!
 Hello world!
@@ -175,11 +175,11 @@ Hello world!
 If the action is specified in one or several separate lines, these have to be indented. Frequently, every execution involves extracting an item from a data container and using it in calculation. A trivial example:
 
 ```
-In [19]: squares = []
+In [16]: squares = []
     ...: for i in range(1, 5):
     ...:     squares = squares + [i**2]
     ...: squares
-Out[19]: [1, 4, 9, 16]
+Out[16]: [1, 4, 9, 16]
 ```
 
 ## List comprehensions
@@ -187,30 +187,15 @@ Out[19]: [1, 4, 9, 16]
 When the purpose of the `for` loop is to transform a list into another list by means of an expression, you can pack everything in a single formula with a **list comprehension**. For instance, you can create the list of squares in a one shot with:
 
 ```
-In [20]: [i**2 for i in range(1, 5)]
-Out[20]: [1, 4, 9, 16]
+In [17]: [i**2 for i in range(1, 5)]
+Out[17]: [1, 4, 9, 16]
 ```
 If you wish to filter out some items from the original list, you can do it with an `if` expression. For instance, suppose that you wish to get a list with the squares of the numbers which are not divisible by 3, up to 20. Taking advantage of the operator `%`, which returns the remainder of the division of two integers, you can use:
 
 ```{r eval=FALSE}
-In [21]: [i**2 for i in range(1, 21) if i % 3 != 0]
-Out[21]: [1, 4, 16, 25, 49, 64, 100, 121, 169, 196, 256, 289, 361, 400]
+In [18]: [i**2 for i in range(1, 21) if i % 3 != 0]
+Out[18]: [1, 4, 16, 25, 49, 64, 100, 121, 169, 196, 256, 289, 361, 400]
 ```
-
-## Other data container types
-
-This course only uses lists and ranges, though Python provides other built-in types of data containers. A **tuple** is like a list, but represented with parentheses instead of square brackets:
-
-```
-mytuple = ('Messi', 'Cristiano', 'Neymar', 'Coutinho')`
-```
-
-A **dictionary** is a set of pairs **key/value**. For instance, the following dictionary contains three features of an individual:
-
-```
-mydict = {'name': 'Joan', 'gender': 'F', 'age': 32}`
-```
-
 ## Homework
 
 1. A **nested list** is a list of lists, that is, a list whose items are lists. For instance, `[[1, 2], [], ['a']]`. Write a function which *flattens* a nested list, transforming it into a new list whose items are the items contained in the items of the original list. Given the above example, that function would return `[1, 2, 'a']`.
