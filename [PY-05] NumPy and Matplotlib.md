@@ -100,12 +100,12 @@ Subarrays can also be extracted by means of an **expression**. When you input th
 
 ```
 In [13]: arr1 > 3
-Out[10]: 
+Out[13]: 
 array([False, False, False, False,  True,  True,  True,  True,  True,
         True])
 
 In [14]: arr2 > 2
-Out[11]: 
+Out[14]: 
 array([[False,  True, False,  True],
        [ True,  True, False, False]])
 ```
