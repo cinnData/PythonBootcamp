@@ -130,8 +130,10 @@ Out[15]: 241
 
 This goes beyond 127, so it is not an ASCII character, and it may show up in different computers. Strings can be concatenated in a straightforward way:
 
+```
 In [16]: 'Donald' + ' ' + 'Trump'
 Out[16]: 'Donald Trump'
+```
 
 ## Type conversions
 
