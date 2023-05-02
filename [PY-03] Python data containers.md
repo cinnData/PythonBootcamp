@@ -101,7 +101,7 @@ In [14]: 2 not in yourlist
 Out[14]: True
 ```
 
-*Note*. These operators work in the same way for other data containers like ranges or tuples (see below), or NumPy arrays (see lecture Py-05).
+*Note*. These operators work in the same way for other data containers like ranges or tuples (see below), or NumPy arrays (see lecture PY-05).
 
 ## Ranges
 
