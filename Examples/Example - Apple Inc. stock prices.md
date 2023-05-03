@@ -48,6 +48,4 @@ The **daily return** is the percentage change in the price with respect to the p
 
 $$r(t) =\frac{p(t) - p(t-1)}{p(t-1)}=\frac{p(t)}{p(t-1)}-1,$$
 
-which can multiplied by 100 to get percentage scale. Use the Pandas function `pct_change` to calculate the daily returns of the opening price.
-
-How is the distribution of the daily return of the opening price? Is there an association between the daily returns and the trading volume?
+which can multiplied by 100 to get percentage scale. Use the Pandas function `pct_change` to calculate the daily returns of the opening price. How is the distribution of the daily return of the opening price? Is there an association between the daily returns and the trading volume?
