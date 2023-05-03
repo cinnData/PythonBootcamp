@@ -225,8 +225,8 @@ Name: v1, dtype: bool
 See next how to combine a row filter and a column selection. Yopu can change the order, selecting first the columns and then filtering the rows. 
 
 ```
-In [15]: df[df['v1'] > 2][['v1', 'v2']]
-Out[15]: 
+In [21]: df[df['v1'] > 2][['v1', 'v2']]
+Out[21]: 
    v1 v2
 2   3  c
 3   4  d
