@@ -4,7 +4,7 @@
 import pandas as pd
 path = 'https://raw.githubusercontent.com/cinnData/PythonBootcamp/main/Data/'
 filename = path + 'trip.csv.zip'
-df = pd.read_csv(filename, index_col=0)
+df = pd.read_csv(filename, index_col=2)
 df.info()
 df.head()
 
@@ -50,7 +50,7 @@ pd.crosstab(df['veget'], df['priceRange'])
 df['vegan'] = df['diets'].str.contains('Vegan')
 pd.crosstab(df['vegan'], df['priceRange'])
 
-# Q6c. Gluten free vs price #
+# Q6d. Gluten free vs price #
 df['gluten'] = df['diets'].str.contains('Gluten')
 pd.crosstab(df['gluten'], df['priceRange'])
 
