@@ -20,7 +20,7 @@ Mind that, since Python is an open source project, packages are contributed by v
 
 A **Python distribution** is a software bundle, which contains a Python interpreter and the standard library. Python distributions also have package managers for installing, uninstalling or updating packages. All distributions have a **package manager** called `pip`, and some distributions have a specific package manager.
 
-You can open a Pyhton kernel directly in a **shell** applications associated to your operating system. This means **Terminal** in Mac computers and **Prompt** in Windows computers. But, for this approach to work, the shell has to find the Python files. THis is automatic when the folder where the Python distribution is in the **path** of that shell. In the contrary, you have to know where to find it. 
+You can open a Pyhton kernel directly in a **shell** applications associated to your operating system. This means **Terminal** in Mac computers and **Prompt** in Windows computers. But, for this approach to work, the shell has to find the Python files. This is automatic when the folder where the Python distribution is in the **path** of that shell. In the contrary, you have to know where to find it. 
 
 If you are just starting with Python, you will prefer a friendlier approach. Python distributions provide various interfaces to the Python interpreter. All include a **command line interface** (CLI), which may be a shell-like application or an **integrated development environment** (IDE). A Python IDE provides a Python-aware code editor integrated with the ability to run code from that editor. Details about the top popular Python distribution follow.
 
