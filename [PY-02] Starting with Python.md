@@ -2,9 +2,9 @@
 
 ## Typing Python code
 
-In this tutorial of typing Python code, we assume that you are using Jupyter Qt Console. Almost everything would also be valid in other interfaces to a Python interpreter, with minor adjustments. Before starting, a reminder: Python is **case sensitive**. 
+In this tutorial, we start with some comments on how to type Python code. We assume first that you are working on Jupyter Qt Console. Before starting, a reminder: Python is **case sensitive**. 
 
-The console produces input prompts (such as `In[1]:`), where you can type a command and press `Return`. Then Python returns either an output (preceded by `Out[1]:`), a (typically long and difficult) error message, or no answer at all. A simple example follows.
+The console produces input prompts (such as `In[1]:`), where you can type a command and press `Return`. Then the Python kernel returns either an output (preceded by `Out[1]:`), a (typically long and difficult) error message, or no answer at all. A simple example follows. Note the white space around the *plus* (`+`) sign, which is ignored by the Python interpreter, but improves the **readability** of your code.
 
 ```
 In [1]: 2 + 2
@@ -43,6 +43,8 @@ Out[6]: 36
 ```
 
 *Note*. You would probably have written `b^2` for the square of 2, but the caret symbol (`^`) plays a different role in Python.
+
+Typing in a notebook is just a bit different. The notebook is a sequence of **cells**. In the **Markdown cells**, you write comments, and in the **code cells** you write the Python commands. Every code cell of the notebook corresponds to an input of the console. When you are typing in a cell, pressing *Return* starts a new line *within the same cell*, without ending the input. With *Shift+Return* you finish the the input, so you get the ouput, opening a new cell. To finish the input withou opening a new cell, use *Cmd+Return* in Mac or *Ctrl+Return* in Windows.   
 
 ## Python packages
 
@@ -102,11 +104,11 @@ Out[12]: str
 
 Strings are always enclosed by quote marks, either single or double (but same way on both sides). In Python, a string is a sequence of **characters**. This includes the (English) alphanumeric characters and also special characters like white space, punctuation, etc. Other symbols, like emoticons, can also appear in your data, specially in social networks data. Besides that, you can also manage letters from other languages (Spanish, Portuguese, etc) or alphabets (Cyrillic, hiragana, etc), and even ideographs (such as Han characters).
 
-There is a basic set of 128 characters, called the **ASCII characters**, which are encoded as numbers (from 0 to 127) in the same way by all the computers, so you will never have trouble with them. They include the English letters (without accents), the numbers, basic punctuation (not curly quote marks or long dashes), white space, **control characters** such as the new line, represented in many computer languages (including Python) as `\n`, and other symbols familiar to you, such as the dollar (`$`) and the hash (`#`) symbols. The complete list can be easily found in Internet.
+There is a basic set of 128 characters, called the **ASCII characters**, which are encoded as numbers (from 0 to 127) in the same way by all the computers. They include the English letters (without accents), the numbers, basic punctuation (not curly quote marks or long dashes), white space, **control characters** such as the new line, represented in many computer languages (including Python) as `\n`, and other symbols familiar to you, such as the dollar (`$`) and the hash (`#`) symbols. The complete list can be easily found in Internet.
 
 Non-ASCII characters can be encoded by different computers or different text editors in different ways. Mind that, if you capture string data on your own, you will probably find some of these characters in your data. Even when the documents are expected to be in English, they can be contaminated by other languages: Han characters, German dieresis, Spanish eñe, etc.
 
-The preferred **encoding** is **UTF-8**, used by Python. UTF-8 is the default encoding in Macintosh computers, but not in Windows computers, which use their own system, which is region specific. In US and Western Europe, this is **Windows-1252**.
+The preferred **encoding** is **UTF-8**, used by Python. UTF-8 is the default encoding in Mac computers, but not in Windows computers, which use a region-specific system. In US and Western Europe, this is **Windows-1252**.
 
 The UTF-8 encoding can be easily learned from the Python interpreter. For instance, for the lowercase 'a':
 
@@ -133,8 +135,8 @@ This goes beyond 127, so it is not an ASCII character. So, it you include this c
 Strings can be concatenated in a straightforward way:
 
 ```
-In [16]: 'Donald' + ' ' + 'Trump'
-Out[16]: 'Donald Trump'
+In [16]: 'Leo' + ' ' + 'Messi'
+Out[16]: 'Leo Messi'
 ```
 
 ## Type conversions
@@ -151,7 +153,7 @@ In [18]: int(2.3)
 Out[18]: 2
 ```
 
-Sometimes, you can convert numbers to strings and conversely:
+Sometimes, you can convert strings to numbers:
 
 ```
 In [19]: int('27')
@@ -163,12 +165,14 @@ In [20]: float('27')
 Out[20]: 27.0
 ```
 
+On the other hand, numbers can always be converted to strings:
+
 ```
 In [21]: str(27)
 Out[21]: '27'
 ```
 
-Boolean variables can be converted to `int` and `float` type with the functions mentioned above, but also by means of a mathematical operator:
+Booleans can be converted to `int` and `float` type with the functions mentioned above. Also, to make operations with numbers possible when they have different types, they are automatically converted to common type. For instance, Booleans are converted on the fly in the following examples:
 
 ```
 In [22]: 1 + True
@@ -192,11 +196,11 @@ Out[24]: False
 When you input an expression involving a comparison operator, Python evaluates it, returning either `True` or `False`. The following example uses the **equality operator**, which is denoted in Python by a double equal sign:
 
 ```
-In [25]: a == 4
+In [25]: a == 7
 Out[25]: True
 ```
 
-Why two equal signs? The reason is that a single equal sign is used to assign names. So `a = 4` is interpreted, not as asking whether `a` is equal to `4`, but as creating a variable named `a` whose value is `4`. The *not equal* operator is denoted by an equal sign preceded by an admiration symbol (`!`):
+Why two equal signs? The reason is that a single equal sign is used to assign names. So `a = 7` would be interpreted by the Python kernel, not as asking whether `a` is equal to `7`, but as creating a variable named `a` whose value is `7`. The *not equal* operator is denoted by an equal sign preceded by an admiration symbol (`!`):
 
 ```
 In [26]: a != 4
@@ -210,7 +214,7 @@ In [27]: 'a' >= 'A'
 Out[27]: True
 ```
 
-Why is this? Because of this inequality being true for the numbers that encode these characters, which we have learned above. Numbers and booleans can be compared irrespective of their types:
+Why is this? Because this inequality is true for the numbers that encode these characters, which we have learned above. Numbers and booleans can be compared irrespective of their types:
 
 ```
 In [28]: 3 == 3.0
