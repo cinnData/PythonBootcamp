@@ -2,9 +2,9 @@
 
 ## NumPy arrays
 
-In mathematics, a **vector** is a sequence of numbers, and a **matrix** a rectangular arrangement of numbers. Operations with vectors and matrices are the subject of a branch of mathematics called linear algebra. In the library NumPy (and in many other places), vectors are called one-dimensional (1D) arrays, while matrices are called two-dimensional (2D) arrays. AWith NumPy, arrays of more than two dimensions can be managed in Python without pain.
+In mathematics, a **vector** is a sequence of numbers, and a **matrix** a rectangular arrangement of numbers. Operations with vectors and matrices are the subject of a branch of mathematics called linear algebra. In the Python library **NumPy** (and in many other places), vectors are called one-dimensional (1D) arrays, while matrices are called two-dimensional (2D) arrays. With NumPy, arrays of more than two dimensions can be managed without pain.
 
-NumPy arrays are not necessarily numeric. All the terms of an array must have the same type, so the array itself can have a type. In order to cope with the complexities of the data analysis, NumPy provides additional data types, like the type `object`, but this sophistication will not appear in this course.  
+Unlike mathematical vectors and matrices, NumPy arrays are not necessarily numeric. But all the terms of an array must have the same type, so the array itself can have a type. In order to cope with the complexities of the data analysis, NumPy provides additional data types, like the type `object`, but this sophistication is not used in this course.  
 
 The usual way to import NumPy is:
 
@@ -33,7 +33,7 @@ In [5]: np.array([2, 3.2])
 Out[5]: array([2. , 3.2])
 ```
 
-*Note*. The data type is not shown for numeric arrays, only for string type. The notation `dtype='<U21'` will look exotic to you. Don't pay attention for the time being.
+*Note*. The data type is not shown for numeric arrays, only for string type. The notation `dtype='<U21'` will look exotic to you. But don't pay attention to it for the time being.
 
 A 2D array can be directly created from a list of lists of equal length. The terms are entered row-by-row, as in the following example.
 
@@ -57,13 +57,27 @@ In [8]: arr2.shape
 Out[8]: (2, 4)
 ```
 
+The terms of a 1D array are extracted just as in a list. So, the third term of `arr1` comes as:
+
+```
+In [9]: arr1[2]
+Out[9]: 2
+```
+
+For a 2D array, you need two indexes inside the square brackets: The first index selects the row (`axis=0`), and the second index the column (`axis=1`). So, the term in the intersectiion of the second row and the third column of `arr2` comes as:
+
+```
+In [10]: arr2[1, 2]
+Out[10]: -5
+```
+
 ## NumPy functions
 
 NumPy incorporates vectorized forms of the mathematical functions of the package `math`. A **vectorized function** is one that, when applied to an array, returns an array with same shape, whose terms are the values of the function on the corresponding terms of the original array. The NumPy square root function is an example.
 
 ```
-In [9]: np.sqrt(arr1)
-Out[9]: 
+In [111]: np.sqrt(arr1)
+Out[11]: 
 array([0.        , 1.        , 1.41421356, 1.73205081, 2.        ,
        2.23606798, 2.44948974, 2.64575131, 2.82842712, 3.        ])
 ```
@@ -71,9 +85,9 @@ array([0.        , 1.        , 1.41421356, 1.73205081, 2.        ,
 The functions that are defined in terms of vectorized functions are automatically vectorized. An example follows.
 
 ```
-In [10]: def f(t): return 1/(1 + np.exp(t))
+In [12]: def f(t): return 1/(1 + np.exp(t))
    ...: f(arr2)
-Out[10]: 
+Out[12]: 
 array([[5.00000000e-01, 9.11051194e-04, 1.19202922e-01, 4.74258732e-02],
        [4.74258732e-02, 1.23394576e-04, 9.93307149e-01, 2.68941421e-01]])
 ```
@@ -82,30 +96,30 @@ NumPy also provides common statistical functions, such as `mean`, `max`, `sum`, 
 
 ## Subsetting arrays
 
-Subsetting a 1D array is done as in a list:
+A 1D array can be sliced just as a list:
 
 ```
-In [11]: arr1[:3]
-Out[11]: array([0, 1, 2])
+In [13]: arr1[:3]
+Out[13]: array([0, 1, 2])
 ```
 
-The same applies to 2D arrays, but we need two indexes within the square brackets. The first index selects the rows (`axis=0`), and the second index the columns (`axis=1`):
+Slicing both rows and columns of a 2D array is called **dicing**. An example follows.
 
 ```
-In [12]: arr2[:1, 1:]
-Out[12]: array([[7, 2, 3]])
+In [14]: arr2[:1, 1:]
+Out[14]: array([[7, 2, 3]])
 ```
 
 Subarrays can also be extracted by means of an **expression**. When you input the expression formed by an array, a comparison operator (such as `>`) and a **literal** (such as 3), the expression is evaluated, and the Python interpreter returns a Boolean array with the same shape:
 
 ```
-In [13]: arr1 > 3
-Out[13]: 
+In [15]: arr1 > 3
+Out[15]: 
 array([False, False, False, False,  True,  True,  True,  True,  True,
         True])
 
-In [14]: arr2 > 2
-Out[14]: 
+In [16]: arr2 > 2
+Out[16]: 
 array([[False,  True, False,  True],
        [ True,  True, False, False]])
 ```
@@ -113,14 +127,14 @@ array([[False,  True, False,  True],
 A Boolean array that is used to extract a subarray is called a **Boolean mask**. The terms for which the mask has value `True` are those selected: 
 
 ```
-In [15]: arr1[arr1 > 3]
-Out[15]: array([4, 5, 6, 7, 8, 9])
+In [17]: arr2[arr2[:, 0] > 0, :]
+Out[17]: array([[ 3,  9, -5,  1]])
 ```
 
-Boolean masks can also be used to filter out rows or columns of a 2D array. For instance, you can select the rows of `arr2` for which the first column is positive, as we see next.
+Boolean masks can also be used to filter out rows or columns of a 2D array. For instance, to select the rows of `arr2` for which the first column is positive:
 
 ```
-In [16]: arr2[arr2[:, 0] > 0, 1:]
+In [16]: arr2[arr2[:, 0] > 0, :]
 Out[16]: array([[ 9, -5,  1]])
 ```
 
@@ -163,10 +177,10 @@ Take care of running these lines of code together. The semicolon in the last lin
 
 `plt.plot` creates a line chart (which can be turned into a scatter plot, although it is better to use `plt.scatter` for that). If two vectors are entered, the first one is taken as $x$ (horizontal axis) and the second one as $y$ (vertical axis). If there is only one vector, it is taken as $x$, and the index is used as $y$. Here, we get a multiple line chart by calling `plt.plot` multiple times. Note that, even if you see the three components plotted here as three curves, they are really line plots without markers.
 
-`plt.plot` admits other arguments, allowing a minute edition of your visualization, down to the smallest detail. As a default, it uses solid lines, with different colors for the different lines. The **line style** has been specified by the argument `linestyle`, and the **color** by the argument `color`. The default is `color='blue'`.
+`plt.plot` admits other arguments, allowing a minute edition of your visualization, down to the smallest detail. As a default, it uses solid lines, with different colors for the different lines. The **line style** has been specified by the argument `linestyle`, and the **color** by the argument `color`. The defaults are `color='blue'` and `linestyle='solid'`.
 
 ## Homework
 
 1. For `x = np.array([True, False])` and `y = np.array([True, True])`, calculate `~x`, `x & y` and `x | y`. What is the meaning of these operations?
 
-2. Plot together the curves $y = x^3 + x^2 - 3^x +1$ and $y = -x^3 + 0.5\hbox{\thinspace}x^2 + x + 1$ in the interval $-2 \le x \le 2$.
+2. Plot together the curves $y = x^3 + x^2 - 3^x +1$ and $y = -x^3 + 0.5\,x^2 + x + 1$ in the interval $-2 \le x \le 2$.
