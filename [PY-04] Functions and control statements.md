@@ -107,7 +107,8 @@ else: action3
 You can add as many `elif` clauses as needed. The following example has one `elif` clause.
 
 ```
-In [9]: if math.sqrt(1) < 1: print('Minor')
+In [9]: import math
+    ...: if math.sqrt(1) < 1: print('Minor')
     ...: elif math.sqrt(1) == 1: print('Equal')
     ...: else: print('Major')
 Equal
