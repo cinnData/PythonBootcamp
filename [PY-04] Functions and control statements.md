@@ -2,7 +2,7 @@
 
 ## Functions
 
-A **function** takes a collection of **arguments** and performs an action. The functions that appear in this course will **return** a value and, sometimes, **print** a message. Besides the built-in functions like `type` and those coming in the packages that you may import, you can define your own functions. The definition will be forgotten when the session is closed, so you have to include it in your code.
+A **function** takes a collection of **arguments** and performs an action. For instance, a function can **return** a value, and another function can **print** a message. Besides the built-in functions like `type` and those coming in the packages that you may import, you can define your own functions. The definition will be forgotten when the session is closed, so you have to include it in your code.
 
 A simple example of a user-defined function follows. Note the indentation after the colon, which is created automatically by the Jupyter interface (either console or notebook).
 
@@ -12,6 +12,8 @@ In [1]: def f(x):
     ...:     return y
 ```
 
+Here, the `return` line signals the end of the definition. If you continue the input, the new lines will not be intended, and will not be part of the definition of the function.
+
 When you define a function, Python just takes note of the definition, accepting it when it is syntactically correct (parentheses, commas, etc). The function can be applied later to different arguments (during the same session).
 
 ```
@@ -19,7 +21,7 @@ In [2]: f(2)
 Out[2]: -0.3333333333333333
 ```
 
-If you apply the function to an argument for which it does not make sense, Python will return an error message which depends on the values supplied for the argument.
+If you apply the function to an argument for which it does not make sense, Python will return an error messageThe following examples illustrate this. Not that Python error messages, though accurate, are not precisely friendly.
 
 ```
 In [3]: f(1)
@@ -51,7 +53,7 @@ TypeError                                 Traceback (most recent call last)
 TypeError: unsupported operand type(s) for ** or pow(): 'str' and 'int'
 ```
 
-Functions can have more than one argument, as in:
+Now, an example of a two-parameter function.
 
 ```
 In [5]: def g(x, y): return x*y/(x**2 + y**2)
@@ -62,11 +64,11 @@ In [6]: g(1, 1)
 Out[6]: 0.5
 ```
 
-Note that, in the definition of `g`, I have used a shorter way. Many programmers would prefer to make it longer, with more than one line, as I did previously for `f`.
+Note that, in the definition of `g`, we have used a shorter way. Many programmers would prefer to make it longer, with more than one line, as we did previously for `f`.
 
 ## If statements
 
-**Conditional logic**, operationalized through **if-then-else** commands, is ubiquitous in programming. You also have this in Python. The shortest version has the following syntax:
+**Conditional logic**, operationalized through **if-then-else** commands, is ubiquitous in programming. You will also find this in Python. The shortest version has the following syntax:
 
 ```
 if condition: action
@@ -79,7 +81,7 @@ In [7]: if 3 < 5: print('Minor')
 Minor
 ```
 
-When the action is specified in a different line (or lines), that line has to be indented, as in a `def` statement. A longer version with two possible actions:
+When the action is specified in a different line (or lines), that line has to be indented, as in a `def` statement. See now the syntax for a longer version, with two possible actions:
 
 ```
 if condition: action1
@@ -102,7 +104,7 @@ elif: action2
 else: action3
 ```
 
-You can add as many `elif` clauses as needed. An example follows, with one `elif` clause.
+You can add as many `elif` clauses as needed. The following example has one `elif` clause.
 
 ```
 In [9]: if math.sqrt(1) < 1: print('Minor')
