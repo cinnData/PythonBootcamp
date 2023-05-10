@@ -134,8 +134,8 @@ Out[17]: array([[ 3,  9, -5,  1]])
 Boolean masks can also be used to filter out rows or columns of a 2D array. For instance, to select the rows of `arr2` for which the first column is positive:
 
 ```
-In [16]: arr2[arr2[:, 0] > 0, :]
-Out[16]: array([[ 9, -5,  1]])
+In [18]: arr2[arr2[:, 0] > 0, :]
+Out[18]: array([[ 9, -5,  1]])
 ```
 
 ## Plotting with Matplotlib
@@ -147,7 +147,7 @@ Matplotlib offers you a choice between two API's, the **pyplot API**, used in th
 The subpackage `matplotlib.pyplot` is a collection of command style functions that make Matplotlib work like MATLAB. It is typically imported as:
 
 ```
-In [17]: import matplotlib.pyplot as plt
+In [19]: import matplotlib.pyplot as plt
 ```
 
 To create a figure with `pyplot`, we call in a single input one or several functions. Each `pyplot` function makes some change to the figure, such as changing the default size, adding a title, plotting lines, decorating the plot with labels, etc. This is illustrated by the following example, in which we plot together three curves, a linear, a quadratic and a cubic curve. 
@@ -155,13 +155,13 @@ To create a figure with `pyplot`, we call in a single input one or several funct
 First, we fill a 1D array with linearly spaced values, tightly close, so we can create a smooth curve.
 
 ```
-In [18]: t = np.linspace(0, 2, 100)
+In [20]: t = np.linspace(0, 2, 100)
 ```
 
 Next, we ask for the plot:
 
 ```
-In [19]: plt.figure(figsize=(6,6))
+In [21]: plt.figure(figsize=(6,6))
     ...: plt.title('Figure. Three curves')
     ...: plt.plot(t, t, label='linear', color='black')
     ...: plt.plot(t, t**2, label='quadratic', color='black', linestyle='dashed')
