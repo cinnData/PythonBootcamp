@@ -77,8 +77,8 @@ Indexes are useful for combining, filtering and joining data sets. There are man
 A Pandas **data frame** can be built in many ways with the Pandas function `DataFrame`. For instance, from a dictionary of vector-like objects of the same length, as in the following example. Note that the second term of the third column is missing.
 
 ```
-In [8]: df = pd.DataFrame({'v1': range(1, 6), 'v2': ['a', 'b', 'c', 'd', 'e'], 'v3': [-1.3, None, 2, 7, 0]})
-   ...: df
+In [8]: df1 = pd.DataFrame({'v1': range(1, 6), 'v2': ['a', 'b', 'c', 'd', 'e'], 'v3': [-1.3, None, 2, 7, 0]})
+   ...: df1
 Out[8]: 
    v1 v2   v3
 0   1  a -1.3
@@ -93,7 +93,7 @@ Out[8]:
 As the series, the data frames have the attributes `values` and `index`. 
 
 ```
-In [9]: df.values
+In [9]: df1.values
 Out[9]: 
 array([[1, 'a', -1.3],
        [2, 'b', nan],
@@ -105,7 +105,7 @@ array([[1, 'a', -1.3],
 Without an explicit specification, the index is automatically created as a range index. 
 
 ```
-In [10]: df.index
+In [10]: df1.index
 Out[10]: RangeIndex(start=0, stop=5, step=1)
 ```
 
@@ -114,7 +114,7 @@ Note that all the terms in the data column have been converted to data type `flo
 The third component of the data frame is a index object with the column names, which can be extracted as the attribute `columns`.
 
 ```
-In [11]: df.columns
+In [11]: df1.columns
 Out[11]: Index(['v1', 'v2', 'v3'], dtype='object')
 ```
 
@@ -146,7 +146,7 @@ This is just an example illstrating how Pandas work. Of course, it is recommende
 The methods `head` and `tail` extract the first and the last rows of a data frame, respectively. The default number of rows extracted is 5, but you can pass a custom number.
 
 ```
-In [13]: df.head(2)
+In [13]: df1.head(2)
 Out[13]: 
    v1 v2   v3
 0   1  a -1.3
@@ -156,7 +156,7 @@ Out[13]:
 The content of a data frame can also be explored with the method `info`. It reports the dimensions, the data type and the number of non-missing values of every column of the data frame. Note that the data type of the second column, for which you would have expected `str`, is reported as `object`. Don't worry about this, you could apply the string methods to this column.
 
 ```
-In [14]: df.info()
+In [14]: df1.info()
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 5 entries, 0 to 4
 Data columns (total 3 columns):
@@ -172,7 +172,7 @@ memory usage: 248.0+ bytes
 The method `describe` prints a statistical summary of a Pandas object. The columns of type `object` are omitted, except when all the columns have that type. In that case, the summary contains only counts. 
 
 ```
-In [15]: df.describe()
+In [15]: df1.describe()
 Out[15]: 
              v1        v3
 count  5.000000  4.000000
@@ -190,7 +190,7 @@ max    5.000000  7.000000
 Pandas offers multiple ways for subsetting data frames. First, you can extract a column, as a series:
 
 ```
-In [16]: df['v2']
+In [16]: df1['v2']
 Out[16]:
 0    a
 1    b
@@ -203,7 +203,7 @@ Name: v2, dtype: object
 Note that the syntax is the same as for extracting the value of a key from a dictionary (not by chance). You can also extract a **data subframe** containing a subset of complete columns from a data frame. You can specify this with a list containing the names of those columns:
 
 ```
-In [17]: df[['v1', 'v2']]
+In [17]: df1[['v1', 'v2']]
 Out[17]:
    v1 v2
 0   0  a
@@ -213,12 +213,12 @@ Out[17]:
 4   4  e
 ```
 
-*Note*. You can extract a subframe with a single column. Beware that this is not the same as a series. `df['v2']`is a series with shape `(5,)`, and `df[['v2']]` is a data frame with shape `(5,1)`.
+*Note*. You can extract a subframe with a single column. Beware that this is not the same as a series. `df1['v2']`is a series with shape `(5,)`, and `df1[['v2']]` is a data frame with shape `(5,1)`.
 
 In practical data analysis, rows are typically filtered by expressions. Boolean masks can be created with the columns of a data frame just as if they were 1D arrays. A simple example follows. 
 
 ```
-In [18]: df[df['v1'] > 2]
+In [18]: df1[df1['v1'] > 2]
 Out[18]: 
    v1 v2   v3
 2   3  c  2.0
@@ -226,10 +226,10 @@ Out[18]:
 4   5  e  0.0
 ```
 
-Note that `df['v1'] > 2`  is a series of data type `bool`:
+Note that `df1['v1'] > 2`  is a series of data type `bool`:
 
 ```
-In [19]: df['v1'] > 2
+In [19]: df1['v1'] > 2
 Out[19]: 
 0    False
 1    False
@@ -242,7 +242,7 @@ Name: v1, dtype: bool
 See next how to combine a row filter and a column selection. You can change the order, selecting first the columns and then filtering the rows. 
 
 ```
-In [20]: df[df['v1'] > 2][['v1', 'v2']]
+In [20]: df1[df1['v1'] > 2][['v1', 'v2']]
 Out[20]: 
    v1 v2
 2   3  c
