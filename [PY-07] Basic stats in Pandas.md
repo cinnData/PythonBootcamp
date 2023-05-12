@@ -133,11 +133,37 @@ Out[5]:
 4   86709100  
 ```
 
+A statistical summary can be printed with the method `.describe()`:
+
+```
+In [6]: df.describe()
+Out[6]: 
+             open        high         low       close   adj_close  \
+count  251.000000  251.000000  251.000000  251.000000  251.000000   
+mean   154.802709  156.907809  152.691315  154.835060  154.146562   
+std     13.063034   12.937389   13.108058   13.056081   12.825977   
+min    127.989998  129.949997  125.870003  126.040001  125.847855   
+25%    144.330002  146.709999  142.324997  144.645004  144.239502   
+50%    154.009995  155.830002  151.940002  154.089996  153.387222   
+75%    166.189995  167.989998  164.044998  165.915001  165.019608   
+max    182.630005  182.940002  179.119995  182.009995  180.683884   
+
+             volume  
+count  2.510000e+02  
+mean   8.791038e+07  
+std    2.365699e+07  
+min    3.519590e+07  
+25%    7.229740e+07  
+50%    8.373720e+07  
+75%    9.693705e+07  
+max    1.826020e+08  
+```
+
 We are ready now to set up a few questions for practice with Pandas.
 
 ## Questions
 
-Q1. Extract the data for the trading days previous to January 15th.
+Q1. Data for the trading days previous to January 15th.
 
 Q2. Use a **line plot** to see whether there is a **trend** in the opening price.
 
@@ -147,3 +173,38 @@ Q4. A direct measure of **volatility** can be obtained as the difference of the 
 
 ## Q1. Extract the data for the trading days previous to January 15th.
 
+```
+In [7]: df[df['date'] < '2022-01-15']
+Out[7]: 
+         date        open        high         low       close   adj_close  \
+0  2022-01-03  177.830002  182.880005  177.710007  182.009995  180.683884   
+1  2022-01-04  182.630005  182.940002  179.119995  179.699997  178.390701   
+2  2022-01-05  179.610001  180.169998  174.639999  174.919998  173.645538   
+3  2022-01-06  172.699997  175.300003  171.639999  172.000000  170.746796   
+4  2022-01-07  172.889999  174.139999  171.029999  172.169998  170.915573   
+5  2022-01-10  169.080002  172.500000  168.169998  172.190002  170.935425   
+6  2022-01-11  172.320007  175.179993  170.820007  175.080002  173.804367   
+7  2022-01-12  176.119995  177.179993  174.820007  175.529999  174.251083   
+8  2022-01-13  175.779999  176.619995  171.789993  172.190002  170.935425   
+9  2022-01-14  171.339996  173.779999  171.089996  173.070007  171.809036   
+
+      volume  
+0  104487900  
+1   99310400  
+2   94537600  
+3   96904000  
+4   86709100  
+5  106765600  
+6   76138300  
+7   74805200  
+8   84505800  
+9   80440800  
+```
+
+## Q2. Line plot for the opening price #
+
+```
+In [8]: df['open'].plot(figsize=(10,6), color='black', linewidth=1);
+```
+
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.1.png)
