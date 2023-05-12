@@ -51,3 +51,99 @@ Suppose now that `s` is a numeric series. To explore the distribution of `s`, yo
 * `s.plot.line()` returns a line plot.
 
 Pandas uses Matplotlib functions, but not explicitly. If you are satisfied with a basic functionality, you can skip Matplotlib in your code. If you want to add labels, titles, or other features, you can import `matplotlib.pyplot` and add code lines for labels, title, legends, etc.
+
+## Example - Apple Inc. stock prices
+
+This example is based on data on the Apple Inc. stock prices in the Nasdaq stock market, for the year 2022, as published by Yahoo Finance (`finance.yahoo.com/quote/AAPL/history?p=AAPL`). The data source is the file `aapl.csv`, which covers 251 trading days. The data come in the typical OHLC format (Open/High/Low/Close).
+
+The variables are:
+
+* `date`, the date, as 'yyyy-mm-dd'.
+
+* `open`, the price (US dollars) of the stock at the beginning of the trading day. It can be different from the closing price of the previous trading day.
+
+* `high`, the highest price (US dollars) of the stock on that trading day.
+
+* `low`, the lowest price (US dollars) of the stock on that day.
+
+* `close`, the price (US dollars) of the stock at closing time.
+
+* `adj_close`, the closing price adjusted for factors in corporate actions, such as stock splits, dividends, and rights offerings.
+
+* `volume`, the amount of Apple stock that has been traded on that day.
+
+We import Pandas in the usual way:
+
+```
+In [1]: import pandas as pd
+```
+
+Let us suppose for this example, that the source file is in our computer. To import the data with `pd.read_csv`, we have to where to find it. The magic command `%cd` prints the path of working directory (you don't need to this in practice, it is done here for pedagogical purposes). 
+
+```
+In [2]: %pwd
+Out[2]: '/Users/miguel'
+```
+
+So, right now, in the Mac computer where this is prepared, in Qt Console, the working directory is `/Users/miguel`. If it were a Windows computer, the Python kernel would have printed `C:\\Users\\miguel`. If the source file is somewhere inside this folder, this part of the path can be omitted. So, the input in this setting is:
+
+```
+In [3]: df = pd.read_csv('Dropbox/py_course/data/aapl.csv')
+```
+
+This creates the data frame `df`. Since nothing has been specified about the index, a `RangeIndex` has been assigned. The methof `info()` is probably the best weay to start exploring this data frame.
+
+```
+In [4]: df.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 251 entries, 0 to 250
+Data columns (total 7 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   date       251 non-null    object 
+ 1   open       251 non-null    float64
+ 2   high       251 non-null    float64
+ 3   low        251 non-null    float64
+ 4   close      251 non-null    float64
+ 5   adj_close  251 non-null    float64
+ 6   volume     251 non-null    int64  
+dtypes: float64(5), int64(1), object(1)
+memory usage: 13.9+ KB
+```
+
+The dimensions and the column names are what we expected. Since there are 251 entries in the index and 251 non-null entries in every column, there are no missing values. The distinction between `int` and `float` columns is not relevant for a statistical description. The column `date` has been read as type `str` (reporting it as `object` does change this fact). 
+
+We can take a look at the first rows with the method `.head()`. 
+
+```
+In [5]: df.head()
+Out[5]: 
+         date        open        high         low       close   adj_close  \
+0  2022-01-03  177.830002  182.880005  177.710007  182.009995  180.683884   
+1  2022-01-04  182.630005  182.940002  179.119995  179.699997  178.390701   
+2  2022-01-05  179.610001  180.169998  174.639999  174.919998  173.645538   
+3  2022-01-06  172.699997  175.300003  171.639999  172.000000  170.746796   
+4  2022-01-07  172.889999  174.139999  171.029999  172.169998  170.915573   
+
+      volume  
+0  104487900  
+1   99310400  
+2   94537600  
+3   96904000  
+4   86709100  
+```
+
+We are ready now to set up a few questions for practice with Pandas.
+
+## Questions
+
+Q1. Extract the data for the trading days previous to January 15th.
+
+Q2. Use a **line plot** to see whether there is a **trend** in the opening price.
+
+Q3. Use a line plot and a **histogram** to visualize the trading volume. What do you conclude?
+
+Q4. A direct measure of **volatility** can be obtained as the difference of the highest price minus the lowest price in a given trading day. This is called the **daily price variation**. Add the daily variation of the Apple stock prices as a new column. Do you see a trend in the daily price variation? How is the distribution?
+
+## Q1. Extract the data for the trading days previous to January 15th.
+
