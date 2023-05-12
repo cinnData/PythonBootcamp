@@ -207,4 +207,4 @@ Out[7]:
 In [8]: df['open'].plot(figsize=(10,6), color='black', linewidth=1);
 ```
 
-![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_5.1.png)
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.1.png)
