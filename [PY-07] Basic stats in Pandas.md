@@ -1,10 +1,14 @@
 # [PY-07] Basic stats in Pandas
 
-## Importing data from CSV files
+## Import/export data using CSV files
 
-Data sets in tabular form can be imported as Pandas data frames from many file formats. In particular, data from a **CSV file** can be imported to a data frame with the Pandas function `read_csv`. The (default) syntax is `dfname = pd.read_csv(fname)`. The data frame name is chosen by the user, and the file name has to contain the **path** of that file (either local or remote). `read_csv` works the same way for CSV files and for **zipped ZIP files**.
+Data sets in tabular form can be imported as Pandas data frames from many file formats. In particular, **CSV files** are text files which store data using the comma as the column separator. The names of the columns typically come in the first row, and every other row corresponds to a data point. If Excel is installed in your computer, the files with the extension `.csv` are associated to Excel (with a specific Excel icon) and can be displayed in an Excel sheet by double clicking on the file icon. 
 
-Although defaults work in most cases satisfactorily, it is worth to comment a few things about some optional arguments of `read_csv`. The list is not complete, but enough to give you an idea of the extent to which you can customize this function.
+Depending on the configuration of your computer, it may be that a standard CSV file is not displayed in the right way. This happens because Excel does not recognize the comma (`,`) as the column separator, using instead the semicolon (`;`) (the comma is playing the role of decimal separator). This will not affect what you in Python, which follows the "English" style.
+
+Data from a CSV file can be imported to a Pandas data frame with the Pandas function `read_csv`. The (default) syntax is `dfname = pd.read_csv(fname)`. The data frame name is chosen by the user. You have to complete the name of the file with the corresponding path, unless it is in the **working directory**. In Jupyter Qt Console, this is `/Users/username` in Mac computers and `C:/Users/username` in Windows computers. In a Jupyter notebook, the working directory is the folder where the notebook is. Take care of using the slash (`/`), not the backslash, (`\`) to separate the folders in the path. Files which are not in the working directory can be local or remote. For local files whose path would include the path of the working directory, the part of the path can be omitted. `read_csv` works the same way for CSV files and for **zipped ZIP files**. Some of these variations will appear in the examples of this course.
+
+Although defaults work in most cases satisfactorily, it is worth to comment a few things about some optional parameters of `read_csv`. The list is not complete, but enough to give you an idea of the extent to which you can customize this function.
 
 * `sep` specifies the column separator. The default is `sep=','`, but CSV files created with Excel may need `sep=';'`.
 
@@ -18,23 +22,29 @@ Although defaults work in most cases satisfactorily, it is worth to comment a fe
 
 * `encoding`. If the string data contained in a CSV file can contain special characters (such as ñ, or á), which can make trouble, you may need to control this. The default in Python is `encoding='utf-8'`. So, if you are reading a CSV file created in Excel, you may need to set `encoding='latin'` to read the special characters in the right way.
 
+The data contained in a data frame can exported to a CSV file with the method `.to_csv()`. The basic syntax is `dfname.to_csv(fname)`. The deafult for the separator is `sep=','`. That of the index is `index=True'`, meaning that the index will be included in the output file as the first column. If the index is a `RangeIndex`, this may not have any interest, and then yould use `index=False`.
+
 ## Summary statistics
 
-The method `describe`, which has already appeared in the preceding lecture, extracts a conventional statistical summary. Basic statistics can also be calculated separately. For instance, `df.mean()` returns the column means. Correlations are also pretty easy:
+The method `describe` prints a statistical summary. Basic statistics can also be calculated separately, either for a single series or for a data frame. For instance, for a data frame `df`, `df.mean()` returns a series containing the column means (only for the numeric columns). 
 
-* `s1.corr(s2)` returns the **correlation** of `s1` and `s2`.
+Correlations are also easy to get:
 
-* `df.corr()` returns the **correlation matrix** for the columns of `df`.
+* `s1.corr(s2)` returns the **correlation** of two numeric series  `s1` and `s2`.
+
+* `df.corr()` returns the **correlation matrix** for the numeric columns of `df`.
 
 ## Plotting
 
-We typically visualize the data with bar plots, histograms, scatter plots and line plots. They can be obtained directly from a Pandas object. Suppose first that `df` is a Pandas data frame and set `cname1` as the *x*-column and `cname2` as the *y*-column (numeric). To explore the dependence of the *y*-column on the *x*-column, we use a **bar plot**, when the *x*-column is a categorical variable like gender, and a **scatter plot**, when it is a numeric variable like price:
+We typically visualize the data with bar plots, histograms, scatter plots and line plots. Why use one or another is better understood in the examples, so we are very brief here, just displaying the options. The plots can be obtained directly from a Pandas object, without (explicitly) calling Matplotlib. 
+
+Suppose that `df` is a Pandas data frame and set `cname1` as the *x*-column and `cname2` as the *y*-column (numeric). To explore the dependence of the *y*-column on the *x*-column, we use: (a) a **bar plot** when the *x*-column is a categorical variable like gender, or (b) a **scatter plot**, when it is a numeric variable like price:
 
 * `df.plot.bar(x=cname1, y=cname2)` returns a bar plot. The bars represent the values of `cname2` for the different values of `cname1`. If you do not specify the *x*-column, the index is used instead.
 
 * `df.plot.scatter(x=cname1, y=cname2)` returns a scatter plot.
 
-Suppose now that `s` is a numeric Pandas series. To explore the distribution of `s`, you use a **histogram**. Alternatively, to explore a trend, you use a **line plot**. This is pretty easy in Pandas:
+Suppose now that `s` is a numeric series. To explore the distribution of `s`, you use a **histogram**. Alternatively, to explore a time trend, you use a **line plot**. This is pretty easy in Pandas:
 
 * `s.plot.hist()` returns a histogram.
 
