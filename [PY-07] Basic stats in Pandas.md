@@ -281,3 +281,11 @@ Out[17]: 0.6461533889925506
 In [18]: df['volume'].corr(df['dvar']).round(2)
 Out[18]: 0.65
 ```
+
+## Homework
+
+The **daily return** is the percentage change in the price with respect to the preceding trading day. If $p(t)$ is the price on day $t$, the corresponding return would be
+
+$$r(t) =\frac{p(t) - p(t-1)}{p(t-1)}=\frac{p(t)}{p(t-1)}-1,$$
+
+which can multiplied by 100 to get percentage scale. Use the Pandas function `pct_change` to calculate the daily returns of the opening price. How is the distribution of the daily return of the opening price? Is there an association between the daily returns and the trading volume?
