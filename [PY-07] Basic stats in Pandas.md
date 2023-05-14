@@ -165,9 +165,9 @@ We are ready now to set up a few questions for practice with Pandas.
 
 Q1. Data for the trading days previous to January 15th.
 
-Q2. Use a **line plot** to see whether there is a **trend** in the opening price.
+Q2. Use a line plot to see whether there is a **trend** in the opening price.
 
-Q3. Use a line plot and a **histogram** to visualize the trading volume. What do you conclude?
+Q3. Use a line plot and a histogram to visualize the trading volume. What do you conclude?
 
 Q4. A direct measure of **volatility** can be obtained as the difference of the highest price minus the lowest price in a given trading day. This is called the **daily price variation**. Add the daily variation of the Apple stock prices as a new column. Do you see a trend in the daily price variation? How is the distribution?
 
@@ -208,3 +208,64 @@ In [8]: df['open'].plot(figsize=(10,6), color='black', linewidth=1);
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.1.png)
+
+## Q3. Line plot and histogram for the trading volume
+
+```
+In [9]: df['volume'] = df['volume']/10**6
+```
+
+```
+In [10]: df['volume'].plot(figsize=(10,6), color='black', linewidth=1);
+```
+
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.2.png)
+
+```
+In [11]: df['volume'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
+```
+
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.3.png)
+
+## Q4. Trend and distributin for the daily price variation
+
+```
+In [12]: df['dvar'] = df['high'] - df['low']
+```
+
+```
+In [13]: df.head()
+Out[13]: 
+         date        open        high         low       close   adj_close   
+0  2022-01-03  177.830002  182.880005  177.710007  182.009995  180.683884  \
+1  2022-01-04  182.630005  182.940002  179.119995  179.699997  178.390701   
+2  2022-01-05  179.610001  180.169998  174.639999  174.919998  173.645538   
+3  2022-01-06  172.699997  175.300003  171.639999  172.000000  170.746796   
+4  2022-01-07  172.889999  174.139999  171.029999  172.169998  170.915573   
+
+     volume      dvar  
+0  104.4879  5.169998  
+1   99.3104  3.820007  
+2   94.5376  5.529999  
+3   96.9040  3.660004  
+4   86.7091  3.110001  
+```
+
+```
+In [14]: df['dvar'].plot(figsize=(10,6), color='black', linewidth=1);
+```
+
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.4.png)
+
+```
+In [15]: df['dvar'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
+```
+
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.5.png)
+
+## Q5. Scatter plot for the daily price variation and the trading volume
+
+```
+In [16]: df.plot.scatter(x='volume', y='dvar', figsize=(6,6), color='gray');
+```
+
