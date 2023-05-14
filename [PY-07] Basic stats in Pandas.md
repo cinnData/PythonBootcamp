@@ -227,7 +227,7 @@ In [11]: df['volume'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.3.png)
 
-## Q4. Trend and distributin for the daily price variation
+## Q4. Trend and distribution for the daily price variation
 
 ```
 In [12]: df['dvar'] = df['high'] - df['low']
