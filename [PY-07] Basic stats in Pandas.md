@@ -263,10 +263,21 @@ In [15]: df['dvar'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.5.png)
 
-## Q5. Scatter plot for the daily price variation and the trading volume
+## Q5. Scatter plot and correlation for the daily price variation and the trading volume
 
 ```
 In [16]: df.plot.scatter(x='volume', y='dvar', figsize=(6,6), color='gray');
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.6.png)
+
+
+```
+In [17]: df['volume'].corr(df['dvar'])
+Out[17]: 0.6461533889925506
+```
+
+```
+In [18]: df['volume'].corr(df['dvar']).round(2)
+Out[18]: 0.65
+```
