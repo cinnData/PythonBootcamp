@@ -269,3 +269,4 @@ In [15]: df['dvar'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
 In [16]: df.plot.scatter(x='volume', y='dvar', figsize=(6,6), color='gray');
 ```
 
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.6.png)
