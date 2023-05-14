@@ -171,7 +171,7 @@ Q3. Use a line plot and a histogram to visualize the trading volume. What do you
 
 Q4. A direct measure of **volatility** can be obtained as the difference of the highest price minus the lowest price in a given trading day. This is called the **daily price variation**. Add the daily variation of the Apple stock prices as a new column. Do you see a trend in the daily price variation? How is the distribution?
 
-## Q1. Extract the data for the trading days previous to January 15th.
+## Q1. Extract the data for the trading days previous to January 15th
 
 ```
 In [7]: df[df['date'] < '2022-01-15']
@@ -201,7 +201,7 @@ Out[7]:
 9   80440800  
 ```
 
-## Q2. Line plot for the opening price #
+## Q2. Line plot for the opening price
 
 ```
 In [8]: df['open'].plot(figsize=(10,6), color='black', linewidth=1);
