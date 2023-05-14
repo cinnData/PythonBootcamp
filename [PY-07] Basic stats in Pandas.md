@@ -78,7 +78,7 @@ We import Pandas in the usual way:
 In [1]: import pandas as pd
 ```
 
-Let us suppose for this example, that the source file is in our computer. To import the data with `pd.read_csv`, we have to where to find it. The magic command `%cd` prints the path of working directory (you don't need to this in practice, it is done here for pedagogical purposes). 
+Let us suppose for this example, that the source file is in our computer. To import the data with `pd.read_csv`, we have to where to find it. The magic command `%pwd` prints the path of working directory (you don't need to this in practice, it is done here for pedagogical purposes). 
 
 ```
 In [2]: %pwd
