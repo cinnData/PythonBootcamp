@@ -238,13 +238,17 @@ In [11]: df['volume'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.3.png)
 
-This don't see here the bell-shaped profile of the statisticians' beloved model, the **normal distrubtion**, but that of a **skewed distribution**. This type of distribution, with a well-defined **right tail**, is typical in variables which represent amounts of money.
+We don't see here the bell-shaped profile of the statisticians' beloved model, the **normal distrubtion**, but that of a **skewed distribution**. This type of distribution, with a well-defined **right tail**, is typical in series that represent amounts of money.
 
 ## Q4. Trend and distribution for the daily price variation
+
+We can `calculate` the daily price variation and keep it a separate series, or place it as a new column of the current data frame `df`. We choose the second option
 
 ```
 In [12]: df['dvar'] = df['high'] - df['low']
 ```
+
+When  displaying the heading rows of the new data frame, we see the new column on the right side.
 
 ```
 In [13]: df.head()
@@ -264,6 +268,8 @@ Out[13]:
 4   86.7091  3.110001  
 ```
 
+Now, the line plot and the histogram are obtained as for the trading volume. They are similar.
+
 ```
 In [14]: df['dvar'].plot(figsize=(10,6), color='black', linewidth=1);
 ```
@@ -278,16 +284,22 @@ In [15]: df['dvar'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
 
 ## Q5. Scatter plot and correlation for the daily price variation and the trading volume
 
+Common wisdom tells us that price will show more intraday variation the days in which there is more trading activity, and less intraday variation with low activity. Comparing line plots may gives an idea of this type of association, but is better to put together the two series in a scatter plot. We can get a scatter plot in Pandas with the method `.plot.scatter()`.
+
 ```
 In [16]: df.plot.scatter(x='volume', y='dvar', figsize=(6,6), color='gray');
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.6.png)
 
+The scttar plot somewhat confirms our guess of a positive association between the trading volume and the daily variation, though the interpretation of plots is always subjective. Statisticians use the correlation to evaluate the strength of the association. More specifically, it tells us the extent to which one series can be represented as a linear expression of the other series. Correlation can be positive or negative. A strong correlation is one which close to 1 (or -1), and a weak correlation one which close to 0. Correlations in Pandas can be calculated with the method `.corr()`.
+
 ```
 In [17]: df['volume'].corr(df['dvar'])
 Out[17]: 0.6461533889925506
 ```
+
+This correlation is respectable, and confirms our guess. You may wonder why do you need so many decimals for a correlation. Indeed, correlations are better expressed with two (maybe three) decimals. You can get this with method `.round()`.
 
 ```
 In [18]: df['volume'].corr(df['dvar']).round(2)
