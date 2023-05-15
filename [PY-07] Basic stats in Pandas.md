@@ -78,14 +78,14 @@ We import Pandas in the usual way:
 In [1]: import pandas as pd
 ```
 
-Let us suppose for this example, that the source file is in our computer. To import the data with `pd.read_csv`, we have to where to find it. The magic command `%pwd` prints the path of working directory (you don't need to this in practice, it is done here for pedagogical purposes). 
+Let us suppose for this example, that the source file is in our computer. To import the data with `pd.read_csv`, we have to know where to find it. The magic command `%pwd` prints the path of working directory (you don't need to this in practice, it is done here for pedagogical purposes). 
 
 ```
 In [2]: %pwd
 Out[2]: '/Users/miguel'
 ```
 
-So, right now, in the Mac computer where this is prepared, in Qt Console, the working directory is `/Users/miguel`. If it were a Windows computer, the Python kernel would have printed `C:\\Users\\miguel`. If the source file is somewhere inside this folder, this part of the path can be omitted. So, the input in this setting is:
+So, right now, in the Mac computer where this is prepared, in Qt Console, the working directory is `/Users/miguel`. If it were a Windows computer, the Python kernel would have printed `C:\\Users\\miguel`. If the source file is somewhere inside this folder, this part of the path can be omitted. This is what we do here.
 
 ```
 In [3]: df = pd.read_csv('Dropbox/py_course/data/aapl.csv')
@@ -133,7 +133,7 @@ Out[5]:
 4   86709100  
 ```
 
-A statistical summary can be printed with the method `.describe()`:
+A statistical summary can be printed with the method `.describe()`.
 
 ```
 In [6]: df.describe()
@@ -173,6 +173,8 @@ Q4. A direct measure of **volatility** can be obtained as the difference of the 
 
 ## Q1. Extract the data for the trading days previous to January 15th
 
+For this type of data, we frequently filter by the date, selecting the period desired. Let us consider the expression `df['date'] < '2022-01-15'`. The Python kernel will evaluate it for every term of the column `date`, returning a Boolean mask. Using this mask as a filter, we get the requested data subset.
+
 ```
 In [7]: df[df['date'] < '2022-01-15']
 Out[7]: 
@@ -203,17 +205,24 @@ Out[7]:
 
 ## Q2. Line plot for the opening price
 
+Analysts typically explore price trends in stock prices. Let us do that with opening price, which we can extract as the series Analysts typically explore price trends in stock prices. Let us do that with opening price. The corresponding column is extracted as the series `df['open']`. The method `.plot()` returns a line plot. The parameters `figsize` and `color` have already appear in the lecture PY-05. Though `linewidth=1` is the default, it is explicit here to call your attention. Note that it is possible to get a line plot in Pandas  directly, skipping the Matpotlib pyplot API. In practice, this is what we do, except when extra embellishments are desired.
+
 ```
 In [8]: df['open'].plot(figsize=(10,6), color='black', linewidth=1);
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.1.png)
 
+In this case, the line plot shows an obvious upwards trend, which does not need much discussion.
+
 ## Q3. Line plot and histogram for the trading volume
+
+The numbers for the trading volume are high, since it comes as a number of shares. In such cases, rescaling can simplify the picure. Here, we express the volume in million of shares: 
 
 ```
 In [9]: df['volume'] = df['volume']/10**6
 ```
+A line plot can be obtained just as for the opening price.
 
 ```
 In [10]: df['volume'].plot(figsize=(10,6), color='black', linewidth=1);
@@ -221,11 +230,15 @@ In [10]: df['volume'].plot(figsize=(10,6), color='black', linewidth=1);
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.2.png)
 
+No clear trend is observed here. The daily returns look quite **stationary**. It may make sense to look at the distributionof the returns, as if they were extracted from a "population". The histogram is a quick and dirty graphical tool for this job. The method `.plot.hist()` returns a histogram. The parameter `rwidth` sets the percentage of the space between consecutive bin centers that is taken by the histogram bars. It is used here to separate the bars, which enhances the visual impact (you may disagree).
+
 ```
 In [11]: df['volume'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.3.png)
+
+This don't see here the bell-shaped profile of the statisticians' beloved model, the **normal distrubtion**, but that of a **skewed distribution**. This type of distribution, with a well-defined **right tail**, is typical in variables which represent amounts of money.
 
 ## Q4. Trend and distribution for the daily price variation
 
@@ -270,7 +283,6 @@ In [16]: df.plot.scatter(x='volume', y='dvar', figsize=(6,6), color='gray');
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.6.png)
-
 
 ```
 In [17]: df['volume'].corr(df['dvar'])
