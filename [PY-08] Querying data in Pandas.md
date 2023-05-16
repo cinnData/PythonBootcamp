@@ -80,3 +80,97 @@ The variables are:
 
 * `review_scores_rating`, the average reviewers' rating of overall experience (*What was your guest’s overall experience?*). Listings are rated in the range 1-100.
 
+```
+In [1]: import pandas as pd
+```
+
+```
+In [2]: path = 'https://raw.githubusercontent.com/cinnData/PythonBootcamp/main/Data/'
+   ...: filename = path + 'airbnb.csv'
+```
+
+```
+In [3]: df = pd.read_csv(filename, index_col=0)
+```
+
+```
+In [4]: df.info()
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 15655 entries, 13977576 to 52874282
+Data columns (total 11 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   host_id               15655 non-null  int64  
+ 1   host_since            15653 non-null  object 
+ 2   name                  15646 non-null  object 
+ 3   neighbourhood         15655 non-null  object 
+ 4   district              15655 non-null  object 
+ 5   property_type         15655 non-null  object 
+ 6   room_type             15655 non-null  object 
+ 7   bedrooms              15098 non-null  float64
+ 8   price                 15655 non-null  float64
+ 9   number_of_reviews     15655 non-null  int64  
+ 10  review_scores_rating  12176 non-null  float64
+dtypes: float64(3), int64(2), object(6)
+memory usage: 1.4+ MB
+```
+
+```
+In [5]: df.head()
+Out[5]: 
+            host_id  host_since  \
+id                                
+13977576   64903899  2016-03-29   
+42105584  333969184  2020-02-06   
+33727898  251710733  2019-03-28   
+44995311  363074093  2020-08-18   
+15763812  101927904  2016-10-31   
+
+                                                       name  \
+id                                                            
+13977576                 Habitación individual es Barcelona   
+42105584                                     Habitación M&D   
+33727898  Spacious and bright apartment next to Plaza Es...   
+44995311         Single Room, City Center, Private Bathroom   
+15763812                            HABITACIÓN PLAZA ESPAÑA   
+
+                   neighbourhood        district                property_type  \
+id                                                                              
+13977576             Hostafrancs  Sants-Montjuïc  Private room in rental unit   
+42105584          la Prosperitat      Nou Barris  Private room in rental unit   
+33727898             Sant Antoni        Eixample           Entire rental unit   
+44995311  la Dreta de l'Eixample        Eixample       Private room in hostel   
+15763812            el Poble Sec  Sants-Montjuïc  Private room in rental unit   
+
+                room_type  bedrooms  price  number_of_reviews  \
+id                                                              
+13977576     Private room       1.0   12.0                  1   
+42105584     Private room       NaN   25.0                  0   
+33727898  Entire home/apt       3.0  300.0                 30   
+44995311     Private room       1.0   83.0                 11   
+15763812     Private room       1.0   38.0                 70   
+
+          review_scores_rating  
+id                              
+13977576                  0.00  
+42105584                   NaN  
+33727898                  5.00  
+44995311                  4.82  
+15763812                  4.75  
+```
+
+
+## Questions
+
+Q1. How many duplicates do you find in this data set? Drop them.
+
+Q2. The attribute `host_since` is the date of the host's first listing in Airbnb. For how many listings the host started before 2010? How many hosts started before that year?
+
+Q3. What is the proportion of listings whose rating is missing?
+
+Q4. Use a histogram to explore the distribution of the price. Is it useful? Maybe not, since some very expensive listings distort the whole picture. How can you trim the data, dropping the most expensive listings, to get a better picture?
+
+Q5. What is the average price per room type? Given that the distribution of the price is quite skewed, is it better to use the median?
+
+Q6. In which neighbourhoods do we find more listings? Are they more expensive?
+
