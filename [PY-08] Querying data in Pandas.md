@@ -244,4 +244,4 @@ Name: price, dtype: float64
 In [14]: df['price'][df['price'].between(25,175)].plot.hist(figsize=(8,6), color='gray', rwidth=0.94, bins=30);
 ```
 
-![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.1.png)
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.2.png)
