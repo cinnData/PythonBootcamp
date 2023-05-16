@@ -159,18 +159,89 @@ id
 15763812                  4.75  
 ```
 
-
 ## Questions
 
 Q1. How many duplicates do you find in this data set? Drop them.
 
-Q2. The attribute `host_since` is the date of the host's first listing in Airbnb. For how many listings the host started before 2010? How many hosts started before that year?
+Q2. What is the proportion of listings whose rating is missing?
 
-Q3. What is the proportion of listings whose rating is missing?
+Q3. Use a histogram to explore the distribution of the price. 
 
-Q4. Use a histogram to explore the distribution of the price. Is it useful? Maybe not, since some very expensive listings distort the whole picture. How can you trim the data, dropping the most expensive listings, to get a better picture?
+Q4. What is the average price per room type? Given that the distribution of the price is quite skewed, is it better to use the median?
 
-Q5. What is the average price per room type? Given that the distribution of the price is quite skewed, is it better to use the median?
+Q5. In which neighbourhoods do we find more listings? Are they more expensive?
 
-Q6. In which neighbourhoods do we find more listings? Are they more expensive?
+## Q1. Duplicates in this data set
 
+```
+In [6]: df.index.duplicated().sum()
+Out[6]: 0
+```
+
+```
+In [7]: df.duplicated().sum()
+Out[7]: 28
+```
+
+```
+In [8]: df = df.drop_duplicates()
+```
+
+```
+In [9]: df.shape
+Out[9]: (15627, 11)
+```
+
+## Q2. Proportion of listings with missing ratings
+
+```
+In [10]: df.isna().sum()
+Out[10]: 
+host_id                    0
+host_since                 2
+name                       9
+neighbourhood              0
+district                   0
+property_type              0
+room_type                  0
+bedrooms                 557
+price                      0
+number_of_reviews          0
+review_scores_rating    3452
+dtype: int64
+```
+
+```
+In [11]: df['review_scores_rating'].isna().mean().round(3)
+Out[11]: 0.221
+```
+
+# Q3. Distribution of the price
+
+```
+In [12]: df['price'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
+```
+
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.1.png)
+
+Is this histogram useful? Not much, since some very expensive listings distort the whole picture. Can we trim the data, to get a better picture?
+
+```
+In [13]: df['price'].describe()
+Out[13]: 
+count    15627.000000
+mean       155.743137
+std        966.968387
+min          0.000000
+25%         50.000000
+50%         99.000000
+75%        164.000000
+max      90000.000000
+Name: price, dtype: float64
+```
+
+```
+In [14]: df['price'][df['price'].between(25,175)].plot.hist(figsize=(8,6), color='gray', rwidth=0.94, bins=30);
+```
+
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.1.png)
