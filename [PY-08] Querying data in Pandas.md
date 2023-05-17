@@ -179,7 +179,7 @@ Q4. What is the average price per room type?
 
 Q5. In which neighbourhoods do we find more listings? Are they more expensive?
 
-## Q1. Duplicates in this data set
+## Q1. Duplicates
 
 Duplicates can be detected with the method `.duplicated()`, which returns a Boolean object of the same shape of the object to which it is applied. In this example, it makes sense to apply it to the index, to check whether there are duplicated listing ID's. Note that Pandas has no rule against duplicated indexes, though in most applications to real data, in which we take the index as an identifier of the row, duplicated indexes are *wrong*.
 
@@ -212,23 +212,29 @@ Out[9]: (15627, 11)
 
 ## Q2. Proportion of listings with missing ratings
 
+The report extracted with `.info()` is already letting us know that some columns have missing values. In particular, we have a relevant number of listings for which rating scores are not available (many guests don't rate the lodgings). A specific report on this, which can be restricted to some selected columns, can be extracted with the method `.isna()`, which returns a Boolean data frame of the same shape indicating whether an entry is missing. 
+
+By applying `.sum()`, we would obtain the column totals, that is, the numbers of missing values for every column. By applying `.mean()`, we obtain the number of missing values (*i.e*. the column totals) divided by the number of listings (*i.e*. the number of rows). This is the proportion of missing values.
+
 ```
-In [10]: df.isna().sum()
+In [10]: df.isna().mean()
 Out[10]: 
-host_id                    0
-host_since                 2
-name                       9
-neighbourhood              0
-district                   0
-property_type              0
-room_type                  0
-bedrooms                 557
-price                      0
-number_of_reviews          0
-review_scores_rating    3452
-dtype: int64
+host_id                 0.000000
+host_since              0.000128
+name                    0.000576
+neighbourhood           0.000000
+district                0.000000
+property_type           0.000000
+room_type               0.000000
+bedrooms                0.035643
+price                   0.000000
+number_of_reviews       0.000000
+review_scores_rating    0.220900
+dtype: float64
 ```
 
+So, we find a 22.1% of listings with no reviews.
+ 
 ```
 In [11]: df['review_scores_rating'].isna().mean().round(3)
 Out[11]: 0.221
@@ -328,4 +334,6 @@ la Nova Esquerra de l'Eixample           612    90.0
 
 ## Homework
 
-Use the `groupby` approach to extract the pivot tables of inputs 15 and 16.
+1. Use the `groupby` approach to extract the pivot tables of inputs 15 and 16.
+
+2. A controversial issue about Airbnb is that, in spite of starting as a peer-to-peer platform, it has evolved to one where some hosts can manage many listings, sometimes whole buildings. They could be so affecting the way the natives' life. Do you find many hosts in this situation in Barcelona?
