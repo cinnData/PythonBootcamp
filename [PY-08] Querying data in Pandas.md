@@ -2,7 +2,7 @@
 
 ## Sorting
 
-Thsi last lecture presents a collection of basic procedures for cleaning, exploring and summarizing data stored in Pandas data frames. We start with **sorting** methods. Pandas series can be sorted by the index or by the values, with the methods `.sort_index()` and `.sort_values()`, respectively. Both work for data frames, but, for the second one, you have to specify either the name of a column or a list of column names, which will then be used in the order that you wrote them.
+This last lecture presents a collection of basic procedures for cleaning, exploring and summarizing data stored in Pandas data frames. We start with **sorting** methods. Pandas series can be sorted by the index or by the values, with the methods `.sort_index()` and `.sort_values()`, respectively. Both work for data frames, but, for the second one, you have to specify either the name of a column or a list of column names, which will then be used in the order that you wrote them.
 
 The parameter `ascending` allows you to choose between ascending and descending ways. The default (in Python as in other languages) is `ascending=True`.
 
@@ -83,15 +83,19 @@ The variables are:
 ```
 In [1]: import pandas as pd
 ```
+In this example, we use a remote data source. In Pandas, this works the same as with a local file, the only difference is in the path. The data files of this course can be found in the same GitHub repository as the document that you're reading. The path for these files can be inputted as follows.
 
 ```
 In [2]: path = 'https://raw.githubusercontent.com/cinnData/PythonBootcamp/main/Data/'
-   ...: filename = path + 'airbnb.csv'
 ```
 
+We import the data to a Pandas data frame with the function `read_csv`. In this example, we use the parameter `index_col` to specify the column `listing_id` as the index. 
+
 ```
-In [3]: df = pd.read_csv(filename, index_col=0)
+In [3]: df = pd.read_csv(path + 'airbnb.csv', index_col=0)
 ```
+
+You will see in the report extracted by the method `.info()` that the index is an `Int64Index`, meaning that all the entries are integers, but not consecutive integers generated automatically as in a `RangeIndex`. Note that `listring_id` is not included in the column list.
 
 ```
 In [4]: df.info()
@@ -114,6 +118,8 @@ Data columns (total 11 columns):
 dtypes: float64(3), int64(2), object(6)
 memory usage: 1.4+ MB
 ```
+
+The first rows can be displayed with the method `.head()`.
 
 ```
 In [5]: df.head()
@@ -159,6 +165,8 @@ id
 15763812                  4.75  
 ```
 
+We are ready now to set up a few questions for practice with Pandas.
+
 ## Questions
 
 Q1. How many duplicates do you find in this data set? Drop them.
@@ -167,7 +175,7 @@ Q2. What is the proportion of listings whose rating is missing?
 
 Q3. Use a histogram to explore the distribution of the price. 
 
-Q4. What is the average price per room type? Given that the distribution of the price is quite skewed, is it better to use the median?
+Q4. What is the average price per room type? 
 
 Q5. In which neighbourhoods do we find more listings? Are they more expensive?
 
@@ -245,3 +253,69 @@ In [14]: df['price'][df['price'].between(25,175)].plot.hist(figsize=(8,6), color
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.2.png)
+
+## Q4. Average price per room type
+
+```
+In [15]: pd.pivot_table(df, values='price', index='room_type', aggfunc='mean').round()
+Out[15]: 
+                 price
+room_type             
+Entire home/apt  181.0
+Hotel room       206.0
+Private room     117.0
+Shared room       48.0
+```
+
+Given that the distribution of the price is quite skewed, is it better to use the median?
+
+```
+In [16]: pd.pivot_table(df, values='price', index='room_type', aggfunc='median')
+Out[16]: 
+                 price
+room_type             
+Entire home/apt  135.0
+Hotel room       174.0
+Private room      48.0
+Shared room       32.0
+```
+
+## Q5. Top-10 neighbourhoods
+
+```
+In [17]: df['neighbourhood'].value_counts().head(10)
+Out[17]: 
+neighbourhood
+la Dreta de l'Eixample                   2029
+el Raval                                 1251
+el Barri Gòtic                           1064
+Sant Pere, Santa Caterina i la Ribera     979
+la Vila de Gràcia                         943
+la Sagrada Família                        942
+l'Antiga Esquerra de l'Eixample           892
+Sant Antoni                               781
+el Poble Sec                              738
+la Nova Esquerra de l'Eixample            612
+Name: count, dtype: int64
+```
+
+```
+In [18]: df.groupby(by='neighbourhood')['price'].agg(['count', 'median']).sort_values(by='count', ascending=False).head(10)
+Out[18]: 
+                                       count  median
+neighbourhood                                       
+la Dreta de l'Eixample                  2029   159.0
+el Raval                                1251    69.0
+el Barri Gòtic                          1064    77.0
+Sant Pere, Santa Caterina i la Ribera    979    82.0
+la Vila de Gràcia                        943   111.0
+la Sagrada Família                       942   125.5
+l'Antiga Esquerra de l'Eixample          892   127.0
+Sant Antoni                              781   122.0
+el Poble Sec                             738    94.5
+la Nova Esquerra de l'Eixample           612    90.0
+```
+
+## Homework
+
+Use the `groupby` approach to extract the pivot tables of inputs 15 and 16.
