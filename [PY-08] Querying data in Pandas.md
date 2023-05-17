@@ -179,7 +179,7 @@ Q4. What is the average price per room type?
 
 Q5. In which neighbourhoods do we find more listings? Are they more expensive?
 
-## Q1. Duplicates
+## Q1. Duplicate listings
 
 Duplicates can be detected with the method `.duplicated()`, which returns a Boolean object of the same shape of the object to which it is applied. In this example, it makes sense to apply it to the index, to check whether there are duplicated listing ID's. Note that Pandas has no rule against duplicated indexes, though in most applications to real data, in which we take the index as an identifier of the row, duplicated indexes are *wrong*.
 
@@ -234,7 +234,7 @@ dtype: float64
 ```
 
 So, we find a 22.1% of listings with no reviews.
- 
+
 ```
 In [11]: df['review_scores_rating'].isna().mean().round(3)
 Out[11]: 0.221
@@ -242,13 +242,15 @@ Out[11]: 0.221
 
 ## Q3. Distribution of the price
 
+A histogram for the prices can be obtained with the method `.plot.hist()`, which has already been used in the previous lecture.
+
 ```
 In [12]: df['price'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.1.png)
 
-Is this histogram useful? Not much, since some very expensive listings distort the whole picture. Can we trim the data, to get a better picture?
+Is this histogram useful? Not much, since some very expensive lodgings distort the whole picture. By using the listing's ID, it can be checked that some of these extreme prices don't match the prices given in the Airbnb website. A rough idea of the distribution can be given by the statistical summary printed by `.describe()`. 
 
 ```
 In [13]: df['price'].describe()
@@ -264,11 +266,17 @@ max      90000.000000
 Name: price, dtype: float64
 ```
 
+For a  better picture of the bulk of Airbnb we may trim the data. For instance, we can plot a histogram for the listings with prices in a reasonable interval. See an example below.
+
 ```
 In [14]: df['price'][df['price'].between(25,175)].plot.hist(figsize=(8,6), color='gray', rwidth=0.94, bins=30);
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.2.png)
+
+The role of the filter `df['price'].between(25,175)`  is obvious. An equivalent condition would be `(df['price'] >= 25) & (df['price'] <= 175)`. Note that the method `.between()` includes the two limits of the interval. The argument `bin s=30` ensures that the intervals is partitioned in subintervals whose limits are multiples of 5, which makes it more appealing. rices don't change continuously, and hosts prefer prices which are multiples of 10. The histogram also shows that 50, 100 and 150 euros are popular prices.
+
+*Note*. The rule for counting the observations in every bin is as follows. For an interval of limits $a$ and $b$, the values $x$ such that $a \le x < b$ are counted. Except for the last interval, for which the right limit is also included.
 
 ## Q4. Average price per room type
 
@@ -283,7 +291,7 @@ Private room     117.0
 Shared room       48.0
 ```
 
-Given that the distribution of the price is quite skewed, is it better to use the median?
+But, how informative is the average price? With skewed distributions, the extreme observations on the right tail "pull" the mean, so it may fall far from the middle of the distribution. In these cases, the median gives a better description of the mid prices. To get the median price per room type, just replace the aggregation function mean by median. 
 
 ```
 In [16]: pd.pivot_table(df, values='price', index='room_type', aggfunc='median')
@@ -297,6 +305,8 @@ Shared room       32.0
 ```
 
 ## Q5. Top-10 neighbourhoods
+
+To close this analysis of the Barcelona Airbnb data, we take a look at the neighbourhoods with more listings. The top ten list can be extracted with the method `.value_counts()`.
 
 ```
 In [17]: df['neighbourhood'].value_counts().head(10)
@@ -314,6 +324,10 @@ el Poble Sec                              738
 la Nova Esquerra de l'Eixample            612
 Name: count, dtype: int64
 ```
+
+Are these neighbourhoods more expensive? We wonder if there is an association between the mid price and the amount of property listed. To get the answer, we could use a pivot table with the neighbourhood in the rows and the number of listings and the mid price in the columns. Instead, we apply here the method `gropuby()`, with two aggregation functions. The function `count` counts the non missing observations.
+
+Except for la Dreta de l'Eixample, we don't find higher prices associated to more listings. So, the picture is more complex than that.
 
 ```
 In [18]: df.groupby(by='neighbourhood')['price'].agg(['count', 'median']).sort_values(by='count', ascending=False).head(10)
