@@ -22,7 +22,7 @@ Three useful Pandas methods related to missing values, which can be applied to b
 
 There are two useful Pandas methods for managing **duplicates**:
 
-* `.duplicated()` returns a Boolean series indicating the rows which are duplicated. The default is `keep=first`, meaning that, when a row is repeated, all the appearances except the first one are considered duplicated.
+* `.duplicated()` returns a Boolean series indicating the rows which are duplicated. The default is `keep=first`, meaning that, the data are read top-down, returning `False` for the values occurring for the first time, and `True` for those having occurred before. 
 
 * `.drop_duplicates()` drops the duplicated entries rows. It is based on the Boolean mask created by `.duplicated()`. 
 
@@ -181,19 +181,29 @@ Q5. In which neighbourhoods do we find more listings? Are they more expensive?
 
 ## Q1. Duplicates in this data set
 
+Duplicates can be detected with the method `.duplicated()`, which returns a Boolean object of the same shape of the object to which it is applied. In this example, it makes sense to apply it to the index, to check whether there are duplicated listing ID's. Note that Pandas has no rule against duplicated indexes, though in most applications to real data, in which we take the index as an identifier of the row, duplicated indexes are *wrong*.
+
+In this data set, the listing's ID in this data set is never duplicated, as we see next. This is an example that illustrates how computers count the times an expression is true. The method `.duplicated()` checks whether a particular index value is duplicated (meaning that it has already appeared), returning a `True`/`False` value. These Booleans are stored in the series `df.index.duplicated()`. By applying `.sum()`, we convert the Booleans to integers (1/0), so the sum is equal to the number of `True` values, that is, the number of duplicates. Note that, if an index value appears $n$ times, it is counted as $n - 1$ duplicates.
+
 ```
 In [6]: df.index.duplicated().sum()
 Out[6]: 0
 ```
+
+The number of duplicated rows is found using the same logic. The index is not checked now. Note that `df.duplicated()` returns `True` when the whole row (all entries) is duplicated. 
 
 ```
 In [7]: df.duplicated().sum()
 Out[7]: 28
 ```
 
+We find 28 cases. They correspond to listings which have exactly the same data. This may happen, *e.g*. when they refer to beds in a shared bedroom. Neverthless, following the instructions, we drop the duplicates.
+
 ```
 In [8]: df = df.drop_duplicates()
 ```
+
+We are left with a slightly smaller data set.
 
 ```
 In [9]: df.shape
@@ -224,7 +234,7 @@ In [11]: df['review_scores_rating'].isna().mean().round(3)
 Out[11]: 0.221
 ```
 
-# Q3. Distribution of the price
+## Q3. Distribution of the price
 
 ```
 In [12]: df['price'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
