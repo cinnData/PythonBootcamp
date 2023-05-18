@@ -2,7 +2,7 @@
 
 ## Typing Python code
 
-In this tutorial, we start with some comments on how to type Python code. We assume first that you are working on Jupyter Qt Console. Before starting, a reminder: Python is **case sensitive**. 
+In this tutorial, we start with some comments on how to type Python code. We assume first that you are working on Jupyter Qt Console. Before starting, a reminder: Python is **case sensitive**. For instance, `type` is a Python function which returns the type of an object, but `Type` is not recognized (unless you create a new function with this name), and will return an error message.
 
 The console produces input prompts (such as `In[1]:`), where you can type a command and press `Return`. Then the Python kernel returns either an output (preceded by `Out[1]:`), a (typically long and difficult) error message, or no answer at all. A simple example follows. Note the white space around the *plus* (`+`) sign, which is ignored by the Python interpreter, but improves the **readability** of your code.
 
@@ -44,11 +44,11 @@ Out[6]: 36
 
 *Note*. You would probably have written `b^2` for the square of 2, but the caret symbol (`^`) plays a different role in Python.
 
-Typing in a notebook is just a bit different. The notebook is a sequence of **cells**. In the **Markdown cells**, you write comments, and in the **code cells** you write the Python commands. Every code cell of the notebook corresponds to an input of the console. When you are typing in a cell, pressing *Return* starts a new line *within the same cell*, without ending the input. With *Shift+Return* you finish the the input, so you get the ouput, opening a new cell. To finish the input withou opening a new cell, use *Cmd+Return* in Mac or *Ctrl+Return* in Windows.   
+Typing in a notebook is just a bit different. The notebook is a sequence of **cells**. In the **Markdown cells**, you write comments, while in the **code cells** you write the Python commands. Every code cell of the notebook corresponds to an input of the console. When you are typing in a cell, pressing *Return* starts a new line *within the same cell*, without ending the input. With *Shift+Return* you finish the the input, so you get the ouput, opening a new cell. To finish the input withou opening a new cell, use *Cmd+Return* in Mac or *Ctrl+Return* in Windows.   
 
 ## Python packages
 
-Since the basic Python toolkit (without any package) is quite limited, you will need additional resources for practically everything. These resources come in **packages**. For instance, suppose that you want to do some math, and calculate the square root of 2. You will then **import** the package `math`, whose resources include the square root and many other mathematical functions. Once the package has been imported, all its functions are available. You can then apply the function `math.sqrt`. This notation indicates that `sqrt` is a function of the module `math`.
+Additional Python resources come in **packages**. For instance, suppose that you want to do some math, calculating the square root of 2. You will then **import** the package `math`, whose resources include the square root and many other mathematical functions. Once the package has been imported, all its functions are available, so you can call the function `math.sqrt`. This notation indicates that `sqrt` is a function of the module `math`.
 
 In the console, the square root calculation shows up as:
 
@@ -58,7 +58,7 @@ In [7]: import math
 Out[7]: 1.4142135623730951
 ```
 
-Alternatively, you can import only the functions that you plan to use:
+Alternatively, you can import only the functions that you plan to use, and call them without specifying the package:
 
 ```
 In [8]: from math import sqrt
@@ -66,7 +66,7 @@ In [8]: from math import sqrt
 Out[8]: 1.4142135623730951
 ```
 
-Packages are imported just for the current kernel. You can only import a package only if it is already **installed** in your computer. Some packages, such as NumPy and Pandas, will appear layer in the following lectures.
+Packages are imported just for the current kernel. You can only import a package only if it is already **installed** in your computer. The package Pandas will appear frequently in this course.
 
 ## Numeric data types
 
@@ -91,14 +91,14 @@ In [11]: type(True)
 Out[11]: bool
 ```
 
-Mind that it is `True` and `False` in Python, not `TRUE` and `FALSE` (as in R), nor `true` and `false` (as in Java). As you may know, some applications have Booleans (like Excel), but others don't (like MySQL). When there are no Booleans, they are replaced by 1 and 0. In Python, `True` and `False` are the same as 1 and 0 for many purposes, as we will see below.
+Mind that it is `True` and `False` in Python, not `TRUE` and `FALSE` (as in R), nor `true` and `false` (as in Java). Some languages, like Python and Java, have Booleans, but others, like C++, don't. The same with applications, Excel has Booleans but MySQL doesn't. When there are no Booleans, they are replaced by 1 and 0. In Python, `True` and `False` are the same as 1 and 0 for many purposes, as we will see below.
 
 ## Strings
 
 Besides numbers, we can also manage **strings** with type `str`:
 
 ```
-In [12]: type('Miguel')
+In [12]: type('Messi')
 Out[12]: str
 ```
 
@@ -108,9 +108,7 @@ There is a basic set of 128 characters, called the **ASCII characters**, which a
 
 Non-ASCII characters can be encoded by different computers or different text editors in different ways. Mind that, if you capture string data on your own, you will probably find some of these characters in your data. Even when the documents are expected to be in English, they can be contaminated by other languages: Han characters, German dieresis, Spanish eñe, etc.
 
-The preferred **encoding** is **UTF-8**, used by Python. UTF-8 is the default encoding in Mac computers, but not in Windows computers, which use a region-specific system. In US and Western Europe, this is **Windows-1252**.
-
-The UTF-8 encoding can be easily learned from the Python interpreter. For instance, for the lowercase 'a':
+The preferred **encoding** is **UTF-8**, used by Python. UTF-8 is the default encoding in Mac computers, but not in Windows computers, which use a region-specific system. In US and Western Europe, this is **Windows-1252**. The UTF-8 encoding can be easily learned from the Python interpreter. For instance, for the lowercase 'a':
 
 ```
 In [13]: ord('a')
@@ -130,7 +128,7 @@ In [15]: ord('ñ')
 Out[15]: 241
 ```
 
-This goes beyond 127, so it is not an ASCII character. So, it you include this character in your document, it may look wrong in a different computer.
+This goes beyond 127, so 'ñ' is not an ASCII character. If you include it in a document, it may look wrong in another computer.
 
 Strings can be concatenated in a straightforward way:
 
@@ -141,7 +139,7 @@ Out[16]: 'Leo Messi'
 
 ## Type conversions
 
-The functions `int` and `float` can be used to convert numbers from one type to another type (sometimes at a loss):
+The functions `int` and `float` can be used to convert numbers from one type to another type (occasionally at a loss):
 
 ```
 In [17]: float(2)
@@ -186,7 +184,7 @@ Out[23]: 0.0
 
 ## Comparison operators
 
-Let us how the **comparison operators** work in Python. For sure, you know the *lower than* symbol:
+Let us how the **comparison operators** work in Python. For instance, the *lower than* symbol:
 
 ```
 In [24]: 5 < a
@@ -200,14 +198,16 @@ In [25]: a == 7
 Out[25]: True
 ```
 
-Why two equal signs? The reason is that a single equal sign is used to assign names. So `a = 7` would be interpreted by the Python kernel, not as asking whether `a` is equal to `7`, but as creating a variable named `a` whose value is `7`. The *not equal* operator is denoted by an equal sign preceded by an admiration symbol (`!`):
+Why two equal signs? The reason is that a single equal sign is used to assign names. So `a = 7` would be interpreted by the Python kernel, not as asking whether `a` is equal to `7`, but as creating a variable named `a` whose value is `7`. 
+
+The *not equal* operator is denoted by an equal sign preceded by an admiration symbol (`!`):
 
 ```
 In [26]: a != 4
 Out[26]: False
 ```
 
-Another example involving a comparison operator:
+Strings can also be compared (but not to numbers:
 
 ```
 In [27]: 'a' >= 'A'
@@ -257,3 +257,5 @@ Out[33]: True
 1. Calculate the square root of 2 and take the square of it. Do you get 2? Why?
 
 2. Evaluate the expressions `1/3 + 1/3 + 1/3 + 1/3 == 4/3` and `1/3 + 1/3 + 1/3 + 1/3 + 1/3 == 5/3`. One is true and the other one is false. Is Python crazy?
+
+3. Write a string that is lower than any other string.
