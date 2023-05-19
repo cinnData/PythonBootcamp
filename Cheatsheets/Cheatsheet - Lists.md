@@ -11,7 +11,7 @@
 
 * `lst[n:m:s]`: extracts a sublist containing the items from index `n` to index `m-1`, making steps of `s`. So, `lst[2:10:3]` contains the items with indexes `2`, `5` and `8`. If `s` is negative, steps are made backwards. So `lst[::-1]` returns the list reversed.
 
-## List methods
+## List functions and methods
 
 * `del lst[n:m]`: deletes the items of `lst` whose indexes go from `n` to `m-1`, *in place* (without returning the new version).
 
