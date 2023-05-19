@@ -1,7 +1,7 @@
 ## Cheatsheet - Lists
 
 
-## Subsetting
+## Extracting items from a list
 
 * `lst[n]`: extracts the item of the list `lst` whose index is `n`. Since Python starts counting at zero, this would be the item in place `n+1`.
 
@@ -47,3 +47,4 @@
 
 * `[expr for i in lst for j in i]`: applies to a list of lists. It returns a list of the same length as `lst`, whose items result from evaluating the expression `expr` on the items of every item `i` of `lst`. This is a particular case of nested loop (see the preceding bullet).
  
+
