@@ -41,6 +41,9 @@
 
 * `[expr for i in lst]`: returns a list whose items result from evaluating the expression `expr` on the items of the list `lst`.
 
-* `[expr for i in lst if cond]`: returns a list whose items result from evaluating the expression `expr` on the items of the list `lst` that satisfy the condition `cond`.
+* `[expr for i in lst if cond]`: returns a list whose items result from evaluating the expression `expr` on the items of `lst` that satisfy the condition `cond`.
 
-* `[expr for i in lst for j in i]`: applies to a list of lists. It returns a list of the same length as `lst`, whose elements are the lists resulting from evaluating the expression `expr` on the items of every item `i` of `lst`.
+* `[expr for i1 in lst1 for i2 in lst2]`: returns a list whose items result from evaluating the expression `expr` on all the pairs `(i, j)` in which `i1` is taken `lst1` and `i2` is taken from `lst2`. This is caled a **nested loop**.
+
+* `[expr for i in lst for j in i]`: applies to a list of lists. It returns a list of the same length as `lst`, whose items result from evaluating the expression `expr` on the items of every item `i` of `lst`. This is a particular case of nested loop (see the preceding bullet).
+ 
