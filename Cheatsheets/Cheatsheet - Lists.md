@@ -23,7 +23,7 @@
 
 * `lst1.extend(lst2)`: adds the items of the list `lst2` at the end of the list `lst1`, *in place* (without returning the new version). The new version of `lst1` is the same as `lst1 + lst2`.
 
-* `lst.index(x)`: returns the index of the first item of `lst` whose value is equal to `x`
+* `lst.index(x)`: returns the index of the first item of `lst` whose value is equal to `x`.
 
 * `lst.insert(n, x)`: inserts `x` in `lst` with index `n`, *in place* (without returning the new version).
 
