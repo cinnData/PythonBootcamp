@@ -8,8 +8,6 @@
 
 * `str[n:m]`: extracts the substring formed by the characters of `str` whose indexes go from `n` to `m-1`. If `n` is missing, it is assumed to be `0`. If `m` is missing, it is assumed to be equal to the length of `str`.
 
-* `str[n:m:s]`: extracts the substring formed by the characters of `str` from index `n` to index `m-1`, making steps of `s`. So, `str[2:10:3]` contains the characters with indexes `2`, `5` and `8`. If `s` is negative, steps are made backwards. So `str[::-1]` returns `str` reversed.
-
 ## String methods
 
 * `str.capitalize()`: returns a copy of `str` with its first character capitalized and the rest lowercased.
@@ -24,7 +22,7 @@
 
 * `str.lower()`: returns a copy of `str` with all the cased characters converted to lowercase.
 
-* `str.replace(old, new)`: returns a copy of `str` with all occurrences of `old` replaced by `new`.
+* `str.replace(old, new)`: returns a copy of `str` with all the occurrences of `old` replaced by `new`.
 
 * `str.split(sep)`: returns the list of substrings of `str` resulting from a split based on the separator specified. The default is `sep=''`.
 
