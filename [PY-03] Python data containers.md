@@ -103,7 +103,7 @@ Out[15]: 'Neymar'
 
 ## Membership operators
 
-The **membership operators** `in` and `not in` can be used to check whether an object is contained in a list. Examples:
+The **membership operators** `in` and `not in` are used to check whether an object is contained in a list. Examples:
 
 ```
 In [16]: yourlist = [4, 7]
@@ -123,34 +123,34 @@ Out[17]: True
 In Python, strings and lists are two types of **sequences**, and, in some sense, a string is manged as a list of characters. Take, for instance, the following string.
 
 ```
-In [18]: messi = 'Leo Messi'
+In [18]: myplayer = 'Leo Messi'
 ```
 
 The function `len` gives us the number of characters.
 
 ```
-In [19]: len(messi)
+In [19]: len(myplayer)
 Out[19]: 9
 ```
 
-Slicing a string gives us a **substring**:
+Slicing a string produces a **substring**:
 
 ```
-In [20]: messi[:3]
+In [20]: myplayer[:3]
 Out[20]: 'Leo'
 ```
 
 We concatenate strings with the plus sign (`+`):
 
 ```
-In [21]: messi[4:] + ', the best player in the world'
+In [21]: myplayer[4:] + ', the best player in the world'
 Out[21]: 'Messi, the best player in the world'
 ```
 
 A difference between strings and lists is found in the use of `in`. For a list, it indicates that an object is among the elements of that list. For strings, that a string is contained in another string, as we see here:
 
 ```
-In [22]: 'Leo' in messi
+In [22]: 'Leo' in myplayer
 Out[22]: True
 ```
 
@@ -213,4 +213,38 @@ Or you can extract the value for a certain key as:
 ```
 In [31]: mydict['name']
 Out[31]: 'Joan'
+```
+
+## Mutability
+
+You may wonder what is the benefit of having both lists and tuples in Python. The difference is that lists are **mutable**, while tuples are not, and this is useful to programmers. Mutating a list allows us to update the content, as we see in the following example.
+
+```
+In [32]: mylist[1] = 'Benzema'
+    ...: mylist
+Out[32]: ['Messi', 'Benzema', 'Neymar', 'Haaland']
+
+```
+
+So, Python programmers can use tuples as data containers whose content is not going to change. Tuples also appear in the output returned by the Python kernel, as you will see in many examples. 
+
+The content of a dictionary can also be updated. Two examples follow.
+
+```
+In [33]: mydict['job'] = 'Engineer'
+    ...: mydict
+Out[33]: {'name': 'Martha', 'gender': 'F', 'age': 32, 'job': 'Engineer'}
+```
+
+```
+In [34]: mydict['name'] = 'Martha'
+    ...: mydict
+Out[34]: {'name': 'Martha', 'gender': 'F', 'age': 32, 'job': 'Engineer'}
+```
+
+Strings are changed in a completely different way, with the ?find and replace' approach that we use in word processors.
+
+```
+In [35]: myplayer.replace('Leo', 'Lionel')
+Out[35]: 'Lionel Messi'
 ```
