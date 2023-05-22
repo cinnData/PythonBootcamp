@@ -102,7 +102,9 @@ In [12]: type('Messi')
 Out[12]: str
 ```
 
-Strings are always enclosed by quote marks, either single or double (but same way on both sides). In Python, a string is a sequence of **characters**. This includes the (English) alphanumeric characters and also special characters like white space, punctuation, etc. Other symbols, like emoticons, can also appear in your data, specially in social networks data. Besides that, you can also manage letters from other languages (Spanish, Portuguese, etc) or alphabets (Cyrillic, hiragana, etc), and even ideographs (such as Han characters).
+Strings are always enclosed by quote marks, either single or double (but same way on both sides). In Python, a string is a sequence of **characters**. The number of characters is the **length** of the string. A string can have any length. This includes the **empty string**, which has zero length.
+
+The characters contained in a string can be the (English) alphanumeric characters, but also **special characters** like white space, punctuation, etc. Other symbols, like emoticons, can also appear in your data, specially in social networks data. Besides that, you can also manage letters from other languages (Spanish, Portuguese, etc) or alphabets (Cyrillic, hiragana, etc), and even ideographs (such as Han characters). 
 
 There is a basic set of 128 characters, called the **ASCII characters**, which are encoded as numbers (from 0 to 127) in the same way by all the computers. They include the English letters (without accents), the numbers, basic punctuation (not curly quote marks or long dashes), white space, **control characters** such as the new line, represented in many computer languages (including Python) as `\n`, and other symbols familiar to you, such as the dollar (`$`) and the hash (`#`) symbols. The complete list can be easily found in Internet.
 
@@ -259,3 +261,5 @@ Out[33]: True
 2. Evaluate the expressions `1/3 + 1/3 + 1/3 + 1/3 == 4/3` and `1/3 + 1/3 + 1/3 + 1/3 + 1/3 == 5/3`. One is true and the other one is false. Is Python crazy?
 
 3. Write a string that is lower than any other string.
+
+4. You will probably agree that $3 + (4 \times 5) = 23$ and $(3 + 4) \times 5 = 35$, and that the first identity can be written as $3 + 4 \times 5 = 23$, so the parenthesis is not needed, because it is understood that the product takes **precedence** over the sum. Now, what is `True or True and False`? Which operator has precedence, `and` or `or`? Another one: what is `not False or True`?
