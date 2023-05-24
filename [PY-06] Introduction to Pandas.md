@@ -16,7 +16,7 @@ A **data frame** can be seen as formed by one or several series with the same in
 
 ## Pandas series
 
-Although it is not frequent in the real world practice, where the data are imported from external data files, a Pandas series can be created directly, for instance from an array, with the Pandas function `Series`. The darta can be taken from any vector-like object such as a list or a 1D array.
+Although it is not frequent in the real world practice, where the data are imported from external data files, a Pandas series can be created directly, for instance from an array, with the Pandas function `Series`. The data can be taken from any vector-like object such as a list or a 1D array.
 
 ```
 In [2]: s1 = pd.Series([2, 7, 14, 5, 9])
@@ -70,7 +70,7 @@ In [7]: s2.index[-2:]
 Out[7]: Index(['b', 'c'], dtype='object')
 ```
 
-Indexes are useful for combining, filtering and joining data sets. There are many types of indexes, which allow for specific operations. So, do not look at the index as an embarrassment, which is what it seems at first sight, but as a tool for data management.
+Indexes are useful for filtering and joining data sets. There are many types of indexes, which allow for specific operations. So, do not look at the index as an embarrassment, which is what it seems at first sight, but as a tool for data management.
 
 ## Pandas data frames
 
@@ -88,7 +88,7 @@ Out[8]:
 4   5  e  0.0
 ```
 
-*Note*. `NaN` is the Pandas notation for a missing value. In NumPy this role is played by `np.nan` (data type `float`).
+*Note*. `NaN` is the Pandas notation for a missing value.
 
 As the series, the data frames have the attributes `values` and `index`. 
 
@@ -132,7 +132,7 @@ Out[12]:
 
 Data frames can also be extracted from a data source (local or remote), such as a CSV file, an Excel sheet, or a table from a relational database. Irrespective of the type of source used, a range index is automatically created unless an alternative specification is provided. One of the columns of the source can be taken as the index.
 
-Column names can also be generated automatically:
+Column names can also be generated automatically, as in the following example.
 
 ```
 In [13]: df2.columns
@@ -215,7 +215,7 @@ Out[17]:
 
 *Note*. You can extract a subframe with a single column. Beware that this is not the same as a series. `df1['v2']`is a series with shape `(5,)`, and `df1[['v2']]` is a data frame with shape `(5,1)`.
 
-In practical data analysis, rows are typically filtered by expressions. Boolean masks can be created with the columns of a data frame just as if they were 1D arrays. A simple example follows. 
+In practical data analysis, rows are typically filtered by expressions. A Boolean mask can be created with an expression involving columns of a data frame just as for NumPy arrays. A simple example follows. 
 
 ```
 In [18]: df1[df1['v1'] > 2]
@@ -254,6 +254,14 @@ Besides this, there are two additional ways to carry out a selection, specifying
 
 * **Selection by label** is specified by adding  `.loc` after the name of the data frame. The selection of the rows is based on the index, and that of the columns is based on the column names.
 
-* **Selection by position** uses `.iloc`, which works as in 2D array. The selection of the rows is based on the row number and that of the columns on the column number.
+* **Selection by position** uses `.iloc`, which works exactly as in 2D array, based on the row and column indexes. 
 
 In both cases, if you enter a single specification inside the brackets, it refers to the rows. If you enter two specifications, the first one refers to the rows and the second one to the columns. We don't use `loc` and `iloc` in this course, since you can live in Pandas without that, first filtering the rows and then selecting the columns. Sticking to this simple approach, you will save the time wasted learning too many methods.
+
+## Homework
+
+1. Import NumPy and Pandas and create a data frame `df` with three columns named `X`, `Y` and `Z`, putting in the first columns consecutive numbers from 0 to 9, in the second column consecutive integers from -3 to 6 and the third column 10 ones (you can do this with `np.ones(10))`. Replace every term from the first column by its square. What will you do if you want, instead of changing the terms of the first column, to add a fourth column, named `U`, containing the squares of the first column?
+
+2. Suppose that you have added the fourth column to `df` with the squares of the first column, and use `df.info()` to generate a report of your data. Replace the last term of the fourth column by either `None` or `np.nan`. The use `df.info()` again and compare the two reports. Can you explain all the changes? 
+
+3. After replacing the last term by a `NaN` value, split the data in two parts, using `df'U'] <= 16` and `df'U'] > 16`. What happened with the last row?
