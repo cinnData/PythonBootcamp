@@ -183,4 +183,4 @@ Take care of running these lines of code together. The semicolon in the last lin
 
 1. For `x = np.array([True, False])` and `y = np.array([True, True])`, calculate `~x`, `x & y` and `x | y`. What is the meaning of these operations?
 
-2. Plot together the curves $y = x^3 + x^2 - 3^x +1$ and $y = -x^3 + 0.5\,x^2 + x + 1$ in the interval $-2 \le x \le 2$.
+2. Plot together the curves $y = x^3 + x^2 - 3^x +1$ and $y = -x^3 + 0.5\hbox{\thinspace}x^2 + x + 1$ in the interval $-2 \le x \le 2$.
