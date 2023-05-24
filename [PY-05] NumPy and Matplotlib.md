@@ -184,3 +184,5 @@ Take care of running these lines of code together. The semicolon in the last lin
 1. For `x = np.array([True, False])` and `y = np.array([True, True])`, calculate `~x`, `x & y` and `x | y`. What is the meaning of these operations?
 
 2. Plot together the curves $y = x^3 + x^2 - 3^x +1$ and $y = -x^3 + 0.5\hbox{\thinspace}x^2 + x + 1$ in the interval $-2 \le x \le 2$.
+
+3. Real data frequently comes with **missing values**. The designers of NumPy allowed for this creating `np.nan`, which has data type `float`. This value has to be handled with care. To get an idea oh it works, calculate `np.nan + 3`, `np.nan < 3`, `np.nan == np.nan` and `np.nan <= np.nan`. Can you explain all the results obtained?
