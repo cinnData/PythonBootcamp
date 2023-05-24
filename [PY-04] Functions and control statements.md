@@ -216,3 +216,5 @@ Out[18]: [1, 4, 16, 25, 49, 64, 100, 121, 169, 196, 256, 289, 361, 400]
 6. A year is a **leap year** if it is divisible by 4, unless it is a century year that is not divisible by 400. So, 1800 and 1900 are not leap years while 1600 and 2000 are. Write a function that tells you whether a year is a leap year.
 
 7. The **body mass index** (BMI) is defined as the body mass (kg) divided by the square of the body height (m2). It is used to broadly categorize a major adult person as underweight (under 18.5 kg/m2), normal weight (18.5 to 24.9), overweight (25 to 29.9), or obese (30 or more), or obese. Write a function that takes the heigh and weight of a person, in the adequate units, and returns the categorization underweight/normal weight/overweight/obese.
+
+8. Suppose that you are given an interest rate *r*% for your capital, so that every year your capital gets a *r*% increase. Write a function that takes *r* and returns the number of years needed to double it. The solution does not depend on the actual value of the capital, so you set it at $1.
