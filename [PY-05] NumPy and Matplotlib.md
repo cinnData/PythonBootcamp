@@ -2,7 +2,7 @@
 
 ## NumPy arrays
 
-In mathematics, a **vector** is a sequence of numbers, and a **matrix** a rectangular arrangement of numbers. Operations with vectors and matrices are the subject of a branch of mathematics called linear algebra. In the Python library **NumPy** (and in many other places), vectors are called one-dimensional (1D) arrays, while matrices are called two-dimensional (2D) arrays. With NumPy, arrays of more than two dimensions can be managed without pain.
+In mathematics, a **vector** is a sequence of numbers, and a **matrix** a rectangular arrangement of numbers. Operations with vectors and matrices are the subject of a branch of mathematics called linear algebra. In the Python library **NumPy** (and in many other places), vectors are called one-dimensional (1D) arrays, while matrices are called two-dimensional (2D) arrays. In NumPy, arrays of more than two dimensions can be managed without pain.
 
 Unlike mathematical vectors and matrices, NumPy arrays are not necessarily numeric. But all the terms of an array must have the same type, so the array itself can have a type. In order to cope with the complexities of the data analysis, NumPy provides additional data types, like the type `object`, but this sophistication is not used in this course.  
 
@@ -20,7 +20,7 @@ In [2]: arr1 = np.array(range(10))
 Out[2]: array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 ```
 
-Numeric and string arrays are created in the same way. The terms of a 1D array can be extracted from a list, a range, or another data container. The elements of that data container can have different type, but they are converted to a common type when creating the array. The following examples illustrate this. What is the logic of these conversions?
+Numeric and string arrays are created in the same way. The terms of a 1D array can be extracted from a list, a range, or another data container. The elements of that data container can have different type, but they are converted to a common type when creating the array. The following examples illustrate this. Can you guess what is the logic in these conversions?
 
 ```
 In [3]: np.array([2, 'a', True])
@@ -33,7 +33,7 @@ In [5]: np.array([2, 3.2])
 Out[5]: array([2. , 3.2])
 ```
 
-*Note*. The data type is not shown for numeric arrays, only for string type. The notation `dtype='<U21'` will look exotic to you. But don't pay attention to it for the time being.
+*Note*. The data type is not shown for numeric arrays, only for string type. The notation is not friendly. In this example, `dtype='<U21'` looks a bit exotic. Don't pay attention.
 
 A 2D array can be directly created from a list of lists of equal length. The terms are entered row-by-row, as in the following example.
 
@@ -45,7 +45,7 @@ array([[ 0,  7,  2,  3],
        [ 3,  9, -5,  1]])
 ```
 
-Although we visualize a vector as a column (or as a row) and a matrix as a rectangular arrangement, with rows and columns, it is not so in the computer. A 1D array is just a sequence of elements of the same type, neither horizontal nor vertical. It has one **axis**, the 0-axis. In a similar way, a 2D array is a sequence of 1D arrays of the same length and type. It has two axes. When we visualize it as rows and columns, `axis=0` means across rows, while `axis=1` means across columns.
+Although we visualize a vector as a column (or a row) and a matrix as a rectangular arrangement, with rows and columns, it is not so in the computer. A 1D array is just a sequence of elements of the same type, neither horizontal nor vertical. It has one **axis**, the 0-axis. In a similar way, a 2D array is a sequence of 1D arrays of the same length and type. It has two axes. When we visualize it as rows and columns, `axis=0` means across rows, while `axis=1` means across columns.
 
 The number of terms stored along an axis is the **dimension** of that axis. The dimensions are collected in the attribute **shape**.
 
@@ -124,25 +124,25 @@ array([[False,  True, False,  True],
        [ True,  True, False, False]])
 ```
 
-A Boolean array that is used to extract a subarray is called a **Boolean mask**. The terms for which the mask has value `True` are those selected: 
+A Boolean array that is used to extract a subarray is called a **Boolean mask**. The terms selected are those for which the mask has value `True`. 
 
 ```
-In [17]: arr2[arr2[:, 0] > 0, :]
-Out[17]: array([[ 3,  9, -5,  1]])
+In [17]: arr1[arr1 > 3]
+Out[17]: array([4, 5, 6, 7, 8, 9])
 ```
 
 Boolean masks can also be used to filter out rows or columns of a 2D array. For instance, to select the rows of `arr2` for which the first column is positive:
 
 ```
 In [18]: arr2[arr2[:, 0] > 0, :]
-Out[18]: array([[ 9, -5,  1]])
+Out[18]: array([[3, 9, -5,  1]])
 ```
 
 ## Plotting with Matplotlib
 
 Inspired in MATLAB, a classic of numeric computing, **Matplotlib** is a Python library containing an impressive range of graphical methods, including image processing. As some other libraries in the Python world, Matplotlib has several API's, which makes it a bit confusing for the beginners. In this context, an **application programming interface** (API) is like an idiom that you use for calling the functions of the library. It defines the kinds of requests that can be made and how to make them. 
 
-Matplotlib offers you a choice between two API's, the **pyplot API**, used in this course, and the **object-oriented API**. This course uses the pyplot API. Beware that, if you search in the Internet information about plotting in Matplotlib, the solutions found can come in any of the two API's. So Matplotlib may look more difficult than it really is.
+Matplotlib offers you a choice between two API's, the **pyplot API** and the **object-oriented API**. This course uses the pyplot API. Beware that, if you search in the Internet information about plotting in Matplotlib, the solutions found can come in any of the two API's. Due to this mix, Matplotlib may look a bit confusing.
 
 The subpackage `matplotlib.pyplot` is a collection of command style functions that make Matplotlib work like MATLAB. It is typically imported as:
 
@@ -152,7 +152,7 @@ In [19]: import matplotlib.pyplot as plt
 
 To create a figure with `pyplot`, we call in a single input one or several functions. Each `pyplot` function makes some change to the figure, such as changing the default size, adding a title, plotting lines, decorating the plot with labels, etc. This is illustrated by the following example, in which we plot together three curves, a linear, a quadratic and a cubic curve. 
 
-First, we fill a 1D array with linearly spaced values, tightly close, so we can create a smooth curve.
+First, we fill a 1D array with linearly spaced values. With 100 points, we can create a visual effect so the lines look like smooth curves.
 
 ```
 In [20]: t = np.linspace(0, 2, 100)
@@ -169,13 +169,13 @@ In [21]: plt.figure(figsize=(6,6))
     ...: plt.legend();
 ```
 
-![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_5.1.png)
+![](Dropbox/py_course/tech/figures/fig_5.1.png)
 
 Take care of running these lines of code together. The semicolon in the last line stops the Python output showing up. That output would correspond to `plt.legend` and would not say much to you. 
 
 `plt.figure` allows you to change some default specifications. Here, we have changed the size. If you are satisfied with the default size `figsize=(6,4)`, you do not need this line of code. Here, `figsize=(6,6)` has been set so that the figure looks fine on the screen. The units for the width and height and are inches.
 
-`plt.plot` creates a line chart (which can be turned into a scatter plot, although it is better to use `plt.scatter` for that). If two vectors are entered, the first one is taken as $x$ (horizontal axis) and the second one as $y$ (vertical axis). If there is only one vector, it is taken as $x$, and the index is used as $y$. Here, we get a multiple line chart by calling `plt.plot` multiple times. Note that, even if you see the three components plotted here as three curves, they are really line plots without markers.
+`plt.plot` creates a **line chart**. If two vectors are entered, the first one is taken as $x$ (horizontal axis) and the second one as $y$ (vertical axis). If there is only one vector, it is taken as $x$, and the index is used as $y$. Here, we get a multiple line chart by calling `plt.plot` multiple times. Note that, even if you see the three components plotted here as three curves, they are really line plots without markers.
 
 `plt.plot` admits other arguments, allowing a minute edition of your visualization, down to the smallest detail. As a default, it uses solid lines, with different colors for the different lines. The **line style** has been specified by the argument `linestyle`, and the **color** by the argument `color`. The defaults are `color='blue'` and `linestyle='solid'`.
 
