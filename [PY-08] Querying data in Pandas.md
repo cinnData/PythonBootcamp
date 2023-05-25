@@ -351,3 +351,7 @@ la Nova Esquerra de l'Eixample           612    90.0
 1. Use the `groupby` approach to extract the pivot tables of inputs 15 and 16.
 
 2. A controversial issue about Airbnb is that, in spite of starting as a peer-to-peer platform, it has evolved to one where some hosts can manage many listings, sometimes whole buildings. They could be so affecting the way the natives' life. Do you find many hosts in this situation in Barcelona?
+
+3. As a continuation of the preceding exercise, pick the hosts with more than 100 listings and create a data subset containing only the listings managed by those hosts. Do you find that these particular hosts are focused on certain neighbourhoods? Do they have higher prices?
+
+4. The package `langid` is one of them many options for **language detection** in Python. You can install it entering `pip install langid` in either the shell or the console. Once it has been installed, you can import it and use the function `langid.classify` to "detect" the language in the column `name`. Select the listings whose language is either Spanish or English. Do you find a relevant difference in price between the two languages? 
