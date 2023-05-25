@@ -308,8 +308,12 @@ Out[18]: 0.65
 
 ## Homework
 
-The **daily return** is the percentage change in the price with respect to the preceding trading day. If $p(t)$ is the price on day $t$, the corresponding return would be
+1. The **daily return** is the percentage change in the price with respect to the preceding trading day. If $p(t)$ is the price on day $t$, the corresponding return would be
 
 $$r(t) =\frac{p(t) - p(t-1)}{p(t-1)}=\frac{p(t)}{p(t-1)}-1,$$
 
 which can multiplied by 100 to get percentage scale. Use the Pandas function `pct_change` to calculate the daily returns of the opening price. How is the distribution of the daily return of the opening price? Is there an association between the daily returns and the trading volume?
+
+2. Instead of calculating the daily return for the opening price as in the preceding exercise, which is the usual practice, calculate a daily return as the difference of the closing price minus the opening price (of the same day) as a percentage of the opening price. Perform a simuilar analysis and compare the results.
+
+3. The opening price on a particular day is not the same as the closing the day before. As a rule, is it higher or lower? Or there is no clear rule? How big can be the difference of the opening price tomorrow minus the closing price today, as a percentage of the closing  price today? 
