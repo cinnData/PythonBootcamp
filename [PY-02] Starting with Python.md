@@ -145,7 +145,7 @@ Out[16]: 'Leo Messi'
 
 ## Substrings
 
-Let us see how we can extract a **substring** from a string. Every character in a string has an index. Starting from the right, the indexes are 0, 1, 2, 3, $dots$. So, the first character has index 0 (not 1), the second character has index 1, etc. Starting from the left the indexes are -1, -2, -3, $dots$. So, the last character has index -1, the penultimate character has index -2, etc. You can extract any character (as a substring of length 1). Let us see some examples.
+Let us see how we can extract a **substring** from a string. Every character in a string has an index. Starting from the left, the indexes are 0, 1, 2, 3, $\dots$. So, the first character has index 0 (not 1), the second character has index 1, etc. Starting from the right the indexes are -1, -2, -3, $dots$. So, the last character has index -1, the penultimate character has index -2, etc. You can extract any character (as a substring of length 1). Let us see some examples.
 
 ```
 In [17]: 'Leo Messi'[2]
