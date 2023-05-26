@@ -77,14 +77,14 @@ In [7]: len('Bruce Sprinsgteen')
 Out[7]: 17
 ```
 
-The syntax is `fname(args)`. But strings have also many methods. For instance, to replace all the occurrences of a substring by a new string (the *Replace* function of Word, with option *Replace All*), we use the method `.replace()`. Let us see an example.
+The syntax is `func(args)`. But strings have also many methods. For instance, to replace all the occurrences of a substring by a new string (the *Replace* function of Word, with option *Replace All*), we use the method `.replace()`. Let us see an example.
 
 ```
 In [8]: 'Bruce Sprinsgteen'.replace('Bruce', 'The Boss')
 Out[8]: 'The Boss Sprinsgteen'
 ```
 
-The syntax is `object.mname(args)`. Another example: to convert all the cased characters to lowercase, we use the method `.lower()`. 
+The syntax is `object.meth(args)`. Another example: to convert all the cased characters to lowercase, we use the method `.lower()`. 
 
 ```
 In [9]: 'Bruce Sprinsgteen'.lower()
