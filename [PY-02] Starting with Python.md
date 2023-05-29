@@ -70,7 +70,7 @@ Out[8]: 1.4142135623730951
 
 Packages are imported just for the current kernel. You can only import a package only if it is already **installed** in your computer. The package Pandas will appear frequently in this course.
 
-*Note*. This course follows the common practice in Python learning materials of writing functions as *fname()*. The parentheses remind you that this is an object that takes arguments.
+*Note*. This course follows the common practice in Python learning materials of writing functions as *func()*. The parentheses remind you that this is an object that takes arguments.
 
 ## Numeric data types
 
@@ -106,7 +106,12 @@ In [12]: type('Messi')
 Out[12]: str
 ```
 
-Strings are always enclosed by quote marks, either single or double (but same way on both sides). In Python, a string is a sequence of **characters**. The number of characters is the **length** of the string. A string can have any length. This includes the **empty string**, which has zero length.
+Strings are always enclosed by quote marks, either single or double (but same way on both sides). In Python, a string is a sequence of **characters**. The number of characters is the **length** of the string, which can be obtained with the function `len()`. A string can have any length. This includes the **empty string**, which has zero length.
+
+```
+In [13]: len('Messi')
+Out[13]: 5
+```
 
 The characters contained in a string can be the (English) alphanumeric characters, but also **special characters** like white space, punctuation, etc. Other symbols, like emoticons, can also appear in your data, specially in social networks data. Besides that, you can also manage letters from other languages (Spanish, Portuguese, etc) or alphabets (Cyrillic, hiragana, etc), and even ideographs (such as Han characters). 
 
@@ -117,21 +122,21 @@ Non-ASCII characters can be encoded by different computers or different text edi
 The preferred **encoding** is **UTF-8**, used by Python. UTF-8 is the default encoding in Mac computers, but not in Windows computers, which use a region-specific system. In US and Western Europe, this is **Windows-1252**. The UTF-8 encoding can be easily learned from the Python interpreter. For instance, for the lowercase 'a':
 
 ```
-In [13]: ord('a')
-Out[13]: 97
+In [14]: ord('a')
+Out[14]: 97
 ```
 The uppercase 'A' is 
 
 ```
-In [14]: ord('A')
-Out[14]: 65
+In [15]: ord('A')
+Out[15]: 65
 ```
 
 The Spanish 'ñ':
 
 ```
-In [15]: ord('ñ')
-Out[15]: 241
+In [16]: ord('ñ')
+Out[16]: 241
 ```
 
 This goes beyond 127, so 'ñ' is not an ASCII character. If you include it in a document, it may look wrong in another computer.
@@ -139,8 +144,9 @@ This goes beyond 127, so 'ñ' is not an ASCII character. If you include it in a 
 Strings can be concatenated in a straightforward way:
 
 ```
-In [16]: 'Leo' + ' ' + 'Messi'
-Out[16]: 'Leo Messi'
+In [17]: myplayer = 'Leo ' + 'Messi'
+    ...: myplayer
+Out[17]: 'Leo Messi'
 ```
 
 ## Substrings
@@ -148,32 +154,32 @@ Out[16]: 'Leo Messi'
 Let us see how we can extract a **substring** from a string. Every character in a string has an index. Starting from the left, the indexes are 0, 1, 2, 3, $\dots$. So, the first character has index 0 (not 1), the second character has index 1, etc. Starting from the right the indexes are -1, -2, -3, $\dots$. So, the last character has index -1, the penultimate character has index -2, etc. You can extract any character (as a substring of length 1). Let us see some examples.
 
 ```
-In [17]: 'Leo Messi'[2]
-Out[17]: 'o'
+In [18]: myplayer[2]
+Out[18]: 'o'
 ```
 
 ```
-In [18]: 'Leo Messi'[-3]
-Out[18]: 's'
+In [19]: myplayer[-3]
+Out[19]: 's'
 ```
 
 Longer substrings can be extracted by specifying an interval of indexes, as we see in the following example. Note that the interval `start:end` includes `start`, but not `end`. This is a Python notational convention that may confound you.
 
 ```
-In [19]: 'Leo Messi'[4:7]
-Out[19]: 'Mes'
+In [20]: myplayer[4:7]
+Out[20]: 'Mes'
 ```
 
-If `start` is missing, the substring starts at the first character. If `end` is missing, the substring ends at the last chractar (included). This is illustrated in the examples below.
+If `start` is missing, the substring starts at the first character. If `end` is missing, the substring ends at the last character (included). This is illustrated in the examples below.
 
 ```
-In [20]: 'Leo Messi'[:3]
-Out[20]: 'Leo'
+In [21]: myplayer[:3]
+Out[21]: 'Leo'
 ```
 
 ```
-In [21]: 'Leo Messi'[4:]
-Out[21]: 'Messi'
+In [22]: myplayer[4:]
+Out[22]: 'Messi'
 ```
 
 ## Type conversions
@@ -181,44 +187,44 @@ Out[21]: 'Messi'
 The functions `int()` and `float()` can be used to convert numbers from one type to another type (occasionally at a loss):
 
 ```
-In [22]: float(2)
-Out[22]: 2.0
+In [23]: float(2)
+Out[23]: 2.0
 ```
 
 ```
-In [23]: int(2.3)
-Out[23]: 2
+In [24]: int(2.3)
+Out[24]: 2
 ```
 
 Sometimes, you can convert strings to numbers:
 
 ```
-In [24]: int('27')
-Out[24]: 27
+In [25]: int('27')
+Out[25]: 27
 ```
 
 ```
-In [25]: float('27')
-Out[25]: 27.0
+In [26]: float('27')
+Out[26]: 27.0
 ```
 
 On the other hand, numbers can always be converted to strings:
 
 ```
-In [26]: str(27)
-Out[26]: '27'
+In [27]: str(27)
+Out[27]: '27'
 ```
 
 Booleans can be converted to `int` and `float` type with the functions mentioned above. Also, to make operations with numbers possible when they have different types, they are automatically converted to common type. For instance, Booleans are converted on the fly in the following examples:
 
 ```
-In [27]: 1 + True
-Out[27]: 2
+In [28]: 1 + True
+Out[28]: 2
 ```
 
 ```
-In [28]: math.sqrt(False)
-Out[28]: 0.0
+In [29]: math.sqrt(False)
+Out[29]: 0.0
 ```
 
 ## Comparison operators
@@ -226,15 +232,15 @@ Out[28]: 0.0
 Let us how the **comparison operators** work in Python. For instance, the *lower than* symbol:
 
 ```
-In [29]: 5 < a
-Out[29]: False
+In [30]: 5 < a
+Out[30]: False
 ```
 
 When you input an expression involving a comparison operator, Python evaluates it, returning either `True` or `False`. The following example uses the **equality operator**, which is denoted in Python by a double equal sign:
 
 ```
-In [30]: a == 7
-Out[30]: True
+In [31]: a == 7
+Out[31]: True
 ```
 
 Why two equal signs? The reason is that a single equal sign is used to assign names. So `a = 7` would be interpreted by the Python kernel, not as asking whether `a` is equal to `7`, but as creating a variable named `a` whose value is `7`. 
@@ -242,27 +248,27 @@ Why two equal signs? The reason is that a single equal sign is used to assign na
 The *not equal* operator is denoted by an equal sign preceded by an admiration symbol (`!`):
 
 ```
-In [31]: a != 4
-Out[31]: False
+In [32]: a != 4
+Out[32]: False
 ```
 
 Strings can also be compared (though not to numbers):
 
 ```
-In [32]: 'a' >= 'A'
-Out[32]: True
+In [33]: 'a' >= 'A'
+Out[33]: True
 ```
 
 Why is this? Because this inequality is true for the numbers that encode these characters, which we have learned above. Numbers and booleans can be compared irrespective of their types:
 
 ```
-In [33]: 3 == 3.0
-Out[33]: True
+In [34]: 3 == 3.0
+Out[34]: True
 ````
 
 ```
-In [34]: 0.7 < True
-Out[34]: True
+In [35]: 0.7 < True
+Out[35]: True
 ```
 
 ## Logical operators
@@ -270,25 +276,25 @@ Out[34]: True
 The **logical operators** allow operations between booleans. They are `and`, `or` a `not`. They work in the same way as in other languages: (a) `x and y` is true when both `x` and `y` are true, (b) `x or y` is true when at least one of them is true, and (c) `not x` is true when `x` is false. Examples:
 
 ```
-In [35]: True and False
-Out[35]: False
+In [36]: True and False
+Out[36]: False
 ```
 
 ```
-In [36]: True or False
-Out[36]: True
+In [37]: True or False
+Out[37]: True
 ```
 
 ```
-In [37]: not True
-Out[37]: False
+In [38]: not True
+Out[38]: False
 ```
 
 Since expressions involving comparison operators are evaluated and turned into either `True` or `False`, we can combine them with logical operators. Example:
 
 ```
-In [38]: 5 < 7 and ' ' <= '6'
-Out[38]: True
+In [39]: 5 < 7 and ' ' <= '6'
+Out[39]: True
 ```
 
 ## Homework
