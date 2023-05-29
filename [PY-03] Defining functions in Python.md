@@ -53,7 +53,7 @@ TypeError                                 Traceback (most recent call last)
 TypeError: unsupported operand type(s) for ** or pow(): 'str' and 'int'
 ```
 
-Beginners find Python error messages, though accurate, not precisely friendly. But, if you pay attention to them, you will discover that they can be very useful for correctiong your mistakes. In the two examples above, the error message indicates the nature of the error. The first one is a `ZeroDivisionError`, while the second one is a `TypeError` (the argument has not the adequate data type). Other errors can be `SyntaxError`, `ValueError`, etc. 
+Beginners find Python error messages, though accurate, not precisely friendly. But, if you pay attention to them, you will discover that they can be very useful for correcting your mistakes. In the two examples above, the error message indicates the nature of the error. The first one is a `ZeroDivisionError`, while the second one is a `TypeError` (the argument has not the adequate data type). Other errors can be `SyntaxError`, `ValueError`, etc. 
 
 Now, an example of a two-parameter function.
 
