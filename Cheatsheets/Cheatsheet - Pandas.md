@@ -68,7 +68,7 @@
 
 * `df1.append(df2)`: appends `df2` after the last row of `df1`. 
 
-* `df.apply(f)`: aggregates the columns of `df` with the aggregation function `f`. It returns a series.
+* `df.apply(func)`: aggregates the columns of `df` with the aggregation function `func`. It returns a series.
 
 * `df.columns`: returns the column names of the data frame.
 
@@ -98,7 +98,7 @@
 
 * `df.isna()`: returns a Boolean data frame indicating missing values.
 
-* `df.mean()`: retruns the means of the numeric columns of `df`, as a series.
+* `df.mean()`: returns the means of the numeric columns of `df`, as a series.
 
 * `df.plot.bar(x, y)`: bar plot of (numeric) column `y` by (categorical) column `x`.
 
@@ -106,13 +106,13 @@
 
 * `df.sample(n)`: extracts a random sample of `n` rowsof `df`, as a data frame.
 
-* `df.set_index(cname)`: sets the column `cname` as the index. Returns a new data frame.
+* `df.set_index(col)`: sets the column `col` as the index. Returns a new data frame.
 
 * `df.shape`: returns the numbers or rows and columns as a tuple.
 
 * `df.sort_index()`: sorts the rows of `df` by the index.
 
-* `df.sort_values(by=cname)`: sorts the rows of `df` by the column `cname`.
+* `df.sort_values(by=col)`: sorts the rows of `df` by the column `col`.
 
 * `df.squeeze()`: converts a data frame with one column to a series.
 
@@ -120,7 +120,7 @@
 
 * `df.tail()`: returns the last rows of `df`.
 
-* `df.to_csv(fname)`: exports data from `df` to CSV file `fname`. If the file already exists, it overwrites the previous version.
+* `df.to_csv(file)`: exports data from `df` to CSV file `file`. If the file already exists, it overwrites the previous version.
 
 * `df.values`: returns an array with the same values, coercing data types if needed.
 
@@ -132,6 +132,6 @@
 
 * `pd.pivot_table()`: returns a 1-way or 2-way pivot table as a data frame.
 
-* `pd.read_csv(filename)`: imports data from the CSV file `filename` to a data frame. 
+* `pd.read_csv(file)`: imports data from the CSV file `file` to a data frame. 
 
 * `pd.Series(v)`: returns a series terms are those of a vector-like object `v`.
