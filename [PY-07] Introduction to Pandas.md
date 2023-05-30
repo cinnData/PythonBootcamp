@@ -1,4 +1,4 @@
-# [PY-06] Introduction to Pandas
+# [PY-07] Introduction to Pandas
 
 ## The package Pandas
 
