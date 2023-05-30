@@ -169,7 +169,7 @@ In [21]: plt.figure(figsize=(6,6))
     ...: plt.legend();
 ```
 
-![](Dropbox/py_course/tech/figures/fig_6.1.png)
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_6.1.png)
 
 Take care of running these lines of code together. The semicolon in the last line stops the Python output showing up. That output would correspond to `plt.legend` and would not say much to you. 
 
