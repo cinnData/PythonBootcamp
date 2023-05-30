@@ -126,7 +126,7 @@
 
 ## Pandas functions
 
-* `pd.crosstab()`}: returns the cross tabulation of two or more data vectors, as a data frame.
+* `pd.crosstab()`: returns the cross tabulation of two or more data vectors, as a data frame.
 
 * `pd.DataFrame(dict)`: returns a data frame whose columns are the elements of the dictionary `dict`.
 
