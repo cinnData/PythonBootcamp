@@ -264,6 +264,15 @@ Private room      48.0
 Shared room       32.0
 ```
 
+You may prefer to display these tables as **bar charts**. Note that, even if we see a pivot table as something that the Python kernel "prints", these methods (except `.info()`) return new Pandas objects. Our second pivot table, for instance, is Pandas series, with the room types as the index. So, we can use the table to display a bar chart:
+
+```
+In [17]: roomtype_price =  pd.pivot_table(df, values='price', index='room_type', aggfunc='median')
+    ...: roomtype_price.plot.bar(figsize=(8,6), color='gray');
+```
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_9.3.png)
+
+
 ## Q5. Top-10 neighbourhoods
 
 To close this analysis of the Barcelona Airbnb data, we take a look at the neighbourhoods with more listings. The top ten list can be extracted with the method `.value_counts()`.
@@ -315,3 +324,4 @@ la Nova Esquerra de l'Eixample           612    90.0
 3. As a continuation of the preceding exercise, pick the hosts with more than 100 listings and create a data subset containing only the listings managed by those hosts. Do you find that these particular hosts are focused on certain neighbourhoods? Do they have higher prices?
 
 4. The package `langid` is one of them many options for **language detection** in Python. You can install it entering `pip install langid` in either the shell or the console. Once it has been installed, you can import it and use the function `langid.classify` to "detect" the language in the column `name`. Select the listings whose language is either Spanish or English. Do you find a relevant difference in price between the two languages? 
+
