@@ -272,14 +272,13 @@ In [17]: roomtype_price =  pd.pivot_table(df, values='price', index='room_type',
 ```
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_9.3.png)
 
-
 ## Q5. Top-10 neighbourhoods
 
 To close this analysis of the Barcelona Airbnb data, we take a look at the neighbourhoods with more listings. The top ten list can be extracted with the method `.value_counts()`.
 
 ```
-In [17]: df['neighbourhood'].value_counts().head(10)
-Out[17]: 
+In [18]: df['neighbourhood'].value_counts().head(10)
+Out[18]: 
 neighbourhood
 la Dreta de l'Eixample                   2029
 el Raval                                 1251
@@ -299,8 +298,8 @@ Are these neighbourhoods more expensive? We wonder if there is an association be
 Except for la Dreta de l'Eixample, we don't find higher prices associated to more listings. So, the picture is more complex than that.
 
 ```
-In [18]: df.groupby(by='neighbourhood')['price'].agg(['count', 'median']).sort_values(by='count', ascending=False).head(10)
-Out[18]: 
+In [19]: df.groupby(by='neighbourhood')['price'].agg(['count', 'median']).sort_values(by='count', ascending=False).head(10)
+Out[19]: 
                                        count  median
 neighbourhood                                       
 la Dreta de l'Eixample                  2029   159.0
@@ -324,4 +323,3 @@ la Nova Esquerra de l'Eixample           612    90.0
 3. As a continuation of the preceding exercise, pick the hosts with more than 100 listings and create a data subset containing only the listings managed by those hosts. Do you find that these particular hosts are focused on certain neighbourhoods? Do they have higher prices?
 
 4. The package `langid` is one of them many options for **language detection** in Python. You can install it entering `pip install langid` in either the shell or the console. Once it has been installed, you can import it and use the function `langid.classify` to "detect" the language in the column `name`. Select the listings whose language is either Spanish or English. Do you find a relevant difference in price between the two languages? 
-
