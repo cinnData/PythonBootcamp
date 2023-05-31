@@ -246,7 +246,7 @@ In [16]: df.plot.scatter(x='volume', y='dvar', figsize=(6,6), color='gray');
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.6.png)
 
-The scttar plot somewhat confirms our guess of a positive association between the trading volume and the daily variation, though the interpretation of plots is always subjective. Statisticians use the correlation to evaluate the strength of the association. More specifically, it tells us the extent to which one series can be represented as a linear expression of the other series. Correlation can be positive or negative. A strong correlation is one which close to 1 (or -1), and a weak correlation one which close to 0. Correlations in Pandas can be calculated with the method `.corr()`.
+The scatter plot somewhat confirms our guess of a positive association between the trading volume and the daily variation, though the interpretation of plots is always subjective. Statisticians use the correlation to evaluate the strength of the association. More specifically, it tells us the extent to which one series can be represented as a linear expression of the other series. Correlation can be positive or negative. A strong correlation is one which close to 1 (or -1), and a weak correlation one which close to 0. Correlations in Pandas can be calculated with the method `.corr()`.
 
 ```
 In [17]: df['volume'].corr(df['dvar'])
