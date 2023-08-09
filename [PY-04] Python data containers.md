@@ -113,7 +113,7 @@ In [16]: mylist[2]
 Out[16]: 'Neymar'
 ```
 
-Another difference is found in the use of `in`. For a stringl, it indicates that a string is contained in another string. But, fora list, it indicates that an object is among the items of that list:
+Another difference is found in the use of `in`. For a string, it indicates that a string is contained in another string. But, fora list, it indicates that an object is among the items of that list:
 
 ```
 In [17]: 'Neymar' in mylist
