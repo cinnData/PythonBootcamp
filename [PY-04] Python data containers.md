@@ -120,7 +120,7 @@ In [17]: 'Neymar' in mylist
 Out[17]: True
 ```
 
-Finally, though lists and strings share some functions like `len()`, they have different methods. We have mentioned `.replace()` and `.lower()` as examples of string methods. An example of **list method** is `.append()`, which adds an item at the end of a list, *in place*, that is without returning the new version). This is iullustrated by the following example.
+Finally, though lists and strings share some functions like `len()`, they have different methods. We have mentioned `.replace()` and `.lower()` as examples of string methods. An example of **list method** is `.append()`, which adds an item at the end of a list, *in place*, that is without returning the new version. This is iullustrated by the following example.
 
 ```
 In [18]: mylist.append('Vinicius')
