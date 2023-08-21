@@ -22,11 +22,20 @@ type(2.4)
 type(True)
 
 # Strings #
-type('Miguel')
+type('Messi')
+len('Messi')
 ord('a')
 ord('A')
 ord('ñ')
-'Donald' + ' ' + 'Trump'
+myplayer = 'Leo ' + 'Messi'
+myplayer
+
+## Substrings
+myplayer[2]
+myplayer[-3]
+myplayer[4:7]
+myplayer[:3]
+myplayer[4:]
 
 # Type conversions #
 float(2)
@@ -39,9 +48,9 @@ math.sqrt(False)
 
 # Comparison operators #
 5 < a
-a == 4
-a != 4
-'A' <= 'a'
+a == 7
+a != 7
+'A' >= 'a'
 3 == 3.0
 0.7 < True
 
