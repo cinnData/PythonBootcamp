@@ -1,38 +1,52 @@
-## [PY-04] Functions and control statements ##
+## [PY-04] Python data containers ##
 
-# Functions #
-def f(x):
-    y = 1/(1 - x**2)
-    return y
-f(2)
-f(1)
-f('Mary')
-def g(x, y): return x*y/(x**2 + y**2)
-g(1, 1)
+# Lists #
+mylist = ['Messi', 'Cristiano', 'Neymar', 'Haaland']
+len(mylist)
+len([])
+newlist = mylist + [2, 3]
+newlist
+len(newlist)
 
-# If statements #
-if 3 < 5: print('Minor')
-if 3 == 5: print('Equal')
-else: print('Not equal')
-if math.sqrt(1) < 1: print('Minor')
-elif math.sqrt(1) == 1: print('Equal')
-else: print('Major')
+# Extracting items from a list #
+mylist[0]
+mylist[-1]
+mylist[1:3]
+mylist[2:]
+mylist[:3]
+mylist[0::2]
+mylist[::-1]
 
-# While loops #
-x = 1
-while x**2 <= 1000: x = x + 1
-x
-x = 1
-while x > 0: x = x + 1
-x
+# Membership operators #
+yourlist = [4, 7]
+2 in yourlist
+2 not in yourlist
 
-# For loops #
-for i in range(3): print('Hello world!')
-squares = []
-for i in range(1, 5):
-    squares = squares + [i**2]
-squares
+# Strings as sequences #
+mylist[2:3]
+mylist[2]
+'Neymar' in mylist
+mylist.append('Vinicius')
+mylist
 
-# List comprehensions #
-[i**2 for i in range(1, 5)]
-[i**2 for i in range(1, 21) if i % 3 != 0]
+# Ranges #
+myrange = range(0, 10, 2)
+list(myrange)
+list(range(5, 12))
+list(range(10))
+
+# Other data container types #
+mytuple = ('Messi', 'Cristiano', 'Neymar', 'Coutinho')
+mytuple[-2:]
+mydict = {'name': 'Joan', 'gender': 'F', 'age': 32}
+mydict.keys()
+mydict.values()
+mydict['name']
+
+# Mutability #
+mylist[1] = 'Benzema'
+mylist
+mydict['job'] = 'Engineer'
+mydict
+mydict['name'] = 'Martha'
+mydict
