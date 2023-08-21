@@ -1,36 +1,31 @@
-## [PY-05] NumPy and Matplotlib ##
+## [PY-05] Control statements ##
 
-# NumPy arrays #
-import numpy as np
-arr1 = np.array(range(10))
-arr1
-np.array([2, 'a', True])
-np.array([2, True])
-np.array([2, 3.2])
-arr2 = np.array([[0, 7, 2, 3], [3, 9, -5, 1]])
-arr2
-arr1.shape
-arr2.shape
+# If statements #
+if 3 < 5: print('Minor')
+if 3 == 5: print('Equal')
+else: print('Not equal')
+import math
+if math.sqrt(1) < 1: print('Minor')
+elif math.sqrt(1) == 1: print('Equal')
+else: print('Major')
 
-# NumPy functions #
-np.sqrt(arr1)
-def f(t): return 1/(1 + np.exp(t))
-f(arr2)
+# While loops #
+x = 1
+while x**2 <= 1000: x = x + 1
+x
+while x**2 <= 1000: x = x + 1
+x
+x = 1
+while x > 0: x = x + 1
+x
 
-# Subsetting arrays #
-arr1[:3]
-arr2[:1, 1:]
-arr1 > 3
-arr2 > 2
-arr1[arr1 > 3]
-arr2[arr2[:, 0] > 0, 1:]
+# For loops #
+for i in range(3): print('Hello world!')
+squares = []
+for i in range(1, 5):
+	squares = squares + [i**2]
+squares
 
-# Plotting with Matplotlib #
-import matplotlib.pyplot as plt
-t = np.linspace(0, 2, 100)
-plt.figure(figsize=(6,6))
-plt.title('Figure. Three curves')
-plt.plot(t, t, label='linear', color='black')
-plt.plot(t, t**2, label='quadratic', color='black', linestyle='dashed')
-plt.plot(t, t**3, label='cubic', color='black', linestyle='dotted')
-plt.legend();
+# List comprehensions #
+[i**2 for i in range(1, 5)]
+[i**2 for i in range(1, 21) if i % 3 != 0]
