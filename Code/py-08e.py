@@ -1,4 +1,4 @@
-## Example - Apple Inc. stock prices ##
+## [PY-08E] Example - Apple Inc. stock prices ##
 
 # Q1. Import the data (edit the path) #
 import pandas as pd
