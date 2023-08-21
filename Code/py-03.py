@@ -1,37 +1,17 @@
-## [PY-03] Data containers ##
+## [PY-03] Defining functions in Python ##
 
-# Lists #
-mylist = ['Messi', 'Cristiano', 'Neymar', 'Haaland']
-len(mylist)
-len([])
-newlist = mylist + [2, 3]
-newlist
-len(newlist)
+# Functions #
+def f(x):
+	y = 1/(1 - x**2)
+	return y
+f(2)
+f(1)
+f('Mary')
+def g(x, y): return x*y/(x**2 + y**2)
+g(1, 1)
 
-# Extracting items from a list #
-mylist[0]
-mylist[-1]
-mylist[0:2]
-mylist[2:]
-mylist[:3]
-mylist[0::2]
-mylist[::-1]
-
-# Membership operators #
-yourlist = [4, 7] 
-2 in yourlist
-2 not in yourlist
-
-# Ranges #
-myrange = range(0, 10, 2)
-list(myrange)
-list(range(5, 12))
-list(range(10))
-
-# Other data container types #
-mytuple = ('Messi', 'Cristiano', 'Neymar', 'Coutinho')
-mytuple[-2:]
-mydict = {'name': 'Joan', 'gender': 'F', 'age': 32}
-mydict.keys()
-mydict.values()
-mydict['name']
+# Functions and methods #
+len('Bruce Sprinsgteen')
+'Bruce Sprinsgteen'.replace('Bruce', 'The Boss')
+'Bruce Sprinsgteen'.lower()
+round(1/3, 2)
