@@ -47,7 +47,7 @@ In [2]: %pwd
 Out[2]: '/Users/miguel'
 ```
 
-So, right now, in the Mac computer where this is prepared, in Qt Console, the working directory is `/Users/miguel`. If it were a Windows computer, the Python kernel would have printed `C:\\Users\\miguel`. If the source file is somewhere inside this folder, this part of the path can be omitted. This is what we do here.
+So, right now, in the Mac computer where this is prepared, in Qt Console, the **working directory** is `/Users/miguel`. In a Windows computer, the Python kernel would have printed `C:\\Users\\miguel`. If the source file is somewhere inside the working directory, this part of the path can be omitted. This is what we do here.
 
 ```
 In [3]: df = pd.read_csv('Dropbox/py_course/data/aapl.csv')
@@ -125,7 +125,7 @@ min    3.519590e+07
 max    1.826020e+08  
 ```
 
-## Q1. Extract the data for the trading days previous to January 15th
+## Q1. Data previous to January 15th
 
 For this type of data, we frequently filter by the date, selecting the period desired. Let us consider the expression `df['date'] < '2022-01-15'`. The Python kernel will evaluate it for every term of the column `date`, returning a Boolean mask. Using this mask as a filter, we get the requested data subset.
 
@@ -184,15 +184,15 @@ In [10]: df['volume'].plot(figsize=(10,6), color='black', linewidth=1);
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.2.png)
 
-No clear trend is observed here. The daily returns look quite **stationary**. It may make sense to look at the distributionof the returns, as if they were extracted from a "population". The histogram is a quick and dirty graphical tool for this job. The method `.plot.hist()` returns a histogram. The parameter `rwidth` sets the percentage of the space between consecutive bin centers that is taken by the histogram bars. It is used here to separate the bars, which enhances the visual impact (you may disagree).
+No clear trend is observed here. The daily returns look quite **stationary**. It may make sense to look at the distributionof the returns, as if they were extracted from a "population". The histogram is a quick and dirty graphical tool for this job. The method `.plot.hist()` returns a histogram. The argument `edgecolor='white'` improves the picture (you may disagree), delineating the border of the histogram bars.
 
 ```
-In [11]: df['volume'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
+In [11]: df['volume'].plot.hist(figsize=(8,6), color='gray', edgecolor='white');
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.3.png)
 
-We don't see here the bell-shaped profile of the statisticians' beloved model, the **normal distrubtion**, but that of a **skewed distribution**. This type of distribution, with a well-defined **right tail**, is typical in series that represent amounts of money.
+We don't see here the bell-shaped profile of the statisticians' beloved model, the **normal distribution**, but that of a **skewed distribution**. This type of distribution, with a well-defined **right tail**, is typical in series that represent amounts of money.
 
 ## Q4. Trend and distribution for the daily price variation
 
@@ -231,7 +231,7 @@ In [14]: df['dvar'].plot(figsize=(10,6), color='black', linewidth=1);
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.4.png)
 
 ```
-In [15]: df['dvar'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
+In [15]: df['dvar'].plot.hist(figsize=(8,6), color='gray', edgecolor='white');
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.5.png)
