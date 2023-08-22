@@ -205,7 +205,7 @@ Out[11]: 0.221
 A histogram for the prices can be obtained with the method `.plot.hist()`, which has already been used in the previous lecture.
 
 ```
-In [12]: df['price'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
+In [12]: df['price'].plot.hist(figsize=(8,6), color='gray', edgecolor='white');
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_9.1.png)
@@ -229,7 +229,7 @@ Name: price, dtype: float64
 For a  better picture of the bulk of Airbnb we may trim the data. For instance, we can plot a histogram for the listings with prices in a reasonable interval. See an example below.
 
 ```
-In [14]: df['price'][df['price'].between(25,175)].plot.hist(figsize=(8,6), color='gray', rwidth=0.94, bins=30);
+In [14]: df['price'][df['price'].between(25,175)].plot.hist(figsize=(8,6), color='gray', edgecolor='white', bins=30);
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_9.2.png)
