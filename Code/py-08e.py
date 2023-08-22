@@ -1,42 +1,41 @@
 ## [PY-08E] Example - Apple Inc. stock prices ##
 
-# Q1. Import the data (edit the path) #
+# Import the data (edit the path) #
 import pandas as pd
-df = pd.read_csv('aapl.csv')
+%pwd
+df = pd.read_csv('Dropbox/py_course/data/aapl.csv')
 
-# Q2. Check the contens of the data set #
-df.shape
+# Exploring the data #
 df.info()
 df.head()
-df.tail()
-df
+df.describe()
 
-# Q3. Data previous to January 15th #
+# Q1. Data previous to January 15th #
 df[df['date'] < '2022-01-15']
 
-# Q4. Line plot for the opening price #
+# Q2. Line plot for the opening price #
 df['open'].plot(figsize=(10,6), color='black', linewidth=1);
 
-Q5a. Line plot for the trading volume #
+Q3a. Line plot for the trading volume #
 df['volume'] = df['volume']/10**6
 df['volume'].plot(figsize=(10,6), color='black', linewidth=1);
 
-# Q5b. Histogram for the trading volume #
-df['volume'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
+# Q3b. Histogram for the trading volume #
+df['volume'].plot.hist(figsize=(8,6), color='gray', edgecolor='white');
 
-# Q6a. Daily variation #
+# Q4a. Daily variation #
 df['dvar'] = df['high'] - df['low']
-df
+df.head()
 
-# Q6b. Line plot for the daily variation #
+# Q4b. Line plot for the daily variation #
 df['dvar'].plot(figsize=(10,6), color='black', linewidth=1);
 
-# Q6c. Histogram for the daily variation #
-df['dvar'].plot.hist(figsize=(8,6), color='gray', rwidth=0.98);
+# Q4c. Histogram for the daily variation #
+df['dvar'].plot.hist(figsize=(8,6), color='gray', edgecolor='white');
 
-# Q7a. Scatter plot for the daily price variation and the trading volume # 
+# Q5a. Scatter plot for the daily price variation and the trading volume # 
 df.plot.scatter(x='volume', y='dvar', figsize=(6,6), color='gray');
 
-## Q7. Correlation #
+## Q5b. Correlation #
 df['volume'].corr(df['dvar'])
 df['volume'].corr(df['dvar']).round(2)
