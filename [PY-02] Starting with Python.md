@@ -2,7 +2,7 @@
 
 ## Typing Python code
 
-In this tutorial, we start with some comments on how to type Python code. Let us assume that you are working on Jupyter Qt Console. Before starting, a reminder: Python is **case sensitive**. F
+In this tutorial, we start with some comments on how to type Python code. Let us assume that you are working on Jupyter Qt Console. Before starting, a reminder: Python is **case sensitive**. 
 
 The console produces input prompts (such as `In[1]:`), where you can type a command and press *Return*. The console responds with the corresponding output (preceded by `Out[1]:`), an error message or no answer at all. Error messages are typically long and unfriendly. A simple example follows. Note the white space around the *plus* sign (`+`), which is ignored by the Python interpreter, but improves the **readability** of your code.
 
