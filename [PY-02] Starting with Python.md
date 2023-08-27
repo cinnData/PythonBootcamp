@@ -33,7 +33,7 @@ In [5]: a
 Out[5]: 5
 ```
 
-Suppose that you copypaste in the console code chunks from a text editor. This is what you would do if you were working in the console, so you could readily save your code. You can so input several code lines at once. In that case, the console only shows the output of the last line. An example follows.
+Suppose that you copypaste in the console code chunks from a text editor. You can so input several code lines at once. In that case, the console only shows the output of the last line. An example follows.
 
 ```
 In [6]: b = 2 * 3
