@@ -101,7 +101,7 @@ Out[14]: True
 
 ## Strings as sequences
 
-In Python, strings and lists are two types of **sequences** and, indeed, a string is managed as a list of characters. Nevertheless, there are some differences which rae worth to be mentioned. First, using the square brackets with a string produces always a substring. But slicing a list produces a sublist, and it is not the same as extracting items from the list. The following examples illustrate this.
+In Python, strings and lists are two types of **sequences** and, indeed, a string is managed as a list of characters. Nevertheless, there are some differences which are worth to be mentioned. First, using the square brackets with a string produces always a substring. But slicing a list produces a sublist, and it is not the same as extracting items from the list. The following examples illustrate this.
 
 ```
 In [15]: mylist[2:3]
