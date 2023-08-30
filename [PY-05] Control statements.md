@@ -143,7 +143,7 @@ Out[12]: [1, 4, 16, 25, 49, 64, 100, 121, 169, 196, 256, 289, 361, 400]
 
 4. The **Fibonacci numbers** are 1, 1, 2, 3, 5, 8, 13, 21, etc. Except for the first two terms of this sequence, both equal to 1, every term is the sum of the two preceding terms. Use a loop to calculate the first 10 Fibonacci numbers. Based on that loop, write a function which, given a number, returns a list of Fibonacci numbers of that length.
 
-5. Write a function that drops the duplicate items from a list, keeping the order. For instance, given the list `['a'. 'f', 'a', 'b']`, that function would return `['a'. 'f', 'b']`.
+5. Write a function that drops the duplicate items from a list, keeping the order. For instance, given the list `['a', 'f', 'a', 'b']`, that function would return `['a', 'f', 'b']`.
 
 6. A **nested list** is a list of lists, that is, a list whose items are lists. For instance, `[[1, 2], [], ['a']]`. Write a function that *flattens* a nested list, transforming it into a new list whose items are the items contained in the items of the original list. Given the above example, that function would return `[1, 2, 'a']`.
 
