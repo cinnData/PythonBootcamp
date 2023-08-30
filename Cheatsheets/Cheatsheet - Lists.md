@@ -37,6 +37,8 @@
 
 * `sorted(lst)`: returns a list with the same items as `lst`, sorted. With the argument `reverse=True`, the list is sorted downwards.
 
+* `sum(lst)`: returns the sum of the item of a list (only for numeric lists). It also works for a range.
+
 ## List comprehensions
 
 * `[expr for i in lst]`: returns a list whose items result from evaluating the expression `expr` on the items of the list `lst`.
