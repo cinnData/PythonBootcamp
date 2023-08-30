@@ -139,7 +139,7 @@ Out[12]: [1, 4, 16, 25, 49, 64, 100, 121, 169, 196, 256, 289, 361, 400]
 
 2. In order to have a function that returns two results  `result1` and `result2`, you can write `return result1, result2` in the last line of the `def` statement (don't forget the comma). Then the two results will be returned together as a tuple. Write a function that, given a list of integers, returns the number of positive terms and the number of negative terms. Modify the definition so the your function returns a dictionary with keys '`pos` and `neg`.
 
-3. Suppose that you are given an interest rate *r*% for your capital, so that every year your capital gets a *r*% increase. Write a function that, by using a loop, takes *r* and returns the number of years needed to double it. The solution does not depend on the actual value of the capital, so you set it at $1 (this can also be solved mathematically, by using logarithms).
+3. Suppose that you are given an interest rate *r*% for your capital, so that every year your capital gets a *r*% increase. Write a function that, by using a loop, takes *r* and returns the number of years needed to double your capital. The solution does not depend on the actual value of the capital, so you set it at $1. Note: this problem can also be solved mathematically, by means of logarithms.
 
 4. The **Fibonacci numbers** are 1, 1, 2, 3, 5, 8, 13, 21, etc. Except for the first two terms of this sequence, both equal to 1, every term is the sum of the two preceding terms. Use a loop to calculate the first 10 Fibonacci numbers. Based on that loop, write a function which, given a number, returns a list of Fibonacci numbers of that length.
 
