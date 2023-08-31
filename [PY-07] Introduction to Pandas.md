@@ -260,7 +260,7 @@ In both cases, if you enter a single specification inside the brackets, it refer
 
 ## Homework
 
-1. Import NumPy and Pandas and create a data frame `df` with three columns named `X`, `Y` and `Z`, putting in the first columns consecutive numbers from 0 to 9, in the second column consecutive integers from -3 to 6 and the third column 10 ones (you can do this with `np.ones(10))`. Replace every term from the first column by its square. What will you do if you want, instead of changing the terms of the first column, to add a fourth column, named `U`, containing the squares of the first column?
+1. Import NumPy and Pandas and create a data frame `df` with three columns named `X`, `Y` and `Z`, putting in the first columns consecutive numbers from 0 to 9, in the second column consecutive integers from -3 to 6 and the third column 10 ones (you can do this with `np.ones(10))`. Replace every term in the first column by its square. What will you do if you want, instead of changing the terms of the first column, to add a fourth column, named `U`, containing the squares of the first column?
 
 2. Suppose that you have added the fourth column to `df` with the squares of the first column, and use `df.info()` to generate a report of your data. Replace the last term of the fourth column by either `None` or `np.nan`. The use `df.info()` again and compare the two reports. Can you explain all the changes? 
 
