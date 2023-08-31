@@ -264,4 +264,4 @@ In both cases, if you enter a single specification inside the brackets, it refer
 
 2. Suppose that you have added the fourth column to `df` with the squares of the first column, and use `df.info()` to generate a report of your data. Replace the last term of the fourth column by either `None` or `np.nan`. Then, use `df.info()` again and compare the two reports. Can you explain all the changes? Note: Don't pay attention to the warning message.
 
-3. After replacing the last term by a `NaN` value, split the data in two parts, using `df'U'] <= 16` and `df'U'] > 16`. What happened with the last row?
+3. After replacing the last term by a `NaN` value, split the data in two parts, using `df['U'] <= 16` and `df['U'] > 16`. What happened with the last row?
