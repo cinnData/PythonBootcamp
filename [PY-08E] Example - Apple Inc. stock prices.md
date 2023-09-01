@@ -167,7 +167,7 @@ In [8]: df['open'].plot(figsize=(10,6), color='black', linewidth=1);
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.1.png)
 
-In this case, the line plot shows an obvious upwards trend, which does not need much discussion.
+In this case, the line plot does not shows an obvious trend, but a sequence of trends up and down.
 
 ## Q3. Line plot and histogram for the trading volume
 
