@@ -184,7 +184,7 @@ In [10]: df['volume'].plot(figsize=(10,6), color='black', linewidth=1);
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_8.2.png)
 
-No clear trend is observed here. The daily returns look quite **stationary**. It may make sense to look at the distributionof the returns, as if they were extracted from a "population". The histogram is a quick and dirty graphical tool for this job. The method `.plot.hist()` returns a histogram. The argument `edgecolor='white'` improves the picture (you may disagree), delineating the border of the histogram bars.
+No clear trend is observed here. The daily returns look quite **stationary**. It may make sense to look at the distribution of the returns, as if they were extracted from a "population". The histogram is a quick and dirty graphical tool for this job. The method `.plot.hist()` returns a histogram. The argument `edgecolor='white'` improves the picture (you may disagree), delineating the border of the histogram bars.
 
 ```
 In [11]: df['volume'].plot.hist(figsize=(8,6), color='gray', edgecolor='white');
