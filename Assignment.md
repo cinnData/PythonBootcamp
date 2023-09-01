@@ -10,5 +10,5 @@ This assignment is based on the project **Barcelona restaurants in TripAdvisor**
 
 ### Deadline
 
-September 5 (Tuesday), 24:00.
+September 10 (Sunday), 24:00.
 
