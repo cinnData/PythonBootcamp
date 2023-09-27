@@ -2,7 +2,15 @@
 
 ## What is Python?
 
-**Python** is a programming language, born in 1991. The latest stable version (when this is being written) is Python 3.11. To work with Python, you will use an interface to a **Python interpreter** among the many available choices (see below). You can have several instances of the interpreter, called **kernels**, running independently in your computer.
+**Python** is a programming language, born in 1991. The latest stable version (when this is being written) is Python 3.11. As a programming language, Python is used for the programmer to write a programs that performs a task. This course is data-oriented, so let us mention a few examples in that line:
+
+* A **web scraping** program that captures data on the current prices in an e-commerce web site, storing them in a database.
+
+* A **machine learning** program that trains an algorithm that assigns credit scores to borrowers in a lending platform.
+
+** A **pricing algorithm** that estimates the market price of a real estate asset.
+
+These programs are later executed many times without being modified. But you can use Python in other ways. For instance, to examine the variation of the stock price of a specific company, or the structure of the vacation rental market in a specific region. Either for developing the program, which always involves a bit of trail and error, or in the learning process, we use a basic tool, the **Python interactive interpreter**. We can have several instances of the interpreter, called **kernels**, running independently in our computer. To deal with the Python interpreter, most pythonistas use an interface, chosen among the many available choices (see below). 
 
 ## Python modules and packages
 
