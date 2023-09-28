@@ -2,9 +2,9 @@
 
 ## Typing Python code
 
-In this tutorial, we start with some comments on how to type Python code. Let us assume that you are working on Jupyter Qt Console. Before starting, a reminder: Python is **case sensitive**. 
+In this tutorial, we start with some comments on how to type Python code. Let us assume that you are working on Jupyter Qt Console. Before starting, a reminder: Python is **case sensitive**. F
 
-The console produces input prompts (such as `In[1]:`), where you can type a command and press *Return*. The console responds with the corresponding output (preceded by `Out[1]:`), an error message (error messages are typically long and unfriendly) or no answer at all. A simple example follows. Note the white space around the *plus* sign (`+`), which is ignored by the Python interpreter, but improves the **readability** of your code.
+The console produces input prompts (such as `In[1]:`), where you can type a command and press *Return*. The console responds with the corresponding output (preceded by `Out[1]:`), an error message or no answer at all. Error messages are typically long and unfriendly. A simple example follows. Note the white space around the *plus* sign (`+`), which is ignored by the Python interpreter, but improves the **readability** of your code.
 
 ```
 In [1]: 2 + 2
@@ -33,7 +33,7 @@ In [5]: a
 Out[5]: 5
 ```
 
-Suppose that you copypaste in the console code chunks from a text editor. You can so input several code lines at once. In that case, the console only shows the output of the last line. An example follows.
+Suppose that you copypaste in the console code chunks from a text editor. This is what you would do if you were working in the console, so you could readily save your code. You can so input several code lines at once. In that case, the console only shows the output of the last line. An example follows.
 
 ```
 In [6]: b = 2 * 3
@@ -44,7 +44,7 @@ Out[6]: 36
 
 *Note*. You would probably have written `b^2` for the square of 2, but the caret symbol (`^`) plays a different role in Python.
 
-If you are typing the code, you can open a new line within the same input with *Ctrl+Return*. You can finish the input, calling for the output, by pressing *Return*. If the cursor is not at the end of the last line, you have to press *Shift+Return* to get the output. 
+If you are typing the code, you can open a new line within the same input with *Ctrl+Return*. You can finish the input, calling for the output, by pressing *Return*. If the cursor is not at the end of the last line, you have to press *Shift+Return* to finish the input. 
 
 Typing in a notebook is just a bit different. The notebook is a sequence of **cells**. In the **Markdown cells**, you write comments, while in the **code cells** you write the Python commands. Every code cell of the notebook corresponds to an input of the console. When you are typing in a cell, pressing *Return* starts a new line *within the same cell*, without ending the input. With *Shift+Return* you finish the the input, so you get the ouput, opening a new cell. To finish the input without opening a new cell, use *Cmd+Return* in Mac or *Ctrl+Return* in Windows.   
 
@@ -115,7 +115,7 @@ Out[13]: 5
 
 The characters contained in a string can be the (English) alphanumeric characters, but also **special characters** like white space, punctuation, etc. Other symbols, like emoticons, can also appear in your data, specially in social networks data. Besides that, you can also manage letters from other languages (Spanish, Portuguese, etc) or alphabets (Cyrillic, hiragana, etc), and even ideographs (such as Han characters). 
 
-There is a basic set of 128 characters, called the **ASCII characters**, which are encoded as numbers (from 0 to 127) in the same way by all the computers. They include the English letters (without accents), the numbers, basic punctuation (not curly quote marks or long dashes), white space, **control characters** such as the new line, represented in many computer languages (including Python) as `\n`, and other symbols familiar to you, such as the dollar (`$`) and the hash (`#`) symbols. The complete list can be easily found in Internet.
+There is a basic set of 128 characters, called the **ASCII characters**, which are encoded as numbers (from 0 to 127) in the same way by all the computers. They include the English letters (without accents), the numbers, basic punctuation (but not curly quote marks or long dashes), white space, **control characters** such as the new line, represented in many computer languages (including Python) as `\n`, and other symbols familiar to you, such as the dollar (`$`) and the hash (`#`) symbols. The complete list can be easily found in Internet.
 
 Non-ASCII characters can be encoded by different computers or different text editors in different ways. If you capture string data on your own, you will probably find some of these characters in your data. Even when the documents are expected to be in English, they can be contaminated by other languages: Han characters, German dieresis, Spanish eñe, etc.
 
@@ -273,7 +273,15 @@ Out[35]: True
 
 ## Logical operators
 
-The **logical operators** allow operations between booleans. They are `and`, `or` a `not`. They work in the same way as in other languages: (a) `x and y` is true when both `x` and `y` are true, (b) `x or y` is true when at least one of them is true, and (c) `not x` is true when `x` is false. Examples:
+The **logical operators** allow operations between booleans. They are `and`, `or` a `not`. They work in the same way as in other languages: 
+
+* `x and y` is true when both `x` and `y` are true. 
+
+* `x or y` is true when at least one of them is true
+
+* `not x` is true when `x` is false. 
+
+Some examples follow.
 
 ```
 In [36]: True and False
@@ -290,7 +298,7 @@ In [38]: not True
 Out[38]: False
 ```
 
-Since expressions involving comparison operators are evaluated and turned into either `True` or `False`, we can combine them with logical operators. Example:
+Since expressions involving comparison operators are evaluated by the Python kernel and turned into either `True` or `False`, we can combine them with logical operators. Example:
 
 ```
 In [39]: 5 < 7 and ' ' <= '6'
@@ -307,4 +315,8 @@ Out[39]: True
 
 4. You will probably agree that $3 + (4 \times 5) = 23$ and $(3 + 4) \times 5 = 35$, and that the first identity can be written as $3 + 4 \times 5 = 23$, so the parenthesis is not needed, because it is understood that the product takes **precedence** over the sum. Now, what is `True or True and False`? Which operator has precedence, `and` or `or`? Another one: what is `not False or True`?
 
-5. The package `langid` is one of them many options for **language detection** in Python. You can install it by entering `pip install langid` in either the shell or the console. Once it has been installed, you can import it and use the function `langid.classify()` to "detect" the language. Try this with a few sentences in different languages. Note that `langid` gets better with longer strings, but often fails with very short ones. Though it may look like a dwarf when compared to a giant like GPT-4, it is a nice example of **machine learning**.
+5. Which type have `True*True` and `True/True?` What is the rule?
+
+6. Is `1 == True` true or false? What is the rule? 
+
+7. The package `langid` is one of them many options for **language detection** in Python. You can install it entering `pip install langid` in either the shell or the console. Once it has been installed, you can import it and use the function `langid.classify()` to "detect" the language. Try this with a few sentences in different languages. Please, note that `langid` gets better with longer strings, but often fails with very short ones. Though it may look like a dwarf when compared to a giant like GPT-4, it is a nice example of **machine learning**.
