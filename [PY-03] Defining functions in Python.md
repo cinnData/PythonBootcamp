@@ -1,18 +1,18 @@
 # [PY-03] Defining functions in Python
 
-## Functions
+## A first example
 
-A **function** takes a collection of **arguments** and performs an action. For instance, a function can **return** a value, and another function can **print** a message. Besides the built-in functions like `type()` or `len()` and those coming in the packages that you may import, you can define your own functions. The definition of your function will be valid only for the current kernel.
+This lecture is about **Python functions**. Besides the **built-in functions** like `type()` or `len()` and those coming in the packages that you may import, you can define your own functions. Your definition will be valid only for the current kernel.
 
 A simple example of a user-defined function follows. Note the indentation after the colon, which is created automatically by the console (or notebook).
 
 ```
 In [1]: def f(x):
-    ...:     y = 1/(1 - x**2)
-    ...:     return y
+   ...:     y = 1/(1 - x**2)
+   ...:     return y
 ```
 
-Here, the `return` line signals the end of the definition. If you continue the input, the new lines will not be indented, and will not be read as part of the definition of the function.
+Here, the `return` statement signals the end of the definition. If you continue the input, the new lines will not be indented, and will not be read as part of the definition of the function.
 
 When you define a function, Python just takes note of the definition, accepting it when it is syntactically correct (parentheses, commas, etc). The function can be applied later to different arguments (by the same kernel).
 
@@ -55,50 +55,150 @@ TypeError: unsupported operand type(s) for ** or pow(): 'str' and 'int'
 
 Beginners find Python error messages, though accurate, not precisely friendly. But, if you pay attention to them, you will discover that they can be very useful for correcting your mistakes. In the two examples above, the error message indicates the nature of the error. The first one is a `ZeroDivisionError`, while the second one is a `TypeError` (the argument has not the adequate data type). Other errors can be `SyntaxError`, `ValueError`, etc. 
 
+You can write the definition of a function in a shorter way, as the following example shows. But this is not considered good programming' style (more about this later), so we will not take this type of shortcut in this course.
+
+```
+In [5]: def f(x): return 1/(1 - x**2)
+```
+
+## More about functions
+
+In general, a function takes a collection of arguments and performs an action. We typically specify that action in a separate line, like the `return` statement of the preceding example. A mathematical function, like that example, returns a value. But Python function have a wider scope. They can print a text, or save a file, etc. Examples of printing functions will appear in this course. 
+
+Let us take a closer look at our definition, considering three parts. In the first line, the `def` statement declares many things:
+
+* It provides a **name** for the function (`f`). Since this an example of a mathematical function, a simple name like `f` was appropriate, but, in general, it is recommended to use names that remind us of the action performed by the function. 
+
+* It names the **parameters**. The example of the preceding section was an example of a **one-parameter function**. `x` was the parameter name. The values provided for the parameter are called **arguments**. The parameter name is forgotten after the definition (this is called an "internal" variable). You can rewrite the definition replacing everywhere `x` by `t`, and the function defined will be exactly the same. 
+
+* It may contain additional information about the parameters, such as default values, which will be explained below.
+
+After the `def` statament, we write some lines specifying a sequence operations to be performed on the arguments in order to prepare the final action, which is described in the last line. In this case, this was a `return` statement.
+
+We are going to see few examples in which the defintion follows different paths. First, an example of a function with zero parameters (yes, this is possible) and a `print` statement.
+
+```
+In [6]: def hello():
+   ...:     print('Hello, world!!')
+```
+
+```
+In [7]: hello()
+Hello, world!!
+```
+
 Now, an example of a two-parameter function.
 
 ```
-In [5]: def g(x, y): return x*y/(x**2 + y**2)
+In [8]: def g(x, y): 
+   ...:     z = )x - y)/(x**2 + y**2)
+   ...:     return z
 ````
 
 ```
-In [6]: g(1, 1)
-Out[6]: 0.5
+In [9]: g(2, 1)
+Out[9]: 0.2
 ```
 
-Note that, in the definition of `g()`, we have used a shorter way. Many programmers would prefer to make it longer, with more than one line, as we did previously for `f()`.
+## Positional arguments and keyword arguments
+
+The distinction between positional and keyword arguments is better understood in an example. In `In [9]`, the Python kernel took the argument 2 as the value of the parameter `x` and 1 as the value of the parameter `y`. They are taken as **positional arguments**, so that input was read exactly the same as the following one.
+
+```
+In [10]: g(x=2, y=1)
+Out[10]: 0.2
+```
+
+Now, the arguments were taken as **keyword arguments**. The order of keyword arguments does not matter, so there is no difference between `In [10]` and the following one.
+
+```
+In [11]: g(y=1, x=2)
+Out[11]: 0.2
+```
+
+On the other hand, for positional arguments, the order matters, and one has to be careful. Here, the first argument will be taken as `x` and the second argument as `y`.
+
+```
+In [12]: g(1, 2)
+Out[12]: -0.2
+```
+
+Note that the parameters themselves are not positional nor keyword. It is the way we submit their values (the arguments), that makes them to be read in this or that way. You can meix positional and keyword arguments, as in the following example.
+
+```
+In [13]: g(2, y=1)
+Out[13]: 0.2
+```
+
+But the positional arguments go first:
+
+```
+In [14]: g(x=2, 1)
+  Cell In[12], line 1
+    g(x=2, 1)
+            ^
+SyntaxError: positional argument follows keyword argument
+```
+
+*Note*. Not everybody is so strict with the terminology, and the terms 'parameter' and 'argument' are sometimes confounded.
+
+## Default arguments
+
+Sometimes, there is a typical, or preferred, value for a parameter. We can specify this value in the definition, so the users can omit the corresponding arguments when using the function. **Default arguments** are the rule for most functions that admit large collections of parameters. They make your code shorter and cleaner.
+
+How to specify a default value for a parameter is clear in the following example. Suppose that you wish to have a function called `root()` such that by default is the square root, but may be used also for other roots. Let us define it as follows. We can define it as follows.
+
+```
+In [15]: def root(x, n=2):
+    ...:    y = x**(1/n)
+    ...:    return y
+```
+
+Now:
+
+```
+In [16]: root(2)
+Out[16]: 1.4142135623730951
+```
+
+```
+In [17]: root(2, 3)
+Out[17]: 1.2599210498948732
+```
+
+An example we meet frequently in data science is the Pandas function `read.csv()` used to import data from a CSV file. It allows for various separators, but a default argument is `sep=','`, which makes sense because most CSV files use the comma as the column separator (though you need `sep=';'` for some CSV files created with Spanish Excel configurations).
 
 ## Functions and methods
 
-Something that confuses Python beginners is the distinction between functions and methods. A **method** is a function that belongs to a particular type of objects. Some types don't have methods, but other types have plenty of them. Take, for instance strings. The function `len` takes a string and returns the number of characters.
+Something that confuses Python beginners is the distinction between functions and methods. A **method** is a function that belongs to a particular type of objects. Some types don't have methods, but other types have plenty of them. Take, for instance, strings. The function `len` takes a string and returns the number of characters.
 
 ```
-In [7]: len('Bruce Sprinsgteen')
-Out[7]: 17
+In [18]: len('Bruce Sprinsgteen')
+Out[18]: 17
 ```
 
-The syntax is `func(args)`. But strings have also many methods. For instance, to replace all the occurrences of a substring by a new string (the *Replace* function of Word, with option *Replace All*), we use the method `.replace()`. Let us see an example.
+But strings have also many methods. For instance, to replace all the occurrences of a substring by a new string (the *Replace* function of Word, with option *Replace All*), we use the method `.replace()`. Let us see an example.
 
 ```
-In [8]: 'Bruce Sprinsgteen'.replace('Bruce', 'The Boss')
-Out[8]: 'The Boss Sprinsgteen'
+In [19]: 'Bruce Sprinsgteen'.replace(old='Bruce', new='The Boss')
+Out[19]: 'The Boss Sprinsgteen'
 ```
 
-The syntax is `object.meth(args)`. Another example: to convert all the cased characters to lowercase, we use the method `.lower()`. 
+Another example: to convert all the cased characters to lowercase, we use the method `.lower()` (zero parameters). 
 
 ```
-In [9]: 'Bruce Sprinsgteen'.lower()
-Out[9]: 'bruce sprinsgteen'
+In [20]: 'Bruce Sprinsgteen'.lower()
+Out[20]: 'bruce sprinsgteen'
 ```
 
 An advantage of methods is that you can apply a sequence of methods one after the other, without getting into a mess with the parentheses. You may have fought with this in Excel. But sometimes the reason for defining some functions is unclear, and may be a source of confusion. Moreover, some functions can appear as functions here and as methods there. An example is the function `round`, which is used to limit the number of decimals retained. As built-in Python function the syntax as shown in the following example:
 
 ```
-In [10]: round(1/3, 2)
-Out[10]: 0.33
+In [21]: round(x=1/3, n=2)
+Out[21]: 0.33
 ```
 
-The same as in Excel. But, when rounding in one shot a whole column of a data set in the package Pandas, we would use a method, `.round(2)`. The package Pandas uses methods almost everywhere. Since this is data-oriented course, which makes frequent use of Pandas, this is worth to remember. When in doubt, check which the right approach by googling, or use the cheatsheets of this course.
+The same as in Excel. But, when rounding in one shot a whole column of a data set in the package Pandas, we would use a method, `.round(decimals=2)`. The package Pandas uses methods almost everywhere. Since this is data-oriented course, which makes frequent use of Pandas, this is worth to remember. When in doubt, check which the right approach by googling, or use the cheatsheets of this course.
 
 ## Homework
 
