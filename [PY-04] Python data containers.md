@@ -8,21 +8,21 @@ Python has many **data container** types. The most versatile is the **list**, wh
 In [1]: mylist = ['Messi', 'Cristiano', 'Neymar', 'Haaland']
 ```
 
-The function `len` returns the **length** of the list, that is, the number of items it contains:
+The function `len()` returns the **length** of the list, that is, the number of items it contains.
 
 ```
 In [2]: len(mylist)
 Out[2]: 4
 ```
 
-Empty data containers play a role in Python programming. In particular, the **empty list** `[]`  has zero length:
+Empty data containers play a role in Python programming. In particular, the **empty list** `[]`  has zero length.
 
 ```
 In [3]: len([])
 Out[3]: 0
 ```
 
-Lists can be concatenated in a very simple way in Python:
+Lists can be concatenated in Python in the same way as strings, with the plus sign (`+`).
 
 ```
 In [4]: newlist = mylist + [2, 3]
@@ -49,7 +49,7 @@ In [7]: mylist[-1]
 Out[7]: 'Haaland'
 ```
 
-Sublists can be extracted with an interval of indexes, in the same way as we extract substrings from a string. Here, this is called **slicing**. Some examples follow.
+Sublists can be extracted with an interval of indexes, in the same way as we extract substrings from a string. This is called **slicing a list**. Some examples follow.
 
 ```
 In [8]: mylist[1:3]
@@ -80,8 +80,6 @@ In [12]: mylist[::-1]
 Out[12]: ['Haaland', 'Neymar', 'Cristiano', 'Messi']
 ```
 
-Steps can also be used fro strings, although this is not frequent. 
-
 ## Membership operators
 
 The **membership operators** `in` and `not in` are used to check whether an object is contained in a list. Examples:
@@ -97,11 +95,11 @@ In [14]: 2 not in yourlist
 Out[14]: True
 ```
 
-*Note*. These operators work in the same way for other data containers like ranges or tuples (see below), or NumPy arrays (see lecture PY-06).
+These operators work in the same way for other data containers like ranges or tuples (see below). Also or NumPy arrays that will appear later in this course.
 
 ## Strings as sequences
 
-In Python, strings and lists are two types of **sequences** and, indeed, a string is managed as a list of characters. Nevertheless, there are some differences which are worth to be mentioned. First, using the square brackets with a string produces always a substring. But slicing a list produces a sublist, and it is not the same as extracting items from the list. The following examples illustrate this.
+In Python, strings and lists are two types of **sequences** and, indeed, a string is managed as a list of characters. Nevertheless, there are some differences which rae worth to be mentioned. First, using the square brackets with a string produces always a substring. But slicing a list produces a sublist, and it is not the same as extracting items from the list. The following examples illustrate this.
 
 ```
 In [15]: mylist[2:3]
@@ -113,14 +111,14 @@ In [16]: mylist[2]
 Out[16]: 'Neymar'
 ```
 
-Another difference is found in the use of `in`. For a string, it indicates that a string is contained in another string. But, for a list, it indicates that an object is among the items of that list:
+Another difference is found in the use of `in`. For a string, it indicates that a string is contained in another string. But, fora list, it indicates that an object is among the items of that list:
 
 ```
 In [17]: 'Neymar' in mylist
 Out[17]: True
 ```
 
-Finally, though lists and strings share some functions like `len()`, they have different methods. We have mentioned `.replace()` and `.lower()` as examples of string methods. An example of **list method** is `.append()`, which adds an item at the end of a list, *in place*, that is without returning the new version. This is iullustrated by the following example.
+Finally, though lists and strings share some functions like `len()`, they have different methods. We have mentioned `.replace()` and `.lower()` as examples of string methods. An example of **list method** is `.append()`, which adds an item at the end of a list, *in place*, that is without returning the new version. This is illustrated by the following example.
 
 ```
 In [18]: mylist.append('Vinicius')
@@ -156,7 +154,7 @@ Out[21]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 ## Other data container types
 
-Python provides other built-in types of data containers, which are less relevent for this course. A **tuple** is like a list, but represented with parentheses instead of square brackets:
+Python provides other built-in types of data containers, which are less relevant for this course. A **tuple** is like a list, but represented with parentheses instead of square brackets:
 
 ```
 In [22]: mytuple = ('Messi', 'Cristiano', 'Neymar', 'Coutinho')
@@ -220,4 +218,8 @@ Out[29]: {'name': 'Martha', 'gender': 'F', 'age': 32, 'job': 'Engineer'}
 
 ## Homework
 
-Write a list containing the month names and use it to create a function for **date conversion** that takes '1954-04-30' and returns 'April 30, 1954'.
+1. Write a list containing the month names and use it to create a function for **date conversion** that takes '1954-04-30' and returns 'April 30, 1954'.
+
+2. To write a function that returns more than one result, we specify them in the `return` statement, separated by commas. For instance, if our function must return `result1` and `result2`, we write `return result1, result2` (don't forget the comma). Then, the results will be returned together as a tuple. Write a function that takes a date in the format 'yyyy-mm-dd' and returns the year, the month and the day as three integers. 
+
+3. Modify the definition of the previous question, so that your function takes the string `'1954-04-30'` and returns the dictionary `{'year': 1954, 'month': 4, 'day': 30}`.
