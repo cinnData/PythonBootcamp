@@ -1,4 +1,4 @@
-# [PY-06] NumPy and Matplotlib
+# [PY-07] NumPy and Matplotlib
 
 ## NumPy arrays
 
