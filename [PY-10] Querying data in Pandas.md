@@ -1,4 +1,4 @@
-# [PY-09] Querying data in Pandas
+# [PY-10] Querying data in Pandas
 
 ## Sorting
 
