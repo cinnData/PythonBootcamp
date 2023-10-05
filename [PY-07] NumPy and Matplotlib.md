@@ -240,6 +240,7 @@ Take care of running these lines of code together. The semicolon in the last lin
 4. The **daily return** is the percentage change in the price with respect to the preceding trading day. If $p(t)$ is the price on day $t$, the corresponding return would be
 $$r(t) =\frac{p(t) - p(t-1)}{p(t-1)}=\frac{p(t)}{p(t-1)}-1,$$
 which can be multiplied by 100 to get percentage scale. The list `msft_price` contains the opening prices of Microsoft stock in the NASDAQ market, from September 5th to October 3rd of 2023 (only trading days), in US dollars. Calculate a 1D array containing the daily returns. Note that there will be no return for the September 5th, because you are not given the price for the preceding day.
+
 ```
 msft_price = [329.00, 333.38, 331.29, 330.09, 337.24, 335.82, 331.31, 339.15, 336.92, 327.80,
     326.17, 329.51, 319.26, 321.32, 316.59, 315.13, 312.30, 310.99, 317.75, 316.28, 320.83])
