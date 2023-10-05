@@ -2,9 +2,11 @@
 
 ## The package Pandas
 
-**Pandas** is a library for managing data in tabular format, inspired in the statistical language R. It is not a simple toolkit, but a huge collection of functions and methods, which cover practically anything that you may wish to do with data, often in multiple ways. Therefore, rather than on "learning Pandas", you should think on "using Pandas", learning on the way (maybe no more than what you need). In this course, we try to develop a basic understanding of how Pandas objects work, so you can start playing with them in real world applications.
+**Pandas** is a library for managing data in tabular format, inspired in the statistical language R. It is not a simple toolkit, but a huge collection of functions and methods, which cover practically anything that you may wish to do with data, often in multiple ways. Therefore, rather than on "learning Pandas", you should think on "using Pandas", learning on the way (maybe no more than what you need). In this course, we try to develop a basic understanding of how to work with Pandas data containers, so you can start using them in real world applications.
 
-Pandas is typically imported as
+This lecture, and the short tutorial contained in it, are just introductory. The two last lectures present more advanced stuff, such as cleaning data sets, missing values, grouping and aggregating, basic stats, and plotting. Real data will be provided in separate examples.
+
+Pandas is typically imported as:
 
 ```
 In [1]: import pandas as pd
@@ -20,7 +22,7 @@ Although it is not frequent in the real world practice, where the data are impor
 
 ```
 In [2]: s1 = pd.Series([2, 7, 14, 5, 9])
-    ...: s1
+   ...: s1
 Out[2]:
 0     2
 1     7
@@ -37,7 +39,7 @@ In [3]: s1.values
 Out[3]: array([ 2,  7, 14,  5,  9])
 ```
 
-As shown above, when a series is printed, the index appears on the left. Since the index of `s1` has not been specified, a range of consecutive integers has been assigned as the index.
+As shown above, when a series is printed, the index appears on the left. Since the index of `s1` has not been specified, a range of consecutive integers has been assigned to the index.
 
 ```
 In [4]: s1.index
@@ -70,119 +72,134 @@ In [7]: s2.index[-2:]
 Out[7]: Index(['b', 'c'], dtype='object')
 ```
 
-Indexes are useful for filtering and joining data sets. There are many types of indexes, which allow for specific operations. So, do not look at the index as an embarrassment, which is what it seems at first sight, but as a tool for data management.
+Though Pandas allows duplicates in an index, good indexes should not have them, so rows can be identified by the index value. Indexes are useful for filtering and joining data sets. There are many types of indexes, which allow for specific operations. So, do not look at the index as an embarrassment, which is what it seems at first sight, but as a tool for data management.
 
 ## Pandas data frames
 
-A Pandas **data frame** can be built in many ways with the Pandas function `DataFrame`. For instance, from a dictionary of vector-like objects of the same length, as in the following example. Note that the second term of the third column is missing.
+A Pandas **data frame** can be built in many ways with the Pandas function `DataFrame`. For instance, from a dictionary of vector-like objects of the same length (such as lists, ranges, 1D arrays or Pandas series). As an example, we revisit the biometric data used in the pecedig lecture. We started with three lists, with height, weight and gender, respectively.
 
 ```
-In [8]: df1 = pd.DataFrame({'v1': range(1, 6), 'v2': ['a', 'b', 'c', 'd', 'e'], 'v3': [-1.3, None, 2, 7, 0]})
-   ...: df1
-Out[8]: 
-   v1 v2   v3
-0   1  a -1.3
-1   2  b  NaN
-2   3  c  2.0
-3   4  d  7.0
-4   5  e  0.0
+In [8]: height = [1.65, 1.73, 1.51, 1.63, 1.69, 1.7, 1.81, 1.66, 1.58, 1.66,
+   ...:     1.62, 1.81, 1.75, 1.65, 1.65]
+   ...: weight = [61.6, 59.5, 46.5, 75.3, 47.6, 80.2, 67.5, 64.1, 69.5, 57.0,
+   ...:     68.6, 69.3, 53.2, 66.1, 50.6]
+   ...: gender = ['M', 'M', 'F', 'F', 'M', 'F', 'M', 'F', 'F', 'M', 'F', 'M',
+   ...:     'F', 'M', 'M']
 ```
 
-*Note*. `NaN` is the Pandas notation for a missing value.
-
-As the series, the data frames have the attributes `values` and `index`. 
+Now, we pack these lists as a data frame:
 
 ```
-In [9]: df1.values
+In [9]: bio = pd.DataFrame({'height': height, 'weight': weight, 'gender': gender})
+   ...: bio
 Out[9]: 
-array([[1, 'a', -1.3],
-       [2, 'b', nan],
-       [3, 'c', 2.0],
-       [4, 'd', 7.0],
-       [5, 'e', 0.0]], dtype=object)
+    height  weight gender
+0     1.65    61.6      M
+1     1.73    59.5      M
+2     1.51    46.5      F
+3     1.63    75.3      F
+4     1.69    47.6      M
+5     1.70    80.2      F
+6     1.81    67.5      M
+7     1.66    64.1      F
+8     1.58    69.5      F
+9     1.66    57.0      M
+10    1.62    68.6      F
+11    1.81    69.3      M
+12    1.75    53.2      F
+13    1.65    66.1      M
+14    1.65    50.6      M
 ```
 
-Without an explicit specification, the index is automatically created as a range index. 
+Note that here, `height` was a list, while `'height'` is the name that we give to the first column in the new data frame. We could have chosen a different name. The same for the other two columns. 
+
+As a series, a data frame has the attributes `index` and `values`. The index was printed on the left, as for a series. We can also ask for it explicitly. Without an explicit specification, the index has been automatically created as a range index. 
 
 ```
-In [10]: df1.index
-Out[10]: RangeIndex(start=0, stop=5, step=1)
+In [10]: bio.index
+Out[10]: RangeIndex(start=0, stop=15, step=1)
 ```
 
-Note that all the terms in the data column have been converted to data type `float`. A column of a data frame must have a unique data type for all its terms. The data type reported for the whole data frame is a compromise among the data types of the columns, and does not matter in practice. Here, since the columns have different data types, `df.values` takes `object` type. 
-
-The third component of the data frame is a index object with the column names, which can be extracted as the attribute `columns`.
+The values come as 2D array. The data type reported for the whole data frame is a compromise among the data types of the columns, and does not matter in practice. Here, since the columns have different data types, `bio.values` takes type `object`. 
 
 ```
-In [11]: df1.columns
-Out[11]: Index(['v1', 'v2', 'v3'], dtype='object')
-```
+In [11]: bio.values
+Out[11]: 
+array([[1.65, 61.6, 'M'],
+       [1.73, 59.5, 'M'],
+       [1.51, 46.5, 'F'],
+       [1.63, 75.3, 'F'],
+       [1.69, 47.6, 'M'],
+       [1.7, 80.2, 'F'],
+       [1.81, 67.5, 'M'],
+       [1.66, 64.1, 'F'],
+       [1.58, 69.5, 'F'],
+       [1.66, 57.0, 'M'],
+       [1.62, 68.6, 'F'],
+       [1.81, 69.3, 'M'],
+       [1.75, 53.2, 'F'],
+       [1.65, 66.1, 'M'],
+       [1.65, 50.6, 'M']], dtype=object)
+``` 
 
-A data frame has the same shape of the array of values. Having rows and columns, a data frame looks like a 2D array with row and column names. Indeed, we can also create data frames in this way:
+The third component of the data frame is a `index` object with the column names, which can be extracted as the attribute `columns`.
 
 ```
-In [12]: import numpy as np
-    ...: arr = np.array([range(4), [9, 2.3, 7, 0]])
-    ...: df2 = pd.DataFrame(arr)
-Out[12]: 
-     0    1    2    3
-0  0.0  1.0  2.0  3.0
-1  9.0  2.3  7.0  0.0
+In [12]: bio.columns
+Out[12]: Index(['height', 'weight', 'gender'], dtype='object')
 ```
 
 Data frames can also be extracted from a data source (local or remote), such as a CSV file, an Excel sheet, or a table from a relational database. Irrespective of the type of source used, a range index is automatically created unless an alternative specification is provided. One of the columns of the source can be taken as the index.
 
-Column names can also be generated automatically, as in the following example.
-
-```
-In [13]: df2.columns
-Out[13]: RangeIndex(start=0, stop=4, step=1)
-```
-
-This is just an example illstrating how Pandas work. Of course, it is recommended to choose column names that suggest the content of every column.
-
 ## Exploring Pandas objects
+
+A data frame has the same shape of the array of values. 
+
+```
+In [13]: bio.shape
+Out[13]: (15, 3)
+```
 
 The methods `head` and `tail` extract the first and the last rows of a data frame, respectively. The default number of rows extracted is 5, but you can pass a custom number.
 
 ```
-In [13]: df1.head(2)
-Out[13]: 
-   v1 v2   v3
-0   1  a -1.3
-1   2  b  NaN
+In [14]: bio.head(2)
+Out[14]: 
+   height  weight gender
+0    1.65    61.6      M
+1    1.73    59.5      M
 ```
 
-The content of a data frame can also be explored with the method `info`. It reports the dimensions, the data type and the number of non-missing values of every column of the data frame. Note that the data type of the second column, for which you would have expected `str`, is reported as `object`. Don't worry about this, you could apply the string methods to this column.
+The content of a data frame can also be explored with the method `info`. It reports the dimensions, the data type and the number of non-missing values of every column of the data frame. Note that the data type of the third column, for which you would have expected `str`, is reported as `object`. Don't worry about this, you could apply the string methods to this column.
 
 ```
-In [14]: df1.info()
+In [15]: bio.info()
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 5 entries, 0 to 4
+RangeIndex: 15 entries, 0 to 14
 Data columns (total 3 columns):
  #   Column  Non-Null Count  Dtype  
 ---  ------  --------------  -----  
- 0   v1      5 non-null      int64  
- 1   v2      5 non-null      object 
- 2   v3      4 non-null      float64
-dtypes: float64(1), int64(1), object(1)
-memory usage: 248.0+ bytes
+ 0   height  15 non-null     float64
+ 1   weight  15 non-null     float64
+ 2   gender  15 non-null     object 
+dtypes: float64(2), object(1)
+memory usage: 492.0+ bytes
 ```
 
 The method `describe` prints a statistical summary of a Pandas object. The columns of type `object` are omitted, except when all the columns have that type. In that case, the summary contains only counts. 
 
 ```
-In [15]: df1.describe()
-Out[15]: 
-             v1        v3
-count  5.000000  4.000000
-mean   3.000000  1.925000
-std    1.581139  3.645431
-min    1.000000 -1.300000
-25%    2.000000 -0.325000
-50%    3.000000  1.000000
-75%    4.000000  3.250000
-max    5.000000  7.000000
+In [16]: bio.describe()
+Out[16]: 
+          height     weight
+count  15.000000  15.000000
+mean    1.673333  62.440000
+std     0.079970   9.986477
+min     1.510000  46.500000
+25%     1.640000  55.100000
+50%     1.660000  64.100000
+75%     1.715000  68.950000
+max     1.810000  80.200000
 ```
 
 ## Subsetting data frames
@@ -190,64 +207,130 @@ max    5.000000  7.000000
 Pandas offers multiple ways for subsetting data frames. First, you can extract a column, as a series:
 
 ```
-In [16]: df1['v2']
-Out[16]:
-0    a
-1    b
-2    c
-3    d
-4    e
-Name: v2, dtype: object
+In [17]: bio['height']
+Out[17]: 
+0     1.65
+1     1.73
+2     1.51
+3     1.63
+4     1.69
+5     1.70
+6     1.81
+7     1.66
+8     1.58
+9     1.66
+10    1.62
+11    1.81
+12    1.75
+13    1.65
+14    1.65
+Name: height, dtype: float64
+
 ````
 
 Note that the syntax is the same as for extracting the value of a key from a dictionary (not by chance). You can also extract a **data subframe** containing a subset of complete columns from a data frame. You can specify this with a list containing the names of those columns:
 
 ```
-In [17]: df1[['v1', 'v2']]
-Out[17]:
-   v1 v2
-0   0  a
-1   1  b
-2   2  c
-3   3  d
-4   4  e
-```
-
-*Note*. You can extract a subframe with a single column. Beware that this is not the same as a series. `df1['v2']`is a series with shape `(5,)`, and `df1[['v2']]` is a data frame with shape `(5,1)`.
-
-In practical data analysis, rows are typically filtered by expressions. A Boolean mask can be created with an expression involving columns of a data frame just as for NumPy arrays. A simple example follows. 
-
-```
-In [18]: df1[df1['v1'] > 2]
+In [18]: bio[['height', 'weight']]
 Out[18]: 
-   v1 v2   v3
-2   3  c  2.0
-3   4  d  7.0
-4   5  e  0.0
+    height  weight
+0     1.65    61.6
+1     1.73    59.5
+2     1.51    46.5
+3     1.63    75.3
+4     1.69    47.6
+5     1.70    80.2
+6     1.81    67.5
+7     1.66    64.1
+8     1.58    69.5
+9     1.66    57.0
+10    1.62    68.6
+11    1.81    69.3
+12    1.75    53.2
+13    1.65    66.1
+14    1.65    50.6
 ```
 
-Note that `df1['v1'] > 2`  is a series of data type `bool`:
+*Note*. You can extract a data subframe with a single column. Beware that this is not the same as a series. `bio['height']`is a series with shape `(15,)`, and `bio[['height']]` is a data frame with shape `(15,1)`. We have seen something similar in lists.
+
+The good news from Pandas is that we can operate with columns, getting a series, as we did with 1D arrays, but in Pandas we can add the result as an additional column:
 
 ```
-In [19]: df1['v1'] > 2
+In [19]: bio['bmi'] = bio['weight']/bio['height']**2
+    ...: bio
 Out[19]: 
-0    False
-1    False
-2     True
-3     True
-4     True
-Name: v1, dtype: bool
+    height  weight gender        bmi
+0     1.65    61.6      M  22.626263
+1     1.73    59.5      M  19.880384
+2     1.51    46.5      F  20.393842
+3     1.63    75.3      F  28.341300
+4     1.69    47.6      M  16.666083
+5     1.70    80.2      F  27.750865
+6     1.81    67.5      M  20.603767
+7     1.66    64.1      F  23.261722
+8     1.58    69.5      F  27.840090
+9     1.66    57.0      M  20.685150
+10    1.62    68.6      F  26.139308
+11    1.81    69.3      M  21.153200
+12    1.75    53.2      F  17.371429
+13    1.65    66.1      M  24.279155
+14    1.65    50.6      M  18.585859
+```
+
+In practical data analysis, rows are typically filtered by means of expressions. A Boolean mask can be created with an expression involving columns of a data frame just as for NumPy arrays. A simple example follows. 
+
+```
+In [20]: male = (bio['gender'] == 'M')
+    ...: male
+Out[20]: 
+0      True
+1      True
+2     False
+3     False
+4      True
+5     False
+6      True
+7     False
+8     False
+9      True
+10    False
+11     True
+12    False
+13     True
+14     True
+Name: gender, dtype: bool
+```
+
+Note that `male` is a (separate) series of data type `bool`. We could also add it to `bio` as a column, or make it a 1/0 **dummy** (just add `+ 0` at the end of the definition). Also, note that the parenthesis in the definition is not needed, though it is good practice to enclose expressions for readability. 
+
+```
+In [21]: bio[male]
+Out[21]: 
+    height  weight gender        bmi
+0     1.65    61.6      M  22.626263
+1     1.73    59.5      M  19.880384
+4     1.69    47.6      M  16.666083
+6     1.81    67.5      M  20.603767
+9     1.66    57.0      M  20.685150
+11    1.81    69.3      M  21.153200
+13    1.65    66.1      M  24.279155
+14    1.65    50.6      M  18.585859
 ```
 
 See next how to combine a row filter and a column selection. You can change the order, selecting first the columns and then filtering the rows. 
 
 ```
-In [20]: df1[df1['v1'] > 2][['v1', 'v2']]
-Out[20]: 
-   v1 v2
-2   3  c
-3   4  d
-4   5  e
+In [22]: bio[male][['height', 'weight']]
+Out[22]: 
+    height  weight
+0     1.65    61.6
+1     1.73    59.5
+4     1.69    47.6
+6     1.81    67.5
+9     1.66    57.0
+11    1.81    69.3
+13    1.65    66.1
+14    1.65    50.6
 ```
 
 Besides this, there are two additional ways to carry out a selection, specifying rows and columns in one shot:
@@ -260,8 +343,6 @@ In both cases, if you enter a single specification inside the brackets, it refer
 
 ## Homework
 
-1. Import NumPy and Pandas and create a data frame `df` with three columns named `X`, `Y` and `Z`, putting in the first columns consecutive numbers from 0 to 9, in the second column consecutive integers from -3 to 6 and the third column 10 ones (you can do this with `np.ones(10))`. Replace every term in the first column by its square. What will you do if you want, instead of changing the terms of the first column, to add a fourth column, named `U`, containing the squares of the first column?
+1. Replace the first item of the list `weight` by `None` and repeat everything. Can you explain all the changes?
 
-2. Suppose that you have added the fourth column to `df` with the squares of the first column, and use `df.info()` to generate a report of your data. Replace the last term of the fourth column by either `None` or `np.nan`. Then, use `df.info()` again and compare the two reports. Can you explain all the changes? Note: Don't pay attention to the warning message.
-
-3. After replacing the last term by a `NaN` value, split the data in two parts, using `df['U'] <= 16` and `df['U'] > 16`. What happened with the last row?
+2. In this new version, split the data in two parts, using `bio['weight'] <= 67` and `bio['weight'] > 67`. What happened with the first row?
