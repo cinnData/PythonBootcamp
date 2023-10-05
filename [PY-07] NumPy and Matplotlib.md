@@ -246,6 +246,6 @@ msft_price = [329.00, 333.38, 331.29, 330.09, 337.24, 335.82, 331.31, 339.15, 33
     326.17, 329.51, 319.26, 321.32, 316.59, 315.13, 312.30, 310.99, 317.75, 316.28, 320.83])
 ```
 
-5. In the first question of the homework of lecture PY-05, you wrote a function which takes the height and the weight (single numbers, not vectors) and returned a categorization of the BMI. Can you modify that function so it takes a vector of heights and a vector of weights and returns a vector of categorized BMI's? Note that what you nedd is a **vectorized function**.
+5. In the first question of the homework of lecture PY-05, you wrote a function which takes the height and the weight (single numbers, not vectors) and returned a categorization of the BMI. Can you modify that function so it takes a vector of heights and a vector of weights and returns a vector of categorized BMI's? Note that what you need is a **vectorized function**.
 
 6. Can you calculate the BMI (either numeric or categorical) using lists instead of NumPy arrays? So, you have to start with a list of heights and a list of weights and calculate a list of BMI's.
