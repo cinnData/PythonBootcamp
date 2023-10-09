@@ -1,4 +1,4 @@
-## [PY-04C] Cheatsheet - Lists
+# [PY-04C] Cheatsheet - Lists
 
 ## Extracting items from a list
 
@@ -52,4 +52,3 @@
 
 * `[expr for i in lst for j in i]`: applies to a list of lists. It returns a list of the same length as `lst`, whose items result from evaluating the expression `expr` on the items of every item `i` of `lst`. This is a particular case of nested loop (see the preceding bullet).
  
-
