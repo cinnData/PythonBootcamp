@@ -97,4 +97,7 @@ In [12]: has_zero(1, -2, 3)
 Out[12]: False
 ```
 
+## Homework
+
+1. The first question of the homework of lecture PY-05 was concerned with calculating the body mass index (BMI), in numeric and categorical scales. Write a program thats asks the user his/her height and weight, specifying the units, and prints *Your BMI is ---, so you are classified as ---*.
 
