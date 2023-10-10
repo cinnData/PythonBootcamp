@@ -2,9 +2,9 @@
 
 ## NumPy arrays
 
-In this lecture, we expand the catalog of data containers with a new type, the **NumPy array**. We have seen in a previous lecture how to apply a function to all the items of a list with a `for` loop. The procedure was simple, but it gets inefficient when the list is long. With NumPy arrays we have a ways of doing that faster and also for operating with data containers to obtain new data containers. The NumPy arrays are modeled after objects that you have found in your mathematical experience, vectors and matrices.
+In this lecture, we expand the catalog of data containers with a new type, the **NumPy array**. We have seen in a previous lecture how to apply a function to all the items of a list with a `for` loop. The procedure was simple, but it gets inefficient when the list is long. With NumPy arrays we have tools to do that faster and also for operating with data containers to obtain new data containers. 
 
-In mathematics, a **vector** is a sequence of numbers, and a **matrix** a rectangular arrangement of numbers. Operations with vectors and matrices are the subject of a branch of mathematics called **linear algebra**. In the Python library **NumPy** (and in many other places), vectors are called one-dimensional (1D) arrays, while matrices are called two-dimensional (2D) arrays. In NumPy, arrays of more than two dimensions can be managed without pain.
+The NumPy arrays are modeled after objects that you may have found (and perhaps tried to elude) in your mathematical experience, vectors and matrices. In mathematics, a **vector** is a sequence of numbers, and a **matrix** a rectangular arrangement of numbers. Operations with vectors and matrices are the subject of a branch of mathematics called **linear algebra**. In the Python library **NumPy** (and in many other places), vectors are called one-dimensional (1D) arrays, while matrices are called two-dimensional (2D) arrays. In NumPy, arrays of more than two dimensions can be managed without pain.
 
 Unlike mathematical vectors and matrices, NumPy arrays are not necessarily numeric. But all the terms of an array must have the same type, so the array itself can have a type. In order to cope with the complexities of the data analysis, NumPy provides additional data types, like the type `object`, but this sophistication is not used in this course.  
 
@@ -66,7 +66,7 @@ In [9]: arr1[2]
 Out[9]: 2
 ```
 
-For a 2D array, you need two indexes inside the square brackets: The first index selects the row (`axis=0`), and the second index the column (`axis=1`). So, the term in the intersectiion of the second row and the third column of `arr2` comes as:
+For a 2D array, you need two indexes inside the square brackets: The first index selects the row (`axis=0`), and the second index the column (`axis=1`). So, the term in the intersection of the second row and the third column of `arr2` comes as:
 
 ```
 In [10]: arr2[1, 2]
@@ -94,7 +94,9 @@ array([[5.00000000e-01, 9.11051194e-04, 1.19202922e-01, 4.74258732e-02],
        [4.74258732e-02, 1.23394576e-04, 9.93307149e-01, 2.68941421e-01]])
 ```
 
-NumPy also provides common statistical functions, such as `mean`, `max`, `sum`, etc.
+Unfortunately, this will not happen so automatically for the functions that you may define, for instance for functions which involve loops and coditionals. NumPy provides the function `vectorize()`, which transforms a function into a vectorized function. 
+
+NumPy also provides common **statistical functions**, such as `mean`, `max`, `sum`, etc.
 
 ## Subsetting arrays
 
@@ -112,7 +114,7 @@ In [14]: arr2[:1, 1:]
 Out[14]: array([[7, 2, 3]])
 ```
 
-Subarrays can also be extracted by means of an **expression**. When you input the expression formed by an array, a comparison operator (such as `>`) and a **literal** (such as 3), the expression is evaluated, and the Python interpreter returns a Boolean array with the same shape:
+Subarrays can also be extracted by means of an **expression**. When you input the expression formed by an array, a comparison operator (such as `>`) and a **literal** (such as 3), the expression is evaluated, and the Python kernel returns a Boolean array with the same shape:
 
 ```
 In [15]: arr1 > 3
@@ -126,7 +128,7 @@ array([[False,  True, False,  True],
        [ True,  True, False, False]])
 ```
 
-A Boolean array that is used to extract a subarray is called a **Boolean mask**. The terms selected are those for which the mask has value `True`. 
+A Boolean array that is used to extract a subarray is called a **Boolean mask**. The terms selected are those for which the mask has value `True`. To get that, we put the Boolean mask inside square brackets.
 
 ```
 In [17]: arr1[arr1 > 3]
@@ -156,7 +158,7 @@ In [19]: height = np.array(height)
     ...: gender = np.array(gender)
 ```
 
-The same formula BMI that can be used to calculate the BMI for a single person works for arrays. 
+The same formula that would be used to calculate the BMI for a single person works for arrays. 
 
 ```
 In [20]: bmi = weight/height**2
@@ -192,7 +194,7 @@ Out[23]: 20.6
 
 Inspired in MATLAB, a classic of numeric computing, **Matplotlib** is a Python library containing an impressive range of graphical methods, including image processing. As some other libraries in the Python world, Matplotlib has several API's, which makes it a bit confusing for the beginners. In this context, an **application programming interface** (API) is like an idiom that you use for calling the functions of the library. It defines the kinds of requests that can be made and how to make them. 
 
-Matplotlib offers you a choice between two API's, the **pyplot API** and the **object-oriented API**. This course uses the pyplot API. Beware that, if you search in the Internet information about plotting in Matplotlib, the solutions found can come in any of the two API's. Due to this mix, Matplotlib may look a bit confusing.
+Matplotlib offers you a choice between two API's, the **pyplot API** and the **object-oriented API**. This course uses the pyplot API. Beware that, if you search in the Internet information about plotting in Matplotlib, the solutions found can come in any of the two API's. Due to this mix, Matplotlib may look a bit confusing to the beginner.
 
 The subpackage `matplotlib.pyplot` is a collection of command style functions that make Matplotlib work like MATLAB. It is typically imported as:
 
@@ -200,7 +202,7 @@ The subpackage `matplotlib.pyplot` is a collection of command style functions th
 In [24]: import matplotlib.pyplot as plt
 ```
 
-To create a figure with `pyplot`, we call in a single input one or several functions. Each `pyplot` function makes some change to the figure, such as changing the default size, adding a title, plotting lines, decorating the plot with labels, etc. This is illustrated by the following example, in which we plot together three curves, a linear, a quadratic and a cubic curve. 
+To create a figure with `pyplot`, we put together in a single input one or several functions. Each `pyplot` function makes some change to the figure, such as changing the default size, adding a title, plotting lines, decorating the plot with labels, etc. This is illustrated by the following example, in which we plot together three curves, a linear, a quadratic and a cubic curve. 
 
 First, we fill a 1D array with linearly spaced values. With 100 points, we can create a visual effect so the lines look like smooth curves.
 
@@ -237,15 +239,15 @@ Take care of running these lines of code together. The semicolon in the last lin
 
 3. Real data frequently comes with **missing values**. The designers of NumPy allowed for this creating `np.nan`, which has data type `float`. This value has to be handled with care. To get an idea oh it works, calculate `np.nan + 3`, `np.nan < 3`, `np.nan == np.nan` and `np.nan <= np.nan`. Can you explain all the results obtained?
 
-4. The **daily return** is the percentage change in the price with respect to the preceding trading day. If $p(t)$ is the price on day $t$, the corresponding return would be
+4. In the stock market, the **daily return** is the percentage change in the price of a specific company's shares with respect to the preceding trading day. If $p(t)$ is the price on day $t$, the corresponding return would be
 $$r(t) =\frac{p(t) - p(t-1)}{p(t-1)}=\frac{p(t)}{p(t-1)}-1,$$
-which can be multiplied by 100 to get percentage scale. The list `msft_price` contains the opening prices of Microsoft stock in the NASDAQ market, from September 5th to October 3rd of 2023 (only trading days), in US dollars. Calculate a 1D array containing the daily returns. Note that there will be no return for the September 5th, because you are not given the price for the preceding day.
+which can be multiplied by 100 to get percentage scale. The list `msft_price`, given below, contains the opening prices of Microsoft stock in the NASDAQ market, from September 5th to October 3rd of 2023 (only trading days), in US dollars. Calculate a 1D array containing the daily returns. Note that there will be no return for September 5th, because you are not given the price for the preceding day.
 
 ```
 msft_price = [329.00, 333.38, 331.29, 330.09, 337.24, 335.82, 331.31, 339.15, 336.92, 327.80,
     326.17, 329.51, 319.26, 321.32, 316.59, 315.13, 312.30, 310.99, 317.75, 316.28, 320.83])
 ```
 
-5. In the first question of the homework of lecture PY-05, you wrote a function which takes the height and the weight (single numbers, not vectors) and returned a categorization of the BMI. Can you modify that function so it takes a vector of heights and a vector of weights and returns a vector of categorized BMI's? Note that what you need is a **vectorized function**.
+5. In the first question of the homework of lecture PY-05, you wrote a function which takes the height and the weight (single numbers, not vectors) and returns a **categorization** of the BMI. Can you modify that function so it takes a vector of heights and a vector of weights and returns a vector of categorized BMI's? Note that what you need is a **vectorized function**.
 
-6. Can you calculate the BMI (either numeric or categorical) using lists instead of NumPy arrays? So, you have to start with a list of heights and a list of weights and calculate a list of BMI's.
+6. Rewrite the code given in the example of this lecture, so it can be used to calculate the BMI (either numeric or categorical) using lists instead of NumPy arrays. So, you have to start with a list of heights and a list of weights and calculate a list of BMI's.
