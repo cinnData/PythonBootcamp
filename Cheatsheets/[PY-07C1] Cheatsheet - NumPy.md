@@ -66,54 +66,52 @@ a list of numeric 1D arrays of the same length. For two arrays, the square brack
 
 ## NumPy functions
 
-* `abs()`: calculates the absolute values of an array, term by term.
+* `np.abs()`: calculates the absolute values of an array, term by term.
 
-* `arange(n, m, s)`: returns the same collection of integers as `range`, but as a 1D array.
+* `np.arange(n, m, s)`: returns the same collection of integers as `range`, but as a 1D array.
 
-* `argmax()`: the same as the method `.argmax()`.
+* `np.argmax()`: the same as the method `.argmax()`.
 
-* `argmin()`: the same as the method `.argmin()`.
+* `np.argmin()`: the same as the method `.argmin()`.
 
-* `array(values)`: if `values` is a vector-like object, such as a list or a range, it returns a 1D array containing the sames elements as `values`. If `values` is a list of vector-like objects of the same length, it returns a 2D array. The elements of `values` are coerced on the fly to a common type.
+* `np.array(values)`: if `values` is a vector-like object, such as a list or a range, it returns a 1D array containing the sames elements as `values`. If `values` is a list of vector-like objects of the same length, it returns a 2D array. The elements of `values` are coerced on the fly to a common type.
 
-* `argsort()`: the same as the method `.argsort()`.
+* `np.argsort()`: the same as the method `.argsort()`.
 
-* `concatenate(arrlist)`: concatenates a list of arrays of the same number of dimensions, returning an array with that number of dimensions. For a list of 2D arrays, the parameter `axis` allows choosing between vertical (`axis=0`) and horizontal (`axis=1`) concatenation. The default is `axis=0`. It takes some other keyword arguments whose default you will never change.
+* `np.concatenate(arrlist)`: concatenates a list of arrays of the same number of dimensions, returning an array with that number of dimensions. For a list of 2D arrays, the parameter `axis` allows choosing between vertical (`axis=0`) and horizontal (`axis=1`) concatenation. The default is `axis=0`. It takes some other keyword arguments whose default you will never change.
 
-* `corrcoef()`: the same as the method `.corrcoef()`. As a function, it can be applied to a list of 1D arrays.
+* `np.corrcoef()`: the same as the method `.corrcoef()`. As a function, it can be applied to a list of 1D arrays.
 
-* `cumsum()`: the same as the method `.cumsum()`.
+* `np.cumsum()`: the same as the method `.cumsum()`.
 
-* `delete(arr, lst)`: for a 1D array, deletes the terms of the array `arr` whose indexes are in the list `lst`. It returns the complement of `arr[lst]`. `lst` can also be a single index, or a range. For a 2D array, an axis can be specified. With `axis=0`, it deletes rows and, with `axis=1`, columns, and with `axis=None` (the default) it applies to the flattened array.  It takes two positional arguments plus the (keyword) `axis` argument.
+* `np.delete(arr, lst)`: for a 1D array, deletes the terms of the array `arr` whose indexes are in the list `lst`. It returns the complement of `arr[lst]`. `lst` can also be a single index, or a range. For a 2D array, an axis can be specified. With `axis=0`, it deletes rows and, with `axis=1`, columns, and with `axis=None` (the default) it applies to the flattened array.  It takes two positional arguments plus the (keyword) `axis` argument.
 
-* `diagonal()`: the same as the method `.diagonal()`.
+* `np.diagonal()`: the same as the method `.diagonal()`.
 
-* `int64()`: the same as the method `.astype('int')`.
+* `np.int64()`: the same as the method `.astype('int')`.
 
-* `float64()`: the same as the method `.astype('float')`.
+* `np.float64()`: the same as the method `.astype('float')`.
 
-* `len()`: for a 1D array, returns the number of terms of `arr`. For a 2D array, the number of rows.
+* `np.linspace(start, stop, num=50)`: returns evenly spaced numbers over a specified interval. It takes to positional arguments plus the (keyword) `num` argument which defaults to 50.
 
-* `linspace(start, stop, num=50)`: returns evenly spaced numbers over a specified interval. It takes to positional arguments plus the (keyword) `num` argument which defaults to 50.
+* `np.max()`: the same as the method `.max()`.
 
-* `max()`: the same as the method `.max()`.
+* `np.mean()`: the same as the methid `.mean()`.
 
-* `mean()`: the same as the methid `.mean()`.
+* `np.min()`: the same as the method `.min()`.
 
-* `min()`: the same as the method `.min()`.
+* `np.reshape()`: the same as the method `.reshape()`.
 
-* `reshape()`: the same as the method `.reshape()`.
+* `np.round()`: the same as the method `.round()`.
 
-* `round()`: the same as the method `.round()`.
+* `np.sort()`: the same as the method `.sort()`.
 
-* `sort()`: the same as the method `.sort()`.
+* `np.stack(arrlist, axis=0)`: joins a list of arrays of the same dimensions, returning an array with an extra axis. For instance, if `arr1` and `arr2` are two vectors of the same length, `np.stack([arr1, arr2])` puts them as the rows of a matrix, while `np.stack([arr1, arr2], axis=1)` puts them as the columns of a matrix. Note that `np.stack()` increases the number of dimensions, while `np.concatenate()` leaves it unchanged.
 
-* `stack(arrlist, axis=0)`: joins a list of arrays of the same dimensions, returning an array with an extra axis. For instance, if `arr1` and `arr2` are two vectors of the same length, `np.stack([arr1, arr2])` puts them as the rows of a matrix, while `np.stack([arr1, arr2], axis=1)` puts them as the columns of a matrix. Note that `stack()` increases the number of dimensions, while `concatenate()` leaves it unchanged.
+* `np.sum()`: the same as the method `.sum()`.
 
-* `sum()`: the same as the method `.sum()`.
+* `np.transpose()`: the same as the method `.transpose()`. 
 
-* `transpose()`: the same as the method `.transpose()`. 
+* `np.unique(ar, return_counts=False)`: returns the sorted (ascending) unique terms of the array specified by the parameter `ar`. With `returns_counts=True` (not the default), it returns also an array containing the number of occurrences of every unique value. It has other parameters whose default you will never change. 
 
-* `unique(ar, return_counts=False)`: returns the sorted (ascending) unique terms of the array specified by the parameter `ar`. With `returns_counts=True` (not the default), it returns also an array containing the number of occurrences of every unique value. It has other parameters whose default you will never change. 
-
-* `vectorize()`: vectorizes a function, so it can take vector-like objects, such as lists or 1D arrays, as arguments. Irrespective of the type of those objects, it always return a NumPy array.
+* `np.vectorize()`: vectorizes a function, so it can take vector-like objects, such as lists or 1D arrays, as arguments. Irrespective of the type of those objects, it always return a NumPy array.
