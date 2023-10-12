@@ -4,7 +4,7 @@
 
 **Pandas** is a library for managing data in tabular format, inspired in the statistical language R. It is not a simple toolkit, but a huge collection of functions and methods, which cover practically anything that you may wish to do with data, often in multiple ways. Therefore, rather than on "learning Pandas", you should think on "using Pandas", learning on the way (maybe no more than what you need). In this course, we try to develop a basic understanding of how to work with Pandas data containers, so you can start using them in real world applications.
 
-This lecture, and the short tutorial contained in it, are just introductory. The two last lectures present more advanced stuff, such as cleaning data sets, missing values, grouping and aggregating, basic stats, and plotting. Real data will be provided in separate examples.
+This lecture, and the short tutorial contained, are just introductory. The two last lectures of the course present more advanced stuff, such as cleaning data sets, missing values, grouping and aggregating, basic stats, and plotting. Real data will be provided in separate examples.
 
 Pandas is typically imported as:
 
@@ -12,13 +12,13 @@ Pandas is typically imported as:
 In [1]: import pandas as pd
 ```
 
-Pandas provides two data container classes, the series (one-dimensional) and the data frames (two-dimensional). A **series** can be understood as the combination of a 1D array containing the **values** and a list containing labels for those values, called the **index**. These components can be extracted as the attributes `values` and `index`.
+Pandas provides two data container classes, the series (one-dimensional) and the data frames (two-dimensional). A **series** can be understood as the combination of a 1D array containing the **values** and a list containing labels for those values, called the **index**. These components can be extracted as the attributes `.values` and `.index`.
 
-A **data frame** can be seen as formed by one or several series with the same index (hence, with the same length). It can also be seen as a table for which the index provides the row names. In a Pandas data frame, each column has its own data type. The numeric types work as usual, but Pandas uses the data type `object` for many things, in particular for strings.
+A **data frame** can be seen as formed by one or several series with the same index (hence, with the same length). It can also be seen as a table with row and column names. A Pandas data frame does not have a unique data type, like a NumPy array. Instead, each column has its own data type. The numeric types work as usual, but Pandas uses the data type `object` for various things, in particular for strings.
 
 ## Pandas series
 
-Although it is not frequent in the real world practice, where the data are imported from external data files, a Pandas series can be created directly, for instance from an array, with the Pandas function `Series`. The data can be taken from any vector-like object such as a list or a 1D array.
+Although it is not frequent in the real world practice, where the data are imported from external data files, a Pandas series can be created directly with the Pandas function `Series()`. The data can be taken from a vector-like object such as a list or a 1D array.
 
 ```
 In [2]: s1 = pd.Series([2, 7, 14, 5, 9])
@@ -46,7 +46,7 @@ In [4]: s1.index
 Out[4]: RangeIndex(start=0, stop=5, step=1)
 ``` 
 
-When the data source mixes data types, a conversion to a common type is performed on the fly, as shown in the following example. Here, instead of letting the Python kernel to create an index automatically, as a `RangeIndex`, we specify an index directly:
+When the data source mixes data types, a conversion to a common type is performed on the fly, as shown in the following example. But, instead of letting the Python kernel to create an index automatically, as a `RangeIndex`, we can also provide an index directly:
 
 ```
 In [5]: s2 = pd.Series([1, 5, 'Messi'], index = ['a', 'b', 'c'])
@@ -65,18 +65,18 @@ In [6]: s2.index
 Out[6]: Index(['a', 'b', 'c'], dtype='object')
 ```
 
-Altough they are not the same, a `RangeIndex` works like a range, and an `Index` works like a list, for may purposes. For instance, for slicing:
+Altough they are not the same thing, for many purposes a `RangeIndex` object works like a range, and an `Index` object works like a list. For instance, for slicing:
 
 ```
 In [7]: s2.index[-2:]
 Out[7]: Index(['b', 'c'], dtype='object')
 ```
 
-Though Pandas allows duplicates in an index, good indexes should not have them, so rows can be identified by the index value. Indexes are useful for filtering and joining data sets. There are many types of indexes, which allow for specific operations. So, do not look at the index as an embarrassment, which is what it seems at first sight, but as a tool for data management.
+Though Pandas allows duplicates in an index, good indexes should not have them, so rows can be identified by the index value. Indexes are useful for **filtering** and **joining** data sets. There are many types of indexes, which allow for specific operations. So, do not look at the index as an embarrassment, which is what it seems at first sight, but as a tool for data management.
 
 ## Pandas data frames
 
-A Pandas **data frame** can be built in many ways with the Pandas function `DataFrame`. For instance, from a dictionary of vector-like objects of the same length (such as lists, ranges, 1D arrays or Pandas series). As an example, we revisit the biometric data used in the pecedig lecture. We started with three lists, with height, weight and gender, respectively.
+A Pandas **data frame** can be built in many ways with the Pandas function `DataFrame()`. For instance, from a dictionary of vector-like objects of the same length (including Pandas series). As an example, we revisit the biometric data used in the preceding lecture. We started with three lists, with height, weight and gender, respectively.
 
 ```
 In [8]: height = [1.65, 1.73, 1.51, 1.63, 1.69, 1.7, 1.81, 1.66, 1.58, 1.66,
@@ -113,7 +113,7 @@ Out[9]:
 
 Note that here, `height` was a list, while `'height'` is the name that we give to the first column in the new data frame. We could have chosen a different name. The same for the other two columns. 
 
-As a series, a data frame has the attributes `index` and `values`. The index was printed on the left, as for a series. We can also ask for it explicitly. Without an explicit specification, the index has been automatically created as a range index. 
+The index is printed on the left, as for a series. Without an explicit specification, the index is automatically created as a range index. 
 
 ```
 In [10]: bio.index
@@ -142,25 +142,25 @@ array([[1.65, 61.6, 'M'],
        [1.65, 50.6, 'M']], dtype=object)
 ``` 
 
-The third component of the data frame is a `index` object with the column names, which can be extracted as the attribute `columns`.
+The third component of the data frame is an `index` object containing the column names, which can be extracted as the attribute `.columns`.
 
 ```
 In [12]: bio.columns
 Out[12]: Index(['height', 'weight', 'gender'], dtype='object')
 ```
 
-Data frames can also be extracted from a data source (local or remote), such as a CSV file, an Excel sheet, or a table from a relational database. Irrespective of the type of source used, a range index is automatically created unless an alternative specification is provided. One of the columns of the source can be taken as the index.
+Data frames can also be extracted from a data source (local or remote), such as a CSV file, an Excel sheet, or a table from a relational database. Irrespective of the type of source used, a range index is automatically created unless an alternative specification is provided. One of the columns of the source is often taken as the index.
 
 ## Exploring Pandas objects
 
-A data frame has the same shape of the array of values. 
+A data frame has the same **shape** of the array of values. 
 
 ```
 In [13]: bio.shape
 Out[13]: (15, 3)
 ```
 
-The methods `head` and `tail` extract the first and the last rows of a data frame, respectively. The default number of rows extracted is 5, but you can pass a custom number.
+The methods `.head()` and `.tail()` extract the first and the last rows of a data frame, respectively. The default number of rows extracted is 5, but you can pass a custom number.
 
 ```
 In [14]: bio.head(2)
@@ -170,7 +170,7 @@ Out[14]:
 1    1.73    59.5      M
 ```
 
-The content of a data frame can also be explored with the method `info`. It reports the dimensions, the data type and the number of non-missing values of every column of the data frame. Note that the data type of the third column, for which you would have expected `str`, is reported as `object`. Don't worry about this, you could apply the string methods to this column.
+The content of a data frame can also be explored with the method `.info()`. It prints a report containing the dimensions, the data type and the number of non-missing values of every column of the data frame. Note that the data type of the third column, for which you would have expected `str`, is reported as `object`. Don't worry about this, you could apply the string methods to this column.
 
 ```
 In [15]: bio.info()
@@ -186,7 +186,7 @@ dtypes: float64(2), object(1)
 memory usage: 492.0+ bytes
 ```
 
-The method `describe` prints a statistical summary of a Pandas object. The columns of type `object` are omitted, except when all the columns have that type. In that case, the summary contains only counts. 
+The method `.describe()` prints a statistical summary of a Pandas object. The columns of type `object` are omitted, except when all the columns have that type. In that case, the summary contains only counts. 
 
 ```
 In [16]: bio.describe()
@@ -343,6 +343,6 @@ In both cases, if you enter a single specification inside the brackets, it refer
 
 ## Homework
 
-1. Replace the first item of the list `weight` by `None` and repeat everything. Can you explain all the changes?
+1. Replace the first item of the list `weight` by `None` and redo the calculations. Can you explain all the changes?
 
 2. In this new version, split the data in two parts, using `bio['weight'] <= 67` and `bio['weight'] > 67`. What happened with the first row?
