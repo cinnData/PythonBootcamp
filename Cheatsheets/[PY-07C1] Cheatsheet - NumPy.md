@@ -38,7 +38,7 @@
 
 * `.argmin()`: returns the index of the minimum term of an array. For a 2D array, the parameter `axis` allows for extracting the index of the minimum along rows (`axis=1`) or along columns (`axis=0`). It takes some other keyword arguments whose default you will never change.
 
-* `.argsort()`: returns the indices that would sort an array, as a 1D array. For a 2D array, the parameter `axis` allows for extracting those indexes along rows (`axis=1`) or along columns (`axis=0`). With `axis=None`, it is appied to the flattened array. It takes some other keyword arguments whose default you will never change.
+* `.argsort()`: returns the indices that would sort an array, as a 1D array. For a 2D array, the parameter `axis` allows for extracting those indexes along rows (`axis=1`) or along columns (`axis=0`). With `axis=None`, it is applied to the flattened array. It takes some other keyword arguments whose default you will never change.
 
 * `.astype()`: converts an array to a specified data type. Takes one positional argument, specifying the new data type, plus some some keyword arguments whose default you will never change. 
 
