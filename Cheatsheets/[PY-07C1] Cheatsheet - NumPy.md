@@ -42,9 +42,7 @@
 
 * `.astype()`: converts an array to a specified data type. Takes one positional argument, specifying the new data type, plus some some keyword arguments whose default you will never change. 
 
-*  `.corrcoef()`: returns the correlation matrix of a 2D array. With argument `rowvar=False` (the default) it calculates correlations of rows, with `rowvar=True`, correlations of columns. 
-
-a list of numeric 1D arrays of the same length. For two arrays, the square brackets can be omitted. It can also take a 2D array, returning the correlations of the row vectors (not that of the columns).
+* `.corrcoef()`: returns the correlation matrix of a 2D array. With argument `rowvar=False` (the default) it calculates correlations of rows, with `rowvar=True`, correlations of columns. It can also take a list of numeric 1D arrays of the same length. 
 
 * `.cumsum()`: for a 1D array, returns a 1D array containing the cumulative sums of the terms of the original array. For a 2D array, the cumulative sums are calculated row following row, but the parameter `axis` allows for cumulative sums along rows (`axis=1`) or along columns (`axis=0`). It takes some other keyword arguments whose default you will never change.
 
