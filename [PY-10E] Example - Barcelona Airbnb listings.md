@@ -10,7 +10,7 @@ The file `airbnb.csv` contains data on 15,655 Airbnb **listings** in Barcelona. 
 
 ## The data set
 
-The variables are:
+The columns of the source file are:
 
 * `listing_id`, a unique listing's ID. An active listing is a property listed on Airbnb. Listings may include entire homes or apartments, private rooms or shared spaces.
 
@@ -22,7 +22,7 @@ The variables are:
 
 * `neighbourhood`, the **neighbourhood** (barrio) of the listing. The neighbourhoods are sourced from the city.
 
-* `district`, the district of the listing. The districts, called **neighbourhood groups** at Airbnb, are sourced from the city. There are 10 districts in Barcelona, each grouping several neighbourhoods.
+* `district`, the district of the listing. The districts, called **neighbourhood groups** at Airbnb, are sourced from the city. There are 10 districts in Barcelona, each containing several neighbourhoods.
 
 * `property_type`, the type of property listed. 75% of the listings come as 'Entire rental unit', or 'Private room in rental unit', but Airbnb admits many other possibilities.
 
@@ -40,9 +40,9 @@ Source: `insideairbnb.com/get-the-data`.
 
 ## Questions
 
-Q1. How many duplicates do you find in this data set? Drop them.
+Q1. How many **duplicates** do you find in this data set? Drop them.
 
-Q2. What is the proportion of listings whose rating is missing?
+Q2. What is the proportion of listings whose rating is **missing**?
 
 Q3. Use a histogram to explore the distribution of the price. 
 
@@ -52,16 +52,18 @@ Q5. In which neighbourhoods do we find more listings? Are they more expensive?
 
 ## Importing the data
 
+We import Pandas as usual.
+
 ```
 In [1]: import pandas as pd
 ```
-In this example, we use a remote data source. In Pandas, this works the same as with a local file, the only difference is in the path. The data files of this course can be found in the same GitHub repository as the document that you're reading. The path for these files can be inputted as follows.
+In this example, we use a remote data source. In Pandas, remote source files work the same as local files, the only difference being in the path. The source files for this course can be found in the same GitHub repository as the document that you're reading. The path for these files can be inputted as follows.
 
 ```
 In [2]: path = 'https://raw.githubusercontent.com/cinnData/PythonBootcamp/main/Data/'
 ```
 
-We import the data to a Pandas data frame with the function `read_csv`. In this example, we use the parameter `index_col` to specify the column `listing_id` as the index. 
+To import the data to a Pandas data frame we use the function `read_csv()`. In this example, we use the parameter `index_col` to specify the column `listing_id` as the index. 
 
 ```
 In [3]: df = pd.read_csv(path + 'airbnb.csv', index_col=0)
@@ -69,7 +71,7 @@ In [3]: df = pd.read_csv(path + 'airbnb.csv', index_col=0)
 
 ## Exploring the data
 
-As you can see in the report extracted by the method `.info()`, the index is an `Int64Index`, meaning that all the entries are integers, but not consecutive integers generated automatically as in a `RangeIndex`. Note that `listring_id` is not included in the column list.
+As you can see in the report extracted by the method `.info()`, the index of our data frame is an `Int64Index`, meaning that all the entries are integers, but not consecutive integers generated automatically as in a `RangeIndex`. Note that `listing_id` is not included in the column list.
 
 ```
 In [4]: df.info()
@@ -141,9 +143,9 @@ id
 
 ## Q1. Duplicate listings
 
-Duplicates can be detected with the method `.duplicated()`, which returns a Boolean object of the same shape of the object to which it is applied. In this example, it makes sense to apply it to the index, to check whether there are duplicated listing ID's. Note that Pandas has no rule against duplicated indexes, though in most applications to real data, in which we take the index as an identifier of the row, duplicated indexes are *wrong*.
+Duplicates can be detected with the method `.duplicated()`, which returns a Boolean series. In this example, it makes sense to apply it to the index, to check whether there are duplicated listing ID's. Note that Pandas has no rule against duplicated indexes, though in most applications to real data, in which we take the index as an identifier of the row, duplicated indexes are *wrong*.
 
-In this data set, the listing's ID in this data set is never duplicated, as we see next. This is an example that illustrates how computers count the times an expression is true. The method `.duplicated()` checks whether a particular index value is duplicated (meaning that it has already appeared), returning a `True`/`False` value. These Booleans are stored in the series `df.index.duplicated()`. By applying `.sum()`, we convert the Booleans to integers (1/0), so the sum is equal to the number of `True` values, that is, the number of duplicates. Note that, if an index value appears $n$ times, it is counted as $n - 1$ duplicates.
+In this data set, the listing's ID in this data set is never duplicated, as we see next. The method `.duplicated()` checks whether a particular index value is duplicated (meaning that it has already appeared), returning a `True`/`False` value. These Booleans are stored in the series `df.index.duplicated()`. By applying `.sum()`, we convert the Booleans to integers (1/0), so the sum is equal to the number of `True` values, that is, the number of duplicates. This calculation illustrates how computers count the times an expression is true. Note that, if an index value appears $n$ times, it is counted as $n - 1$ duplicates.
 
 ```
 In [6]: df.index.duplicated().sum()
@@ -174,7 +176,7 @@ Out[9]: (15627, 11)
 
 The report extracted with `.info()` is already letting us know that some columns have missing values. In particular, we have a relevant number of listings for which rating scores are not available (many guests don't rate the lodgings). A specific report on this, which can be restricted to some selected columns, can be extracted with the method `.isna()`, which returns a Boolean data frame of the same shape indicating whether an entry is missing. 
 
-By applying `.sum()`, we would obtain the column totals, that is, the numbers of missing values for every column. By applying `.mean()`, we obtain the number of missing values (*i.e*. the column totals) divided by the number of listings (*i.e*. the number of rows). This is the proportion of missing values.
+By applying `.sum()` after `.isna()`, we would obtain the column totals, that is, the numbers of missing values for every column. By applying `.mean()`, we obtain the number of missing values (*i.e*. the column totals) divided by the number of listings (*i.e*. the number of rows). This is the proportion of missing values.
 
 ```
 In [10]: df.isna().mean()
@@ -205,12 +207,13 @@ Out[11]: 0.221
 A histogram for the prices can be obtained with the method `.plot.hist()`, which has already been used in the previous lecture.
 
 ```
-In [12]: df['price'].plot.hist(figsize=(8,6), color='gray', edgecolor='white');
+In [12]: df['price'].plot.hist(figsize=(7,5), title='Figure 1. Distribution of the price',
+    color='gray', edgecolor='white', xlabel='Price per night (euros)');
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_9.1.png)
 
-Is this histogram useful? Not much, since some very expensive lodgings distort the whole picture. By using the listing's ID, it can be checked that some of these extreme prices don't match the prices given in the Airbnb website. A rough idea of the distribution can be given by the statistical summary printed by `.describe()`. 
+Is this histogram useful? Not much, since some very expensive lodgings distort the whole picture, which is a frequent issue with skewed distributions. These extreme prices look errors and, indeed, by using the listing's ID, it can be checked that some of them don't match the prices given in the Airbnb website. Another perspective of the distribution can be given by the statistical summary printed by `.describe()`. 
 
 ```
 In [13]: df['price'].describe()
@@ -226,23 +229,33 @@ max      90000.000000
 Name: price, dtype: float64
 ```
 
-For a  better picture of the bulk of Airbnb we may trim the data. For instance, we can plot a histogram for the listings with prices in a reasonable interval. See an example below.
+For a  better picture of the bulk of Airbnb we may **trim the data**. For instance, we can plot a histogram for the listings with prices in a reasonable interval. See an example below. First, we create a filter.
 
 ```
-In [14]: df['price'][df['price'].between(25,175)].plot.hist(figsize=(8,6), color='gray', edgecolor='white', bins=30);
+In [14]: filter = df['price'].between(25,175)
 ```
 
-![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_9.2.png)
+The role of this filter is obvious. An equivalent condition would be `(df['price'] >= 25) & (df['price'] <= 175)`. Note that the method `.between()` includes the two limits of the interval. Now, we draw a histogram which includes the listings that pass the filter.
 
-The role of the filter `df['price'].between(25,175)`  is obvious. An equivalent condition would be `(df['price'] >= 25) & (df['price'] <= 175)`. Note that the method `.between()` includes the two limits of the interval. The argument `bin s=30` ensures that the intervals is partitioned in subintervals whose limits are multiples of 5, which makes it more appealing. rices don't change continuously, and hosts prefer prices which are multiples of 10. The histogram also shows that 50, 100 and 150 euros are popular prices.
+```
+In [15]: In [33]: df['price'][filter].plot.hist(figsize=(7,5),
+    ...:     title='Figure 2. Distribution of the price (trimmed data)', 
+    ...:     color='gray', edgecolor='white', bins=30, xlabel='Price per night (euros)');
+```
+
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_10.2.png)
+
+The argument `bin s=30` ensures that the intervals is partitioned in subintervals whose limits are multiples of 5, which makes it more appealing. Prices don't change continuously, and hosts prefer prices which are multiples of 10. The histogram also shows that 50, 100 and 150 euros are popular prices.
 
 *Note*. The rule for counting the observations in every bin is as follows. For an interval of limits $a$ and $b$, the values $x$ such that $a \le x < b$ are counted. Except for the last interval, for which the right limit is also included.
 
 ## Q4. Average price per room type
 
+The average price per room type can be calculated with the method `.pivot_table()`. The parameters `values` and `index` specify the column to be aggregated and the column to be used for grouping, respectively.
+
 ```
-In [15]: pd.pivot_table(df, values='price', index='room_type', aggfunc='mean').round()
-Out[15]: 
+In [16]: pd.pivot_table(df, values='price', index='room_type', aggfunc='mean').round()
+Out[16]: 
                  price
 room_type             
 Entire home/apt  181.0
@@ -251,11 +264,11 @@ Private room     117.0
 Shared room       48.0
 ```
 
-But, how informative is the average price? With skewed distributions, the extreme observations on the right tail "pull" the mean, so it may fall far from the middle of the distribution. In these cases, the median gives a better description of the mid prices. To get the median price per room type, just replace the aggregation function mean by median. 
+But, how informative is the average price? With skewed distributions, the extreme observations on the right tail "pull" the mean, so it may fall far from the middle of the distribution. In these cases, the **median** gives a better description of the mid prices. To get the median price per room type, just replace the aggregation function mean by median (no need of rounding here). 
 
 ```
-In [16]: pd.pivot_table(df, values='price', index='room_type', aggfunc='median')
-Out[16]: 
+In [17]: pd.pivot_table(df, values='price', index='room_type', aggfunc='median')
+Out[17]: 
                  price
 room_type             
 Entire home/apt  135.0
@@ -267,17 +280,19 @@ Shared room       32.0
 You may prefer to display these tables as **bar charts**. Note that, even if we see a pivot table as something that the Python kernel "prints", these methods (except `.info()`) return new Pandas objects. Our second pivot table, for instance, is Pandas series, with the room types as the index. So, we can use the table to display a bar chart:
 
 ```
-In [17]: roomtype_price =  pd.pivot_table(df, values='price', index='room_type', aggfunc='median')
-    ...: roomtype_price.plot.bar(figsize=(8,6), color='gray');
+In [18]: roomtype_price =  pd.pivot_table(df, values='price', index='room_type', aggfunc='median')
+    ...: roomtype_price.plot.bar(figsize=(7,5), legend=False,
+    ...:     title='Figure 3. Median price per room type', xlabel='Room type',
+    ...:     color='gray', ylabel='Price per night (euros)');
 ```
-![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_9.3.png)
+![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_10.3.png)
 
 ## Q5. Top-10 neighbourhoods
 
-To close this analysis of the Barcelona Airbnb data, we take a look at the neighbourhoods with more listings. The top ten list can be extracted with the method `.value_counts()`.
+To close this analysis of the Barcelona Airbnb data, we take a look at the neighbourhoods with more listings. The top ten list can be extracted with the method `.value_counts()`, which returns a series with counts of the occurrences of the values of a series, sorted top down. These values come as the index.
 
 ```
-In [18]: df['neighbourhood'].value_counts().head(10)
+In [19]: df['neighbourhood'].value_counts().head(10)
 Out[18]: 
 neighbourhood
 la Dreta de l'Eixample                   2029
@@ -298,8 +313,8 @@ Are these neighbourhoods more expensive? We wonder if there is an association be
 Except for la Dreta de l'Eixample, we don't find higher prices associated to more listings. So, the picture is more complex than that.
 
 ```
-In [19]: df.groupby(by='neighbourhood')['price'].agg(['count', 'median']).sort_values(by='count', ascending=False).head(10)
-Out[19]: 
+In [20]: df.groupby(by='neighbourhood')['price'].agg(['count', 'median']).sort_values(by='count', ascending=False).head(10)
+Out[20]: 
                                        count  median
 neighbourhood                                       
 la Dreta de l'Eixample                  2029   159.0
@@ -314,12 +329,12 @@ el Poble Sec                             738    94.5
 la Nova Esquerra de l'Eixample           612    90.0
 ```
 
+We find that some popular neighbourhoods have low prices. This seems to happen in the "old town", where the appartments probably have worse housing conditions. 
+
 ## Homework
 
-1. Use the `groupby` approach to extract the pivot tables of inputs 15 and 16.
+1. Use the `.groupby()` approach to extract the pivot tables of inputs 16 and 17.
 
-2. A controversial issue about Airbnb is that, in spite of starting as a peer-to-peer platform, it has evolved to one where some hosts can manage many listings, sometimes whole buildings. They could be so affecting the way the natives' life. Do you find many hosts in this situation in Barcelona?
+2. A controversial issue about Airbnb is that, in spite of starting as a peer-to-peer platform, it has evolved to one where some hosts can manage many listings, sometimes whole buildings. They could be so affecting the way the natives' life (the so called gentrification). Do you find many hosts in this situation in Barcelona?
 
 3. As a continuation of the preceding exercise, pick the hosts with more than 100 listings and create a data subset containing only the listings managed by those hosts. Do you find that these particular hosts are focused on certain neighbourhoods? Do they have higher prices?
-
-4. The package `langid` is one of the many options for **language detection** in Python. You can install it entering `pip install langid` in either the shell or the console. Once it has been installed, you can import it and use the function `langid.classify` to "detect" the language in the column `name`. Select the listings whose language is either Spanish or English. Do you find a relevant difference in price between the two languages? 
