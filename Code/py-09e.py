@@ -1,37 +1,47 @@
-## [PY-09E] Example - Barcelona Airbnb listings ##
+## [PY-09E] Example - Apple Inc. stock prices ##
 
-# Importing the data #
+# Import the data (edit the path) #
 import pandas as pd
-path = 'https://raw.githubusercontent.com/cinnData/PythonBootcamp/main/Data/'
-df = pd.read_csv(path + 'airbnb.csv', index_col=0)
+df = pd.read_csv('Dropbox/py_course/data/aapl.csv')
 
 # Exploring the data #
 df.info()
 df.head()
+df.describe()
 
-# Q1a. Counting duplicates #
-df.index.duplicated().sum()
-df.duplicated().sum()
+# Q1. Data previous to January 15th #
+df[df['date'] < '2022-01-15']
 
-# Q1b. Dropping duplicates #
-df = df.drop_duplicates()
-df.shape
+# Q2. Line plot for the opening price #
+df['open'].plot(figsize=(8,5), title = 'Figure 1. Opening price', color='black', linewidth=1);
 
-# Q2. Proportion of listings with missing ratings #
-df.isna().mean()
-df['review_scores_rating'].isna().mean().round(3)
+Q3a. Line plot for the trading volume #
+df['volume'] = df['volume']/10**6
+df['volume'].plot(figsize=(8,5), title='Figure 2. Trading volume', color='black', linewidth=1);
 
-# Q3. Distribution of the price #
-df['price'].plot.hist(figsize=(8,6), color='gray', edgecolor='white');
-df['price'].describe()
-df['price'][df['price'].between(25,175)].plot.hist(figsize=(8,6), color='gray', edgecolor='white', bins=30);
+# Q3b. Histogram for the trading volume #
+df['volume'].plot.hist(figsize=(7,5),
+    title='Figure 3. Trading volume (alternative visualization)',
+    color='gray', edgecolor='white', xlabel='Trading volume (1000 shares)');
 
-# Q4. Average price per room type #
-pd.pivot_table(df, values='price', index='room_type', aggfunc='mean').round()
-pd.pivot_table(df, values='price', index='room_type', aggfunc='median')
-roomtype_price =  pd.pivot_table(df, values='price', index='room_type', aggfunc='median')
-roomtype_price.plot.bar(figsize=(8,6), color='gray');
+# Q4a. Daily variation #
+df['dvar'] = df['high'] - df['low']
+df.head()
 
-# Q5. Top-10 neighbourhoods #
-df['neighbourhood'].value_counts().head(10)
-df.groupby(by='neighbourhood')['price'].agg(['count', 'median']).sort_values(by='count', ascending=False).head(10)
+# Q4b. Line plot for the daily variation #
+df['dvar'].plot(figsize=(8,5), title='Figure 4. Daily price variation',
+    color='black', linewidth=1);
+
+# Q4c. Histogram for the daily variation #
+df['dvar'].plot.hist(figsize=(7,5),
+    title='Figure 5. Daily price variation (alternative visualization)',
+    color='gray', edgecolor='white', xlabel='Daily price variation (USD)');
+
+# Q5a. Scatter plot for the daily price variation and the trading volume # 
+df.plot.scatter(x='volume', y='dvar', 
+    title='Figure 6. Daily variation vs volume', figsize=(5,5), color='gray',
+    xlabel='Trading volume (1000 shares)', ylabel='Daily price variation (USD)');
+
+## Q5b. Correlation #
+df['volume'].corr(df['dvar'])
+df['volume'].corr(df['dvar']).round(2)
