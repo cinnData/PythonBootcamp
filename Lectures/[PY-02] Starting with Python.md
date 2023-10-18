@@ -319,4 +319,23 @@ Out[39]: True
 
 6. Is `1 == True` true or false? What is the rule? 
 
-7. The package `langid` is one of them many options for **language detection** in Python. You can install it entering `pip install langid` in either the shell or the console. Once it has been installed, you can import it and use the function `langid.classify()` to "detect" the language. Try this with a few sentences in different languages. Please, note that `langid` gets better with longer strings, but often fails with very short ones. Though it may look like a dwarf when compared to a giant like GPT-4, it is a nice example of **machine learning**.
+7. Print the following strings with the function `print()`. Some of them will work and some will not. Can you explain the differences?
+
+```
+"Donald Trump and Joe Biden'
+
+'''Donald Trump and Joe Biden'''
+
+'Donald Trump 
+and Joe Biden'
+
+'Donald Trump\nand Joe Biden'
+
+'Donald Trump \
+and Joe Biden'
+
+'''Donald Trump
+and Joe Biden'''
+```
+
+8. The package `langid` is one of them many options for **language detection** in Python. You can install it entering `pip install langid` in either the shell or the console. Once it has been installed, you can import it and use the function `langid.classify()` to "detect" the language. Try this with a few sentences in different languages. Please, note that `langid` gets better with longer strings, but often fails with very short ones. Though it may look like a dwarf when compared to a giant like GPT-4, it is a nice example of **machine learning**.
