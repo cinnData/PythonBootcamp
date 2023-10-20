@@ -51,7 +51,7 @@
 
 * `.plot.line()`: displays a line plot of a numeric series. It takes a collection of keyword arguments with graphical specifications (`title`, `xlabel`, `color`, etc).
 
-* `.sample(n)`: extracts a random sample of size `n` of a series. Other parameters allow for sophistication. Don't use them unless you have a clear idea of what you are doing.
+* `.sample(n)`: extracts a random sample of size `n` of a series. For sampling with replacement, use `replace=True`. Other parameters allow for more sophistication. 
 
 * `.shift(periods)`: shifts the terms of a series as many places as specified by the parameter `periods`, filling the holes with `NaN` values. `periods` can be negative.
 
@@ -123,7 +123,7 @@
 
 * `.plot.scatter(x, y)`: displays a scatter plot, with `x` in the horizontal axis and `y` in the vertical axis. It takes a collection of keyword arguments with graphical specifications (`title`, `xlabel`, `color`, etc).
 
-* `.sample(n)`: extracts a random sample of `n` rows. Other parameters allow for sophistication. 
+* `.sample(n)`: extracts a random sample of `n` rows. For sampling with replacement, use `replace=True`. Other parameters allow for more sophistication. 
 
 * `.set_index(keys)`: sets `keys` as the index. Typically, `keys` is the name of a column, which stops being a column, becoming the index. But Pandas makes room for more complexity. Also, other parameters allow for variations on the typical scheme.
 
