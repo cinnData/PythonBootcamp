@@ -335,6 +335,6 @@ We find that some popular neighbourhoods have low prices. This seems to happen i
 
 1. Use the `.groupby()` approach to extract the pivot tables of inputs 16 and 17.
 
-2. A controversial issue about Airbnb is that, in spite of starting as a peer-to-peer platform, it has evolved to one where some hosts can manage many listings, sometimes whole buildings. They could be so affecting the way the natives' life (the so called gentrification). Do you find many hosts in this situation in Barcelona?
+2. A controversial issue about Airbnb is that, in spite of starting as a peer-to-peer platform, it has evolved to one where some hosts can manage many listings, sometimes whole buildings. They could be so affecting the way the "natives" live (the so called gentrification). Do you find many hosts in this situation in Barcelona?
 
 3. As a continuation of the preceding exercise, pick the hosts with more than 100 listings and create a data subset containing only the listings managed by those hosts. Do you find that these particular hosts are focused on certain neighbourhoods? Do they have higher prices?
