@@ -24,11 +24,11 @@ type(True)
 # Strings #
 type('Messi')
 len('Messi')
+myplayer = 'Leo ' + 'Messi'
+myplayer
 ord('a')
 ord('A')
 ord('ñ')
-myplayer = 'Leo ' + 'Messi'
-myplayer
 
 ## Substrings
 myplayer[2]
