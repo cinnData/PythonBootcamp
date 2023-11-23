@@ -2,9 +2,11 @@
 
 ## Typing Python code
 
-In this tutorial, we start with some comments on how to type Python code. Let us assume that you are working on Jupyter Qt Console. Before starting, a reminder: Python is **case sensitive**. F
+This lecture is a tutorial whose objective is to get familiar with the way in which users interact with a Python kernel. This section comments how to type Python code. Before starting, a reminder: Python is **case sensitive**. 
 
-The console produces input prompts (such as `In[1]:`), where you can type a command and press *Return*. The console responds with the corresponding output (preceded by `Out[1]:`), an error message or no answer at all. Error messages are typically long and unfriendly. A simple example follows. Note the white space around the *plus* sign (`+`), which is ignored by the Python interpreter, but improves the **readability** of your code.
+Let us assume that you are working on Jupyter Qt Console. The console produces **input prompts** (such as `In[1]:`), where you can type a command and press *Return*. The console responds with either the corresponding **output** (preceded by `Out[1]:`), an **error message** or no answer at all. Error messages are typically long and unfriendly. 
+
+A simple example follows. Note the white space in the input, around the *plus* sign (`+`), which is ignored by the Python interpreter, but improves the **readability** of our code.
 
 ```
 In [1]: 2 + 2
@@ -24,7 +26,7 @@ In [3]: a
 Out[3]: 4
 ```
 
-In Pyhton, you can assign a new value to an existing variable. Then, the previous value is forgotten. So:
+In Pyhton, you can assign a new value to an existing variable. The previous value is then forgotten:
 
 ```
 In [4]: a = 7 - 2
@@ -33,7 +35,7 @@ In [5]: a
 Out[5]: 5
 ```
 
-Suppose that you copypaste in the console code chunks from a text editor. This is what you would do if you were working in the console, so you could readily save your code. You can so input several code lines at once. In that case, the console only shows the output of the last line. An example follows.
+Suppose that you copypaste in the console code chunks from a text editor. This is what you would do if you were working in the console, so you could readily save your code. You can so input several code lines at once. In that case, the console only shows the output for the last line of the input. An example follows.
 
 ```
 In [6]: b = 2 * 3
@@ -44,15 +46,15 @@ Out[6]: 36
 
 *Note*. You would probably have written `b^2` for the square of 2, but the caret symbol (`^`) plays a different role in Python.
 
-If you are typing the code, you can open a new line within the same input with *Ctrl+Return*. You can finish the input, calling for the output, by pressing *Return*. If the cursor is not at the end of the last line, you have to press *Shift+Return* to finish the input. 
+If you are typing the code in the console, you can open a new line within the same input with *Ctrl+Return*. You can then finish the input, calling for the output, by pressing *Return*. If the cursor is not at the end of the last line, you have to press *Shift+Return* to finish the input. 
 
-Typing in a notebook is just a bit different. The notebook is a sequence of **cells**. In the **Markdown cells**, you write comments, while in the **code cells** you write the Python commands. Every code cell of the notebook corresponds to an input of the console. When you are typing in a cell, pressing *Return* starts a new line *within the same cell*, without ending the input. With *Shift+Return* you finish the the input, so you get the ouput, opening a new cell. To finish the input without opening a new cell, use *Cmd+Return* in Mac or *Ctrl+Return* in Windows.   
+Typing in a notebook is just a bit different. The notebook is a sequence of **cells**. There two type of cells, the Markdown cells and the code cells. In the **Markdown cells**, you write comments, while in the **code cells** you write the Python commands. Every code cell of the notebook corresponds to an input of the console. When you are typing in a cell, pressing *Return* starts a new line *within the same cell*, without ending the input. With *Shift+Return*, you finish the the input, so you get the ouput, opening a new cell. To finish the input without opening a new cell, use *Cmd+Return* in Mac or *Ctrl+Return* in Windows.   
 
 ## Python packages
 
-Additional Python resources come in **packages**. For instance, suppose that you want to do some math, calculating the square root of 2. You will then **import** the package `math`, whose resources include the square root and many other mathematical functions. Once the package has been imported, all its functions are available, so you can call the function `math.sqrt()`. This notation indicates that `sqrt()` is a function of the module `math`.
+Additional Python resources come in **packages**. For instance, suppose that you want to do some math, calculating the square root of 2. You will then **import** the package `math`, whose resources include the square root and many other mathematical functions. Once the package has been imported, all its functions are available, so you can call the function as `math.sqrt()`. This notation indicates that `sqrt()` is a function of the module `math`.
 
-In the console, the square root calculation shows up as:
+In the console, the square root calculation appears as:
 
 ```
 In [7]: import math
@@ -68,13 +70,13 @@ In [8]: from math import sqrt
 Out[8]: 1.4142135623730951
 ```
 
-Packages are imported just for the current kernel. You can only import a package only if it is already **installed** in your computer. The package Pandas will appear frequently in this course.
+Packages are imported just for the current kernel. You can import a package only if it is already **installed** in your computer. 
 
 *Note*. This course follows the common practice in Python learning materials of writing functions as *func()*. The parentheses remind you that this is an object that takes arguments.
 
 ## Numeric data types
 
-As in other languages, data can have different **data types** in Python. The data type can be learned with the function `type()`. Let us start with the numeric types. First, the **integers** have type `int`:
+As in other languages and applications, data can have different **data types** in Python. The data type can be learned with the function `type()`. Let us start with the numeric types. First, the **integers** have type `int`:
 
 ```
 In [9]: type(2)
@@ -95,7 +97,9 @@ In [11]: type(True)
 Out[11]: bool
 ```
 
-Mind that it is `True` and `False` in Python, not `TRUE` and `FALSE` (as in R), nor `true` and `false` (as in Java). Some languages, like Python and Java, have Booleans, but others, like C++, don't. The same with applications, Excel has Booleans but MySQL doesn't. When there are no Booleans, they are replaced by 1 and 0. In Python, `True` and `False` are the same as 1 and 0 for many purposes, as we will see below.
+Some languages, like Python and Java, have Booleans, but others, like C++, don't. The same with applications, Excel has Booleans but MySQL doesn't. When there are no Booleans, they are replaced by 1 and 0. In Python, `True` and `False` are the same as 1 and 0 for many purposes, as we will see below.
+
+*Note*. It is `True` and `False` in Python, not `TRUE` and `FALSE` (as in R), nor `true` and `false` (as in Java). Python is case sensitive.
 
 ## Strings
 
@@ -113,6 +117,17 @@ In [13]: len('Messi')
 Out[13]: 5
 ```
 
+
+Strings can be concatenated in a straightforward way:
+
+```
+In [14]: myplayer = 'Leo ' + 'Messi'
+    ...: myplayer
+Out[14]: 'Leo Messi'
+```
+
+## Characters 
+
 The characters contained in a string can be the (English) alphanumeric characters, but also **special characters** like white space, punctuation, etc. Other symbols, like emoticons, can also appear in your data, specially in social networks data. Besides that, you can also manage letters from other languages (Spanish, Portuguese, etc) or alphabets (Cyrillic, hiragana, etc), and even ideographs (such as Han characters). 
 
 There is a basic set of 128 characters, called the **ASCII characters**, which are encoded as numbers (from 0 to 127) in the same way by all the computers. They include the English letters (without accents), the numbers, basic punctuation (but not curly quote marks or long dashes), white space, **control characters** such as the new line, represented in many computer languages (including Python) as `\n`, and other symbols familiar to you, such as the dollar (`$`) and the hash (`#`) symbols. The complete list can be easily found in Internet.
@@ -122,36 +137,28 @@ Non-ASCII characters can be encoded by different computers or different text edi
 The preferred **encoding** is **UTF-8**, used by Python. UTF-8 is the default encoding in Mac computers, but not in Windows computers, which use a region-specific system. In US and Western Europe, this is **Windows-1252**. The UTF-8 encoding can be easily learned from the Python interpreter. For instance, for the lowercase 'a':
 
 ```
-In [14]: ord('a')
-Out[14]: 97
+In [15]: ord('a')
+Out[15]: 97
 ```
-The uppercase 'A' is 
+The uppercase 'A' is:
 
 ```
-In [15]: ord('A')
-Out[15]: 65
+In [16]: ord('A')
+Out[16]: 65
 ```
 
-The Spanish 'ñ':
+And the Spanish 'ñ' is:
 
 ```
-In [16]: ord('ñ')
-Out[16]: 241
+In [17]: ord('ñ')
+Out[17]: 241
 ```
 
 This goes beyond 127, so 'ñ' is not an ASCII character. If you include it in a document, it may look wrong in another computer.
 
-Strings can be concatenated in a straightforward way:
-
-```
-In [17]: myplayer = 'Leo ' + 'Messi'
-    ...: myplayer
-Out[17]: 'Leo Messi'
-```
-
 ## Substrings
 
-Let us see how we can extract a **substring** from a string. Every character in a string has an index. Starting from the left, the indexes are 0, 1, 2, 3, $\dots$. So, the first character has index 0 (not 1), the second character has index 1, etc. Starting from the right the indexes are -1, -2, -3, $\dots$. So, the last character has index -1, the penultimate character has index -2, etc. You can extract any character (as a substring of length 1). Let us see some examples.
+Let us see how we can extract a **substring** from a string. Every character in a string has an index. Starting from the left, the indexes are 0, 1, 2, 3, $\dots$, so the first character has index 0 (not 1), the second character has index 1, etc. Starting from the right the indexes are -1, -2, -3, $\dots$, so the last character has index -1, the penultimate character has index -2, etc. You can extract any character (as a substring of length 1). Let us see some examples.
 
 ```
 In [18]: myplayer[2]
@@ -163,7 +170,7 @@ In [19]: myplayer[-3]
 Out[19]: 's'
 ```
 
-Longer substrings can be extracted by specifying an interval of indexes, as we see in the following example. Note that the interval `start:end` includes `start`, but not `end`. This is a Python notational convention that may confound you.
+Longer substrings can be extracted by specifying a **slice** of indexes, as we see in the following example. Note that a slice `start:end` includes `start`, but not `end`. This is a Python notational convention that may confound you.
 
 ```
 In [20]: myplayer[4:7]
@@ -215,7 +222,7 @@ In [27]: str(27)
 Out[27]: '27'
 ```
 
-Booleans can be converted to `int` and `float` type with the functions mentioned above. Also, to make operations with numbers possible when they have different types, they are automatically converted to common type. For instance, Booleans are converted on the fly in the following examples:
+Booleans can be converted to `int` and `float` type with the functions mentioned above. Also, to make operations with numbers possible when they have different types, they are automatically converted to common type. In the following examples Booleans are converted on the fly.
 
 ```
 In [28]: 1 + True
@@ -229,14 +236,14 @@ Out[29]: 0.0
 
 ## Comparison operators
 
-Let us how the **comparison operators** work in Python. For instance, the *lower than* symbol:
+Let us see how the **comparison operators** work in Python. For instance, the *lower than* symbol (`<`):
 
 ```
 In [30]: 5 < a
 Out[30]: False
 ```
 
-When you input an expression involving a comparison operator, Python evaluates it, returning either `True` or `False`. The following example uses the **equality operator**, which is denoted in Python by a double equal sign:
+When you input an expression involving a comparison operator, Python evaluates it, returning either `True` or `False`. The following example uses the **equality operator**, which is denoted in Python by a double equal sign (`==`)).
 
 ```
 In [31]: a == 7
@@ -259,7 +266,7 @@ In [33]: 'a' >= 'A'
 Out[33]: True
 ```
 
-Why is this? Because this inequality is true for the numbers that encode these characters, which we have learned above. Numbers and booleans can be compared irrespective of their types:
+Why is this? Because this inequality is true for the numbers that encode these characters, which we have learned above. Finally, numbers and booleans can be compared irrespective of their types:
 
 ```
 In [34]: 3 == 3.0
@@ -298,7 +305,7 @@ In [38]: not True
 Out[38]: False
 ```
 
-Since expressions involving comparison operators are evaluated by the Python kernel and turned into either `True` or `False`, we can combine them with logical operators. Example:
+Since expressions involving comparison operators are evaluated by the Python kernel and turned into either `True` or `False`, we can combine them by means of logical operators. Example:
 
 ```
 In [39]: 5 < 7 and ' ' <= '6'
