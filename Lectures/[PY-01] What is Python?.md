@@ -2,25 +2,25 @@
 
 ## What is Python?
 
-**Python** is a programming language, born in 1991. The latest stable version (when this is being written) is Python 3.11. As a programming language, Python is used for the programmer to write a programs that performs a task. This course is data-oriented, so let us mention a few examples in that line:
+**Python** is a programming language, born in 1991. The latest stable version (when this is being written) is Python 3.11. As a programming language, Python can be used by a programmer to write a program that performs a task. Since this course is data-oriented, let us mention a few examples in that line:
 
-* A **web scraping** program that captures data on the current prices in an e-commerce web site, storing them in a database.
+* A **web scraping** program that captures data on the current prices published in an e-commerce web site, storing them in a database.
 
 * A **machine learning** program that trains an algorithm that assigns credit scores to borrowers in a lending platform.
 
-** A **pricing algorithm** that estimates the market price of a real estate asset.
+* A **pricing algorithm** that estimates the market price of a real estate asset.
 
-These programs are later executed many times without being modified. But you can use Python in other ways. For instance, to examine the variation of the stock price of a specific company, or the structure of the vacation rental market in a specific region. Either for developing the program, which always involves a bit of trail and error, or in the learning process, we use a basic tool, the **Python interactive interpreter**. We can have several instances of the interpreter, called **kernels**, running independently in our computer. To deal with the Python interpreter, most pythonistas use an interface, chosen among the many available choices (see below). 
+These programs are later executed many times without being modified. But you can use Python in other ways. For instance, to examine the variation of the stock price of a specific company, or the structure of the vacation rental market in a specific region. Either for developing a program, which always involves a bit of trial and error, or in a data analysis, we use a basic tool, the **Python interactive interpreter**. We can have several instances of the interpreter, called **kernels**, running independently in our computer. To deal with the Python interpreter, Pythonistas use an app that provides an as interface to the Python interpreter, chosen among the many available choices (see below). 
 
 ## Python modules and packages
 
-Many additional resources have been added to Python in the form of **modules**. A module is just a text file containing Python code. Modules are grouped in **libraries**. The **Python Standard Library**, distributed with Python, contains **built-in modules** providing standardized solutions for many problems that occur in everyday programming. For instance, `math` provides mathematical functions, while `datetime` provides functions for manipulating dates and times.
+Many additional resources have been added to Python in the form of **modules**. A module is just a text file containing Python code. Modules are grouped in **libraries**. The **Python Standard Library**, distributed with Python, contains **built-in modules** providing standardized solutions for many problems that occur in everyday programming. For instance, the module `math` provides mathematical functions, while the module `datetime` provides functions for manipulating dates and times.
 
 Other libraries are typically called **packages**, because their elements are packed according to some specific rules which allow you to install and call them together. Python can be extended by more than 300,000 packages. Some big packages like scikit-learn (a machine learning toolkit) have **subpackages**.
 
 Since the basic Python toolkit (without any module) is quite limited, you will need to **import** additional resources for practically everything. Once a module has been imported, all its functions are available. Alternatively, you can import a single function from a module. Resources are imported just for the current kernel. You can only import from packages which are already **installed** in your computer. 
 
-Almost everything in the Python world is open-source. In particular, Python packages are contributed by various agents, such as university professors, freelance programmers, or industry behemoths like Google. This leads to a dynamic ecosystem, where you will find overlapping, dependencies, multiple versions. 
+Almost everything in the Python world is open-source. In particular, Python packages are contributed by various agents, such as university professors, freelance programmers, or industry behemoths like Google. This leads to a dynamic ecosystem, where you may find overlapping, dependencies and multiple versions. 
 
 ## Python distributions
 
@@ -42,7 +42,7 @@ Jupyter provides an alternative approach, based on the **notebook** concept. A n
 
 Besides the Jupyter apps, Anaconda also provides a Python IDE called **Spyder**, where you can manage together a console and a text editor for your code. If you have previous experience with IDE's, for instance from working with R in RStudio, you may prefer Spyder to Qt Console.
 
-Once Anaconda is installed, you can bypass the navigator by calling your preferred interface from a shell. To start Qt Console, enter `jupyter qtconsole`. To get access to the notebooks in the default browser, enter `jupyter notebook`. To start Spyder, enter `spyder`.
+Once Anaconda is installed, you can bypass the navigator by calling your preferred interface from a shell. To start Qt Console, enter `jupyter qtconsole`. To get access to the notebooks in the default browser (*e.g*. Google Chrome), enter `jupyter notebook`. To start Spyder, enter `spyder`.
 
 *Note*. Use *Anaconda Prompt* in Windows, instead of the standard Windows prompt, whose path does not contain the Anaconda apps.
 
@@ -54,10 +54,10 @@ This course does not look at Python as a programming language, but from a very s
 
 * **Matplotlib**, based on NumPy, provides a plotting toolkit.
 
-* **Pandas** is a popular library for data management, used in all the examples of this course. Pandas is built on top of NumPy and Matplotlib.
+* **Pandas** is a popular library for data management, used in the examples of this course. Pandas is built on top of NumPy and Matplotlib.
 
 ## Colab notebooks
 
-**Google Colaboratory**, is a Google app which allows you to write and executing Python code in a browser, with some advantages: (a) it does not require installation nor configuration, (b) it gives you access to GPU's (meaning more computing power) for free, and (c) it allows you an easy way to share content. In Google Colaboratory, you work with documents called **Colab notebooks**. Though they are not exactly the same, Colab notebooks are pretty similar to Jupyter notebooks, and they stored in Google Drive as files with extension `ipynb`. 
+**Google Colaboratory** is a Google app which allows you to write and executing Python code in a browser, with some advantages: (a) it does not require installation nor configuration, (b) it gives you access to GPU's (meaning more computing power) for free, and (c) it allows you an easy way to share content. In Google Colaboratory, you work with documents called **Colab notebooks**. Though they are not exactly the same, Colab notebooks are pretty similar to Jupyter notebooks, and they stored in Google Drive as files with extension `ipynb`. 
 
-You may be interested in using Colab, since you can access it from any deviced connected to Internet, *e.g*. an IPAD. The only thing you need to start working with Colab notebooks is a Google account, meaning a `gmail.com` address and its password. Colab work happens in **Google Drive** (enter through `www.google.com/drive`). In your debout, you have to install the Google Colaboratory app in your drive. To do this, click on the *Settings* button, select *Settings >> Manage apps* button and click on *Connect more apps*. `ipynb` files can be uploaded to and downloaded from Google Drive.
+You may be interested in using Colab, since you can access it from any deviced connected to Internet, such as an IPAD. The only thing you need to start working with Colab notebooks is a Google account, meaning a `gmail.com` address and its password. Colab work happens in **Google Drive** (enter through `https://www.google.com/drive`). In your debout, you have to install the Google Colaboratory app in your drive. To do this, click on the *Settings* button, select *Settings >> Manage apps* button and click on *Connect more apps*. `ipynb` files can be uploaded to and downloaded from Google Drive.
