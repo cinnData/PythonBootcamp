@@ -49,7 +49,7 @@ In [7]: mylist[-1]
 Out[7]: 'Haaland'
 ```
 
-Sublists can be extracted with an interval of indexes, in the same way as we extract substrings from a string. This is called **slicing a list**. Some examples follow.
+**Slicing lists** to get sublists works the same as slicing strings to get substrings. Some examples follow.
 
 ```
 In [8]: mylist[1:3]
@@ -99,7 +99,7 @@ These operators work in the same way for other data containers like ranges or tu
 
 ## Strings as sequences
 
-In Python, strings and lists are two types of **sequences** and, indeed, a string is managed as a list of characters. Nevertheless, there are some differences which rae worth to be mentioned. First, using the square brackets with a string produces always a substring. But slicing a list produces a sublist, and it is not the same as extracting items from the list. The following examples illustrate this.
+In Python, strings and lists are two types of **sequences** and, indeed, in many aspects, a string is managed as a list of characters. Nevertheless, there are some differences which are worth to be mentioned. First, using the square brackets with a string produces always a substring. But slicing a list produces a sublist, and it is not the same as extracting items from the list. The following examples illustrate this.
 
 ```
 In [15]: mylist[2:3]
@@ -111,14 +111,14 @@ In [16]: mylist[2]
 Out[16]: 'Neymar'
 ```
 
-Another difference is found in the use of `in`. For a string, it indicates that a string is contained in another string. But, fora list, it indicates that an object is among the items of that list:
+Another difference is found in the use of `in`. For a string, it indicates that a string is contained in another string. But, for a list, it indicates that an object is among the items of that list:
 
 ```
 In [17]: 'Neymar' in mylist
 Out[17]: True
 ```
 
-Finally, though lists and strings share some functions like `len()`, they have different methods. We have mentioned `.replace()` and `.lower()` as examples of string methods. An example of **list method** is `.append()`, which adds an item at the end of a list, *in place*, that is without returning the new version. This is illustrated by the following example.
+Finally, though lists and strings share some functions like `len()`, they have different methods. We have mentioned `.replace()` and `.lower()` as examples of string methods. An example of a **list method** is `.append()`, which adds an item at the end of a list, *in place*, that is without returning the new version. This is illustrated by the following example.
 
 ```
 In [18]: mylist.append('Vinicius')
@@ -126,7 +126,7 @@ In [18]: mylist.append('Vinicius')
 Out[18]: ['Messi', 'Cristiano', 'Neymar', 'Haaland', 'Vinicius']
 ```
 
-Note that we get the same output with the input `mylist = mylist + ['Vinicius']`.
+Note that the same result would have been obtained with the input `mylist = mylist + ['Vinicius']`.
 
 ## Ranges
 
@@ -138,7 +138,7 @@ In [19]: myrange = range(0, 10, 2)
 Out[19]: [0, 2, 4, 6, 8]
 ```
 
-Note that the terms of a range cannot printed directly. So, we have converted the range to a list here with the function `list()`. If, in the specification of a range, the parameter `step` is omitted, it is assumed to be 1:
+Note that the terms of a range cannot printed directly. So, we have converted the range to a list here with the function `list()`. If, in the specification of a range, a value for the parameter `step` is not provided, it is assumed `step=1`.
 
 ```
 In [20]: list(range(5, 12))
@@ -165,7 +165,7 @@ In [23]: mytuple[-2:]
 Out[23]: ('Neymar', 'Coutinho')
 ```
 
-A **dictionary** is a set of pairs **key/value**. For instance, the following dictionary contains three features of an individual:
+A **dictionary** is a set of **key-value pairs**. For instance, the following dictionary contains three features of an individual:
 
 ```
 In [24]: mydict = {'name': 'Joan', 'gender': 'F', 'age': 32}
@@ -223,3 +223,5 @@ Out[29]: {'name': 'Martha', 'gender': 'F', 'age': 32, 'job': 'Engineer'}
 2. To write a function that returns more than one result, we specify them in the `return` statement, separated by commas. For instance, if our function must return `result1` and `result2`, we write `return result1, result2` (don't forget the comma). Then, the results will be returned together as a tuple. Write a function that takes a date in the format 'yyyy-mm-dd' and returns the year, the month and the day as three integers. 
 
 3. Modify the definition of the previous question, so that your function takes the string `'1954-04-30'` and returns the dictionary `{'year': 1954, 'month': 4, 'day': 30}`.
+
+4. Write a Python function for a **change dispenser**. The coins are named as follows: a quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. The function must take a number of cents and return a dictionary with the number of coins of every type needed. For instance, for the argument `quantity=67` it would return `{'quarters': 2, 'dimes': 1, 'nickels': 1, 'pennies': 2}`. Hint: you can get the **quotient** of the integer division operator of `a` by `b` with `a//b` (examples: `7//3` returns `2`, `23//4` returns 5).
