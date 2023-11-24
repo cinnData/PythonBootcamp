@@ -2,9 +2,9 @@
 
 ## A first example
 
-This lecture is about **Python functions**. Besides the **built-in functions** like `type()` or `len()` and those coming in the packages that you may import, you can define your own functions. Your definition will be valid only for the current kernel.
+This lecture is a short introduction to **Python functions**. Besides the **built-in functions** like `type()` or `len()` and those coming in the packages that you may import, you can define your own functions. That definition will be valid only for the current kernel.
 
-A simple example of a user-defined function follows. Note the indentation after the colon, which is created automatically by the console (or notebook).
+A simple example of a user-defined function follows. Note the indentation after the colon. Jupyter apps (console and notebook) automatically insert an indentation when you strike *Return* after the colon.
 
 ```
 In [1]: def f(x):
@@ -69,11 +69,11 @@ Let us take a closer look at our definition, considering three parts. In the fir
 
 * It provides a **name** for the function (`f`). Since this an example of a mathematical function, a simple name like `f` was appropriate, but, in general, it is recommended to use names that remind us of the action performed by the function. 
 
-* It names the **parameters**. The example of the preceding section was an example of a **one-parameter function**. `x` was the parameter name. The values provided for the parameter are called **arguments**. The parameter name is forgotten after the definition (this is called an "internal" variable). You can rewrite the definition replacing everywhere `x` by `t`, and the function defined will be exactly the same. 
+* It names the **parameters**. The example of the preceding section was an example of a **one-parameter function**. `x` was the parameter name. The values provided for the parameter are called **arguments**. 
 
 * It may contain additional information about the parameters, such as default values, which will be explained below.
 
-After the `def` statament, we write some lines specifying a sequence operations to be performed on the arguments in order to prepare the final action, which is described in the last line. In this case, this was a `return` statement.
+After the `def` statament, we write some lines specifying a sequence operations to be performed on the arguments in order to prepare the final action, described in the last line. In this case, this was a `return` statement.
 
 We are going to see few examples in which the defintion follows different paths. First, an example of a function with zero parameters (yes, this is possible) and a `print` statement.
 
@@ -91,7 +91,7 @@ Now, an example of a two-parameter function.
 
 ```
 In [8]: def g(x, y): 
-   ...:     z = )x - y)/(x**2 + y**2)
+   ...:     z = (x - y)/(x**2 + y**2)
    ...:     return z
 ````
 
@@ -102,7 +102,7 @@ Out[9]: 0.2
 
 ## Positional arguments and keyword arguments
 
-The distinction between positional and keyword arguments is better understood in an example. In `In [9]`, the Python kernel took the argument 2 as the value of the parameter `x` and 1 as the value of the parameter `y`. They are taken as **positional arguments**, so that input was read exactly the same as the following one.
+The distinction between positional and keyword arguments is better understood in an example. In `In [9]`, the Python kernel took the argument 2 as the value of the parameter `x` and 1 as the value of the parameter `y`. They were taken as **positional arguments**, so that input was read exactly the same as the following one.
 
 ```
 In [10]: g(x=2, y=1)
@@ -116,14 +116,14 @@ In [11]: g(y=1, x=2)
 Out[11]: 0.2
 ```
 
-On the other hand, for positional arguments, the order matters, and one has to be careful. Here, the first argument will be taken as `x` and the second argument as `y`.
+On the other hand, for positional arguments, the order matters, and one has to be careful. In the following input, the first argument will be taken as `x` and the second argument as `y`.
 
 ```
 In [12]: g(1, 2)
 Out[12]: -0.2
 ```
 
-Note that the parameters themselves are not positional nor keyword. It is the way we submit their values (the arguments), that makes them to be read in this or that way. You can meix positional and keyword arguments, as in the following example.
+Note that the parameters themselves are not positional nor keyword. It is the way we submit their values (the arguments), that makes them to be read in this or that way. You can mix positional and keyword arguments, as in the following example.
 
 ```
 In [13]: g(2, y=1)
@@ -140,7 +140,7 @@ In [14]: g(x=2, 1)
 SyntaxError: positional argument follows keyword argument
 ```
 
-*Note*. Not everybody is so strict with the terminology, and the terms 'parameter' and 'argument' are sometimes confounded.
+*Note*. Not everybody is so strict with the terminology, and the terms "parameter" and "argument" are sometimes confounded.
 
 ## Default arguments
 
@@ -166,7 +166,7 @@ In [17]: root(2, 3)
 Out[17]: 1.2599210498948732
 ```
 
-An example we meet frequently in data science is the Pandas function `read.csv()` used to import data from a CSV file. It allows for various separators, but a default argument is `sep=','`, which makes sense because most CSV files use the comma as the column separator (though you need `sep=';'` for some CSV files created with Spanish Excel configurations).
+An example we often meet frequently, working with data, is the Pandas function `read.csv()`, used to import data from a CSV file. It allows for various separators, but a default argument is `sep=','`, which makes sense because most CSV files use the comma as the column separator. This function will appear in the last lectures of this course.
 
 ## Functions and methods
 
@@ -198,7 +198,7 @@ In [21]: round(x=1/3, n=2)
 Out[21]: 0.33
 ```
 
-The same as in Excel. But, when rounding in one shot a whole column of a data set in the package Pandas, we would use a method, `.round(decimals=2)`. The package Pandas uses methods almost everywhere. Since this is data-oriented course, which makes frequent use of Pandas, this is worth to remember. When in doubt, check which the right approach by googling, or use the cheatsheets of this course.
+The same as in Excel. But, when rounding in one shot a whole column of a data set in the package Pandas, we would use a method, `.round(decimals=2)`. Pandas uses methods almost everywhere. Since this is data-oriented course, which makes frequent use of Pandas, this is worth to remember. When in doubt, check which the right approach by googling, or use the cheatsheets of this course.
 
 ## Homework
 
@@ -211,5 +211,3 @@ The same as in Excel. But, when rounding in one shot a whole column of a data se
 4. A year is a **leap year** if it is divisible by 4, unless it is a century year that is not divisible by 400. So, 1800 and 1900 are not leap years while 1600 and 2000 are. Write a function that tells you whether a year is a leap year.
 
 5. Write a function which anonymizes credit card numbers, turning, for instance, '2875765488882745' into 'Credit card ****745'. 
-
-6. Write a Python function for a **change dispenser**. The coins are named as follows: a quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. The function must take a number of cents and return a dictionary with the number of coins of every type needed. For instance, for the argument `quantity=67` it would return `{'quarters': 2, 'dimes': 1, 'nickels': 1, 'pennies': 2}`. Hint: you can get the **quotient** of the integer division operator of `a` by `b` with `a//b` (examples: `7//3` returns `2`, `23//4` returns 5).
