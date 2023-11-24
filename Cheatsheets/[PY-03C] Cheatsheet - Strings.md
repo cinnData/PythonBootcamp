@@ -1,4 +1,4 @@
-# [PY-03C] Cheatsheet - Strings
+# [PYC-01] Cheatsheet - Strings
 
 ## Slicing
 
