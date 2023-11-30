@@ -86,6 +86,7 @@ while condition:
 ```
 
 Indentation after the colon works as in other cases. A simple example of a `while` loop follows. Suppose that we wish to find the first integer whose square is higher than 1,000. We start with 1, and keep increasing the number until the square exceeds 1,000. 
+
 ```
 In [5]: x = 1
    ...: while x**2 <= 1000:
