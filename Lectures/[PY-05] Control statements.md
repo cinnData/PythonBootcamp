@@ -80,8 +80,10 @@ In [4]: grade = 3
 
 **Loops** are part also common in computer languages. In particular, a `while` loop executes a code chunk until a stopping condition is met. The syntax is:
 
-`while condition:
-    action`
+```
+while condition:
+    action
+```
 
 Indentation after the colon works as in other cases. A simple example of a `while` loop follows. Suppose that we wish to find the first integer whose square is higher than 1,000. We start with 1, and keep increasing the number until the square exceeds 1,000. 
 ```
