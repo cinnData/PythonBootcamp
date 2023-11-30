@@ -2,16 +2,16 @@
 
 ## If statements
 
-You may have found **conditional logic**, probably as an **if-then-else** command like the Excel function `IF()`. Different languages have various syntax rules for these commands. This section explains the Python rules. 
+You have probably found **conditional logic** in your computer experience. An example is the Excel function `IF()`. Conditional logic can shows up in certain code chunks, which programmers call **if-then-else commands**. Different languages have various syntax rules for these commands. This section explains the Python rules. 
 
-The simplest version of a **conditional** specifies a condition and an action that must be executed when the condition is satisfied. The Python syntax is as follows.
+The simplest version of this is the **if conditional** is the made of a single `if` statement that specifies a condition and an action that must be executed when the condition is satisfied. The Python syntax is as follows.
 
 ```
 if condition:
     action
 ```
 
-As in the definition of a function, indentation follows the colon. The condition can be any expression that the Python kernel evaluates as a Bolean `True`/`False`. The action can be of various types, typically defining (or defining) a variable or printing a message. A simple example follows.
+As in the definition of a function, indentation follows the colon, and indicates that the indented line is part of the `if` statement. The condition in this statement can be any expression that the Python kernel evaluates as a Bolean `True`/`False`. The action can be of various types, typically defining (or redefining) a variable or printing a message. A simple example follows.
 
 ```
 In [1]: grade = 9
@@ -20,7 +20,7 @@ In [1]: grade = 9
 Congratulations!
 ```
 
-A bit more complex is the if-else, or if-then-else conditional, which includes an alternative action. The syntax is as follows.
+A bit more complex is the **if-else conditional**, which is made of an `if` statement followed by an `else` statement specifying an alternative action in case the `if` condition is false. The syntax is as follows.
 
 ```
 if condition:
@@ -39,7 +39,9 @@ In [2]: if grade >= 5:
 PASS
 ```
 
-Note that the `else` statement is not indented. A further refinement, the if-elif-else conditional, admits more than two actions. In Python, `elif` means 'else if'. The syntax, for a conditional with a single `elif` statement, would be as follows.
+Note that the `else` line is not indented, meaning that it starts a new statement, even if this new statement must be included in the same input as the `if`statement to make sense.
+
+A further refinement, the **if-elif-else conditional**, admits more than two actions. In Python, `elif` means 'else if'. The syntax, for a conditional with a single `elif` statement, would be as follows.
 
 ```
 if condition1:
@@ -50,7 +52,7 @@ else:
     action3
 ```
 
-You can add as many `elif` statements as needed. The `elif` and `else` statements are not indented. An example, with one `elif` statement, follows.
+You can add as many `elif` statements as needed. Note tha the `elif` and `else` lines are not indented. An example, with one `elif` statement, follows.
 
 ```
 In [3]: if grade >= 8:
@@ -64,7 +66,7 @@ A
 
 The conditions are evaluated by order, so they don't need to be exclusive. In this example, the Python first evaluates the expression. Since the outcome is `True`, it stops there.
 
-The `else` statement can be omitted. Then, if the `if` and `elif` conditions are false, no acion is taken.
+If the `else` statement is omitted (this would be an if-elif conditional), no acion is taken when the `if` and `elif` conditions are false. An example follows.
 
 ```
 In [4]: grade = 3
@@ -90,9 +92,9 @@ In [5]: x = 1
 Out[5]: 32
 ```
 
-Indeed, the solution is 32, whose square is 1,024. Note that only the third line is indented, to indicate that is part of the loop.
+Indeed, the solution is 32, whose square is 1,024. Note that only the third line is indented, to indicate that it is part of the loop.
 
-What if the condition that rules the `while` loop is never met? Then, the loop will go on until we interrupt the process (*Ctrl+C*) or restart the kernel (*Ctrl+.*). An example follows. After entering the input, we have  allowed the process to run for a few seconds.
+What happens when the `while` condition is never met? Then the loop will go on until we interrupt the process (*Ctrl+C*) or restart the kernel (*Ctrl+.*). An example follows. After entering the input, we have  allowed the process to run for a few seconds.
 
 ```
 In [6]: x = 1
@@ -116,14 +118,14 @@ Out[7]: 277583313
 
 ## For loops
 
-As `while` loops, `for` loops are used to control the repeated execution of a code chunk. But, instead of repeating an action while a condition holds, in the `for` loop the number of repetitions is fixed. The process is controlled by extracting items from a data container, such as a list or a range. The syntax is as follows.
+As the `while` loops, the `for` loops are used to control the repeated execution of a code chunk. But, instead of repeating an action while a condition holds, in the `for` loop the number of repetitions is fixed. The process is controlled by extracting items from a data container, such as a list or a range. The syntax is as follows.
 
 ```
 for i in list:
     action
 ```
 
-A first example follows.
+The colon works as other cases. A first example:
 
 ```
 In [8]: for i in range(3):
@@ -152,10 +154,10 @@ In [10]: [i**2 for i in range(1, 5)]
     ...: squares
 Out[10]: [1, 4, 9, 16]
 ```
-If you wish to filter out some items from the original list, you can do it with an `if` statement, which can also included inside the brackets. For instance, suppose that you wish to get a list with the squares of the numbers which are not divisible by 3, up to 20. Taking advantage of the operator `%`, which returns the remainder of the division of two integers, you can use the following list comprehension.
+If you wish to filter out some items from the original list, you can do it by including an `if` statement inside the brackets. For instance, suppose that you wish to get a list with the squares of the numbers which are not divisible by 3, up to 20. Taking advantage of the operator `%`, which returns the remainder of the division of two integers, you can use the following list comprehension.
 
 ```
-In [11]: my_squares = [i**2 for i in range(1, 21) if i % 3 != 0]
+In [11]: my_squares = [i**2 for i in range(1, 21) if i%3 != 0]
     ...: my_squares
 Out[11]: [1, 4, 16, 25, 49, 64, 100, 121, 169, 196, 256, 289, 361, 400]
 ```
@@ -172,10 +174,12 @@ Out[11]: [1, 4, 16, 25, 49, 64, 100, 121, 169, 196, 256, 289, 361, 400]
 
 5. The **Fibonacci numbers** are 1, 1, 2, 3, 5, 8, 13, 21, etc. Except for the first two terms of this sequence, both equal to 1, every term is the sum of the two preceding terms. Use a loop to calculate the first 10 Fibonacci numbers. Based on that loop, write a function which, given a number, returns a list of Fibonacci numbers of that length.
 
-6. A **prime** is a positive integer greater than 1 that is not a product of two smaller positive integers. Starting with a list `primes = 2]`, use a loop for building the list of primes lower than 100. The number 100 of course can be replaced ny any other number, so yopu would be probably be able to write a function that takes an integer `n` and returns the numer of primes lower than `n`.
+6. A **prime** is a positive integer greater than 1 that is not a product of two smaller positive integers. Starting with a list `primes = 2]`, use a loop for building the list of primes lower than 100. The number 100 of course can be replaced ny any other number, so you would probably be able to write a function that takes an integer `n` and returns the numer of primes lower than `n`.
 
-7. Write a function that drops the duplicate items from a list, keeping the order. For instance, given the list `['a'. 'f', 'a', 'b']`, that function would return `['a'. 'f', 'b']`.
+7. Going back to exercise 4 of lecture PY-03, create a list containing the leap years of the 20th century.
 
-8. A **nested list** is a list of lists, that is, a list whose items are lists. For instance, `[[1, 2], [], ['a']]`. Write a function that *flattens* a nested list, transforming it into a new list whose items are the items contained in the items of the original list. Given the above example, that function would return `[1, 2, 'a']`.
+8. Write a function that drops the duplicate items from a list, keeping the order. For instance, given the list `['a', 'f', 'a', 'b']`, that function would return `['a', 'f', 'b']`.
 
-9. Write a function that combines strings from two lists of the same length, pasting every string from the second list after every string from the first list. For instance, given the lists `['A', 'B']` and `['X', 'Y']`, that function would return the list `['AX', 'AY', 'BX', 'BY']`.
+9. A **nested list** is a list of lists, that is, a list whose items are lists. For instance, `[[1, 2], [], ['a']]`. Write a function that *flattens* a nested list, transforming it into a new list whose items are the items contained in the items of the original list. Given the above example, that function would return `[1, 2, 'a']`.
+
+10. Write a function that combines strings from two lists of the same length, pasting every string from the second list after every string from the first list. For instance, given the lists `['A', 'B']` and `['X', 'Y']`, that function would return the list `['AX', 'AY', 'BX', 'BY']`.
