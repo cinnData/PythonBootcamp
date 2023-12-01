@@ -16,7 +16,8 @@ arr2[1, 2]
 
 # NumPy functions #
 np.sqrt(arr1)
-def f(t): return 1/(1 + np.exp(t))
+def f(t):
+    return 1/(1 + np.exp(t))
 f(arr2)
 
 # Subsetting arrays #
