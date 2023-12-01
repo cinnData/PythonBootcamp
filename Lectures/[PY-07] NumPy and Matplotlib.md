@@ -2,9 +2,9 @@
 
 ## NumPy arrays
 
-In this lecture, we expand the catalog of data containers with a new type, the **NumPy array**. We have seen in a previous lecture how to apply a function to all the items of a list with a `for` loop. The procedure was simple, but it gets inefficient when the list is long. With NumPy arrays we have tools to do that faster and also for operating with data containers to obtain new data containers. 
+This lecture expands the catalog of data containers with a new type, the **NumPy array**. We have seen in a previous lecture how to apply a function to all the items of a list with a `for` loop. The procedure was simple, but it gets inefficient when the list is long. With NumPy arrays we have tools to do that faster and also for operating with data containers to obtain new data containers. 
 
-The NumPy arrays are modeled after objects that you may have found (and perhaps tried to elude) in your mathematical experience, vectors and matrices. In mathematics, a **vector** is a sequence of numbers, and a **matrix** a rectangular arrangement of numbers. Operations with vectors and matrices are the subject of a branch of mathematics called **linear algebra**. In the Python library **NumPy** (and in many other places), vectors are called one-dimensional (1D) arrays, while matrices are called two-dimensional (2D) arrays. In NumPy, arrays of more than two dimensions can be managed without pain.
+The NumPy arrays are modeled after objects that you may have found (and perhaps tried to elude) in your mathematical experience, vectors and matrices. In mathematics, a **vector** is a sequence of numbers, and a **matrix** a rectangular arrangement of numbers. Operations with vectors and matrices are the subject of a branch of mathematics called **linear algebra**. In the Python library **NumPy** (and in many other places), vectors are called one-dimensional (1D) arrays, while matrices are called two-dimensional (2D) arrays. Moreover, arrays of more than two dimensions can be managed without pain with NumPy.
 
 Unlike mathematical vectors and matrices, NumPy arrays are not necessarily numeric. But all the terms of an array must have the same type, so the array itself can have a type. In order to cope with the complexities of the data analysis, NumPy provides additional data types, like the type `object`, but this sophistication is not used in this course.  
 
@@ -47,7 +47,7 @@ array([[ 0,  7,  2,  3],
        [ 3,  9, -5,  1]])
 ```
 
-Although we visualize a vector as a column (or a row) and a matrix as a rectangular arrangement, with rows and columns, it is not so in the computer. A 1D array is just a sequence of elements of the same type, neither horizontal nor vertical. It has one **axis**, the 0-axis. In a similar way, a 2D array is a sequence of 1D arrays of the same length and type. It has two axes. When we visualize it as rows and columns, `axis=0` means across rows, while `axis=1` means across columns.
+Don't forget that, though we visualize a vector as a column (or a row) and a matrix as a rectangular arrangement, with rows and columns, it is not so in the computer. A 1D array is just a sequence of elements of the same type, neither horizontal nor vertical. It has one **axis**, the 0-axis. In a similar way, a 2D array is a sequence of 1D arrays of the same length and type. It has two axes. In our visualization of rows and columns, `axis=0` means across rows, while `axis=1` means across columns.
 
 The number of terms stored along an axis is the **dimension** of that axis. The dimensions are collected in the attribute **shape**.
 
@@ -59,7 +59,7 @@ In [8]: arr2.shape
 Out[8]: (2, 4)
 ```
 
-The terms of a 1D array are extracted just as in a list. So, the third term of `arr1` comes as:
+The terms of a 1D array are extracted just as those of a list. So, the third term of `arr1` comes as:
 
 ```
 In [9]: arr1[2]
@@ -87,8 +87,9 @@ array([0.        , 1.        , 1.41421356, 1.73205081, 2.        ,
 The functions that are defined in terms of vectorized functions are automatically vectorized. An example follows.
 
 ```
-In [12]: def f(t): return 1/(1 + np.exp(t))
-   ...: f(arr2)
+In [12]: def f(t):
+    ...:     return 1/(1 + np.exp(t))
+    ...: f(arr2)
 Out[12]: 
 array([[5.00000000e-01, 9.11051194e-04, 1.19202922e-01, 4.74258732e-02],
        [4.74258732e-02, 1.23394576e-04, 9.93307149e-01, 2.68941421e-01]])
@@ -96,11 +97,11 @@ array([[5.00000000e-01, 9.11051194e-04, 1.19202922e-01, 4.74258732e-02],
 
 Unfortunately, this will not happen so automatically for the functions that you may define, for instance for functions which involve loops and coditionals. NumPy provides the function `vectorize()`, which transforms a function into a vectorized function. 
 
-NumPy also provides common **statistical functions**, such as `mean`, `max`, `sum`, etc.
+NumPy also provides common **statistical functions**, such as `mean()`, `max()`, `sum()`, etc.
 
 ## Subsetting arrays
 
-A 1D array can be sliced just as a list:
+A 1D array can be **sliced** just as a list:
 
 ```
 In [13]: arr1[:3]
@@ -135,7 +136,7 @@ In [17]: arr1[arr1 > 3]
 Out[17]: array([4, 5, 6, 7, 8, 9])
 ```
 
-1D Boolean masks are often used to filter out rows of a data set. In the following example we find an easy example, filtering by gender.
+1D Boolean masks are often used to filter out rows of a data set. In the following section we present an easy example, filtering by gender.
 
 ## An example
 
@@ -158,7 +159,7 @@ In [19]: height = np.array(height)
     ...: gender = np.array(gender)
 ```
 
-The same formula that would be used to calculate the BMI for a single person works for arrays. 
+Thanks to vectorization, the same formula that would be used to calculate the BMI for a single person works for arrays. 
 
 ```
 In [20]: bmi = weight/height**2
@@ -172,29 +173,31 @@ array([22.62626263, 19.88038357, 20.39384238, 28.34130001, 16.66608312,
 Now, suppose that we want to report the average BMI, for the whole sample, and separately for female and male subjects, with one decimal. For the whole sample:
 
 ```
-In [21]: round(np.mean(bmi), 1)
+In [21]: bmi.mean().round(1)
 Out[21]: 22.4
 ```
 
 To get the average for the female subsample, we create a filter with the Boolean mask `bmi[gender == 'F']`.
 
 ```
-In [22]: round(np.mean(bmi[gender == 'F']), 1)
+In [22]: bmi[gender == 'F'].mean().round(1)
 Out[22]: 24.4
 ```
 
 For the male subsample:
 
 ```
-In [23]: round(np.mean(bmi[gender == 'M']), 1)
+In [23]: bmi[gender == 'M'].mean().round(1)
 Out[23]: 20.6
 ```
+
+*Note*. We have used here `mean()` and `round()` as methods, but you cxan move them to the other side of the expression, as functions.
 
 ## Plotting with Matplotlib
 
 Inspired in MATLAB, a classic of numeric computing, **Matplotlib** is a Python library containing an impressive range of graphical methods, including image processing. As some other libraries in the Python world, Matplotlib has several API's, which makes it a bit confusing for the beginners. In this context, an **application programming interface** (API) is like an idiom that you use for calling the functions of the library. It defines the kinds of requests that can be made and how to make them. 
 
-Matplotlib offers you a choice between two API's, the **pyplot API** and the **object-oriented API**. This course uses the pyplot API. Beware that, if you search in the Internet information about plotting in Matplotlib, the solutions found can come in any of the two API's. Due to this mix, Matplotlib may look a bit confusing to the beginner.
+Matplotlib offers you a choice between two API's, the **pyplot API** and the **object-oriented API**. This course uses the pyplot API. Beware that, if you search for help in the Internet, the solutions found can come in any of the two API's. Due to this mix, Matplotlib may look a bit confusing to the beginner.
 
 The subpackage `matplotlib.pyplot` is a collection of command style functions that make Matplotlib work like MATLAB. It is typically imported as:
 
@@ -210,7 +213,7 @@ First, we fill a 1D array with linearly spaced values. With 100 points, we can c
 In [25]: t = np.linspace(0, 2, 100)
 ```
 
-Next, we ask for the plot:
+Next, we ask for the plot, that A Jupyter app will display as Figure 1.
 
 ```
 In [26]: plt.figure(figsize=(5,5))
@@ -223,11 +226,11 @@ In [26]: plt.figure(figsize=(5,5))
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_7.1.png)
 
-Take care of running these lines of code together. The semicolon in the last line stops the Python output showing up. That output would correspond to `plt.legend` and would not say much to you. 
+Take care of inputting these lines of code together. The semicolon in the last line stops the Python output showing up. That output would correspond to `plt.legend` and would not say much to you. 
 
 `plt.figure` allows you to change some default specifications. Here, we have changed the size. If you are satisfied with the default size `figsize=(6,4)`, you do not need this line of code. Here, `figsize=(5,5)` has been set so that the figure looks fine on the screen. The units for the width and height and are inches.
 
-`plt.plot` creates a **line chart**. If two vectors are entered, the first one is taken as $x$ (horizontal axis) and the second one as $y$ (vertical axis). If there is only one vector, it is taken as $x$, and the index is used as $y$. Here, we get a multiple line chart by calling `plt.plot` multiple times. Note that, even if you see the three components plotted here as three curves, they are really line charts without markers.
+`plt.plot` creates a **line chart**. If two vectors are entered, the first one is taken as $x$ (horizontal axis) and the second one as $y$ (vertical axis). If there is only one vector, it is taken as $y$, and the index is used as $x$. Here, we get a multiple line chart by calling `plt.plot` multiple times. Note that, even if you see the three components plotted here as three curves, they are really line charts without markers.
 
 `plt.plot` admits other arguments, allowing a minute edition of your visualization, down to the smallest detail. As a default, it uses solid lines, with different colors for the different lines. The **line style** has been specified by the argument `linestyle`, and the **color** by the argument `color`. The defaults are `color='blue'` and `linestyle='solid'`.
 
@@ -237,7 +240,7 @@ Take care of running these lines of code together. The semicolon in the last lin
 
 2. Plot together the curves $y = x^3 + x^2 - 3^x +1$ and $y = -x^3 + 0.5\,x^2 + x + 1$ in the interval $-2 \le x \le 2$.
 
-3. Real data frequently comes with **missing values**. The designers of NumPy allowed for this creating `np.nan`, which has data type `float`. This value has to be handled with care. To get an idea oh it works, calculate `np.nan + 3`, `np.nan < 3`, `np.nan == np.nan` and `np.nan <= np.nan`. Can you explain all the results obtained?
+3. Real data frequently comes with **missing values**. The designers of NumPy allowed for this creating `np.nan`, which has data type `float`. This value has to be handled with care. To get an idea oh it works, calculate `np.nan + 3`, `np.nan < 3`, `np.nan == np.nan` and `np.nan <= np.nan`. Can you explain the results obtained?
 
 4. In the stock market, the **daily return** is the percentage change in the price of a specific company's shares with respect to the preceding trading day. If $p(t)$ is the price on day $t$, the corresponding return would be
 $$r(t) =\frac{p(t) - p(t-1)}{p(t-1)}=\frac{p(t)}{p(t-1)}-1,$$
@@ -248,6 +251,6 @@ msft_price = [329.00, 333.38, 331.29, 330.09, 337.24, 335.82, 331.31, 339.15, 33
     326.17, 329.51, 319.26, 321.32, 316.59, 315.13, 312.30, 310.99, 317.75, 316.28, 320.83])
 ```
 
-5. In the first question of the homework of lecture PY-05, you wrote a function which takes the height and the weight (single numbers, not vectors) and returns a **categorization** of the BMI. Can you modify that function so it takes a vector of heights and a vector of weights and returns a vector of categorized BMI's? Note that what you need is a **vectorized function**.
+5. In the first exercise of the homework of lecture PY-05, you wrote a function which takes the height and the weight (single numbers, not vectors) and returns a **categorization** of the BMI. Can you modify that function so it takes a vector of heights and a vector of weights and returns a vector of categorized BMI's? Note that what you need is a **vectorized function**.
 
 6. Rewrite the code given in the example of this lecture, so it can be used to calculate the BMI (either numeric or categorical) using lists instead of NumPy arrays. So, you have to start with a list of heights and a list of weights and calculate a list of BMI's.
