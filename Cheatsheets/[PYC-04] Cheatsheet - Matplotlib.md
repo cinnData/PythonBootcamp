@@ -1,4 +1,4 @@
-# [PY-07C2] Cheatsheet - Matplotlib
+# [PYC-04] Cheatsheet - Matplotlib
 
 ## Main plot types
 
@@ -12,7 +12,7 @@
 
 ## Line style arguments
 
-The line style is specified by the parameter `linestyle` (in short, `ls`). The default is `linestyle='solid'`.
+The line style is specified by the parameter `linestyle` (in short, `ls`). The default is `linestyle='solid'`. Possible values are:
 
 * Solid line: `'solid'` (`-`).
 
@@ -24,7 +24,7 @@ The line style is specified by the parameter `linestyle` (in short, `ls`). The d
 
 ## Color arguments
 
-The color is specified by the parameter `color` (in short, `c`). The default is `color='blue'`.
+The color is specified by the parameter `color` (in short, `c`). The default is `color='blue'`. Possible values are:
 
 * Blue: `'blue'` (`'b'`).
 
@@ -44,7 +44,7 @@ The color is specified by the parameter `color` (in short, `c`). The default is 
 
 ## Marker style arguments
 
-The marker style for line and scatter plots is specified by the parameter `marker`. The default of `plt.plot()` is `marker=None`.
+The marker style for line and scatter plots is specified by the parameter `marker`. The default of `plt.plot()` is `marker=None`. Possible values are:
 
 * Point: `'.'`.
 
