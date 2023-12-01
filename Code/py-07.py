@@ -38,9 +38,9 @@ weight = np.array(weight)
 gender = np.array(gender)
 bmi = weight/height**2
 bmi
-round(np.mean(bmi), 1)
-round(np.mean(bmi[gender == 'F']), 1)
-round(np.mean(bmi[gender == 'M']), 1)
+bmi.mean().round(1)
+bmi[gender == 'F'].mean().round(1)
+bmi[gender == 'M'].mean().round(1)
 
 # Plotting with Matplotlib #
 import matplotlib.pyplot as plt
