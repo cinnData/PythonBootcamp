@@ -2,7 +2,7 @@
 
 ## The package Pandas
 
-**Pandas** is a library for managing data in tabular format, inspired in the statistical language R. It is not a simple toolkit, but a huge collection of functions and methods, which cover practically anything that you may wish to do with data, often in multiple ways. Therefore, rather than on "learning Pandas", you should think on "using Pandas", learning on the way (maybe no more than what you need). In this course, we try to develop a basic understanding of how to work with Pandas data containers, so you can start using them in real world applications.
+**Pandas** is a library for managing data in tabular format, inspired in the statistical language R. It is not a simple toolkit, but a huge collection of functions and methods, covering practically anything that you may wish to do with data, often in multiple ways. Therefore, rather than on "learning Pandas", you should think on "using Pandas", learning on the way (maybe no more than what you need). 
 
 This lecture, and the short tutorial contained, are just introductory. The two last lectures of the course present more advanced stuff, such as cleaning data sets, missing values, grouping and aggregating, basic stats, and plotting. Real data will be provided in separate examples.
 
@@ -12,9 +12,9 @@ Pandas is typically imported as:
 In [1]: import pandas as pd
 ```
 
-Pandas provides two data container classes, the series (one-dimensional) and the data frames (two-dimensional). A **series** can be understood as the combination of a 1D array containing the **values** and a list containing labels for those values, called the **index**. These components can be extracted as the attributes `.values` and `.index`.
+Pandas provides two data container classes, the series (one-dimensional) and the data frame (two-dimensional). A **series** is like a vector whose terms have names, while a **data frame** is like a table with row and column names. These classes address two shortcomings of NumPy arrays: (a) rows and, specially columns, don't have names, (b) there is a unique data type.
 
-A **data frame** can be seen as formed by one or several series with the same index (hence, with the same length). It can also be seen as a table with row and column names. A Pandas data frame does not have a unique data type, like a NumPy array. Instead, each column has its own data type. The numeric types work as usual, but Pandas uses the data type `object` for various things, in particular for strings.
+A **series** has two components: a 1D array containing the **values** and a list containing **labels** for those values, called the **index**. These components can be extracted as the attributes `.values` and `.index`. A **data frame** has a third component, a list containing the **column names**, that can be extracted as the attribute `.columns`. The series has a data type, but the data frame does not. Instead, each column has its own data type. The numeric types work as usual, but Pandas uses the data type `object` for various things, in particular for strings.
 
 ## Pandas series
 
@@ -46,7 +46,7 @@ In [4]: s1.index
 Out[4]: RangeIndex(start=0, stop=5, step=1)
 ``` 
 
-When the data source mixes data types, a conversion to a common type is performed on the fly, as shown in the following example. But, instead of letting the Python kernel to create an index automatically, as a `RangeIndex`, we can also provide an index directly:
+When the data source mixes data types, a conversion to a common type is performed on the fly, as shown in the following example. Here, instead of letting the Python kernel to create an index automatically, as a `RangeIndex`, we provide an index directly:
 
 ```
 In [5]: s2 = pd.Series([1, 5, 'Messi'], index = ['a', 'b', 'c'])
@@ -76,7 +76,7 @@ Though Pandas allows duplicates in an index, good indexes should not have them, 
 
 ## Pandas data frames
 
-A Pandas **data frame** can be built in many ways with the Pandas function `DataFrame()`. For instance, from a dictionary of vector-like objects of the same length (including Pandas series). As an example, we revisit the biometric data used in the preceding lecture. We started with three lists, with height, weight and gender, respectively.
+A Pandas **data frame** can be built in many ways with the Pandas function `DataFrame()`. For instance, from a dictionary of vector-like objects of the same length (including Pandas series). As an example, we revisit the biometric data used in the preceding lecture. We started with three lists, containing heights, weights and genders, respectively.
 
 ```
 In [8]: height = [1.65, 1.73, 1.51, 1.63, 1.69, 1.7, 1.81, 1.66, 1.58, 1.66,
@@ -253,7 +253,7 @@ Out[18]:
 
 *Note*. You can extract a data subframe with a single column. Beware that this is not the same as a series. `bio['height']`is a series with shape `(15,)`, and `bio[['height']]` is a data frame with shape `(15,1)`. We have seen something similar in lists.
 
-The good news from Pandas is that we can operate with columns, getting a series, as we did with 1D arrays, but in Pandas we can add the result as an additional column:
+The good news from Pandas is that we can operate with columns as if they were 1D arrays, but now we can add the result as an new column:
 
 ```
 In [19]: bio['bmi'] = bio['weight']/bio['height']**2
@@ -339,7 +339,7 @@ Besides this, there are two additional ways to carry out a selection, specifying
 
 * **Selection by position** uses `.iloc`, which works exactly as in 2D array, based on the row and column indexes. 
 
-In both cases, if you enter a single specification inside the brackets, it refers to the rows. If you enter two specifications, the first one refers to the rows and the second one to the columns. We don't use `loc` and `iloc` in this course, since you can live in Pandas without that, first filtering the rows and then selecting the columns. Sticking to this simple approach, you will save the time wasted learning too many methods.
+In both cases, if you enter a single specification inside the brackets, it refers to the rows. If you enter two specifications, the first one refers to the rows and the second one to the columns. We don't use `loc` and `iloc` in this course, since you can live in Pandas without that, first filtering the rows and then selecting the columns (or vice versa). Sticking to this simple approach, you save the time wasted learning too many methods.
 
 ## Homework
 
