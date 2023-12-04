@@ -57,21 +57,3 @@ In the source file `trip.csv` (zipped), every row corresponds to a restaurant. T
 * `revEnglish`, the number of reviews in English.
 
 * `revSpanish`, the number of reviews in Spanish.
-
-## Questions
-
-Q1. Import the data to a Pandas data frame, with the restaurant ID as the index. Check the content.
-
-Q2. How is the distribution of the number of reviews? And the number of photos? Are they related?
-
-Q3. The proportion of reviews in foreign languages can be used as an indicator of how "touristic" is a restaurant. Examine the distribution of this proportion? Is it related to the total number of reviews?
-
-Q4. Have more expensive restaurants a higher proportion of reviews in foreign languages?
- 
-Q5. It is admitted that, except when the potential customer already knows the restaurant, the ranking decides how likely its page is of being visited. But it is not clear how the ranking is produced. Is it just of function of the ratings given by the reviewers? Is it related to the number of reviews? 
-
-Q6. Does having dietary options make a difference in the price, the average rating or the number of reviews?
-
-Q7. Does the TripAdvisor ranking system favor the restaurants that work with The Fork or Just Eat? 
-
-Q8. Create a new column containing the average rating of the reviews in English, with a `NaN` value for those restaurants witout reviews in English. How is the distribution of this average rating? How is it related to the price? And to the diets?
