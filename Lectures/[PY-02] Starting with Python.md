@@ -318,7 +318,7 @@ Out[39]: True
 
 2. Evaluate the expressions `1/3 + 1/3 + 1/3 + 1/3 == 4/3` and `1/3 + 1/3 + 1/3 + 1/3 + 1/3 == 5/3`. One is true and the other one is false. Is Python crazy?
 
-3. Write a string that is lower than any other string.
+3. Write a string that is less than (`<`) any other string.
 
 4. You will probably agree that $3 + (4 \times 5) = 23$ and $(3 + 4) \times 5 = 35$, and that the first identity can be written as $3 + 4 \times 5 = 23$, so the parenthesis is not needed, because it is understood that the product takes **precedence** over the sum. Now, what is `True or True and False`? Which operator has precedence, `and` or `or`? Another one: what is `not False or True`?
 
