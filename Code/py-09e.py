@@ -1,8 +1,8 @@
 ## [PY-09E] Example - Apple Inc. stock prices ##
 
-# Import the data (edit the path) #
+# Import the data (edit the path if needed) #
 import pandas as pd
-df = pd.read_csv('Dropbox/py_course/data/aapl.csv')
+df = pd.read_csv('py_course/aapl.csv')
 
 # Exploring the data #
 df.info()
@@ -13,7 +13,7 @@ df.describe()
 df[df['date'] < '2022-01-15']
 
 # Q2. Line plot for the opening price #
-df['open'].plot(figsize=(8,5), title = 'Figure 1. Opening price', color='black', linewidth=1);
+df['open'].plot(figsize=(8,5), title='Figure 1. Opening price', color='black', linewidth=1);
 
 Q3a. Line plot for the trading volume #
 df['volume'] = df['volume']/10**6
