@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This example shows how to carry out an exploratory statistical analysis with Panadas tools. It uses data on the Apple Inc. stock prices in the Nasdaq stock market, for the year 2022, as published by Yahoo Finance (`finance.yahoo.com/quote/AAPL/history?p=AAPL`). The data source is the file `aapl.csv`, which covers 251 trading days. The data come in the typical OHLC format (Open/High/Low/Close).
+This example shows how to carry out an exploratory statistical analysis with Pandas tools. It uses data on the Apple Inc. stock prices in the Nasdaq stock market, for the year 2022, as published by Yahoo Finance (`finance.yahoo.com/quote/AAPL/history?p=AAPL`). The data source is the file `aapl.csv`, which covers 251 trading days. The data come in the typical OHLC format (Open/High/Low/Close).
 
 ## The data set
 
@@ -32,7 +32,7 @@ Q3. Use a line plot and a **histogram** to visualize the trading volume. What do
 
 Q4. A direct measure of **volatility** can be obtained as the difference of the highest price minus the lowest price in a given trading day. This is called the **daily price variation**. Add the daily variation of the Apple stock prices as a new column. Do you see a trend in the daily price variation? How is the distribution?
 
-Q5. Is there an **association** between the daily price variation and the trading volume. Is the volatility stronger the days in which more shares are traded?
+Q5. Is there an **association** between the daily price variation and the trading volume? Is the volatility stronger the days in which more shares are traded?
 
 ## Importing the data
 
@@ -42,18 +42,17 @@ We import Pandas in the usual way:
 In [1]: import pandas as pd
 ```
 
-Let us suppose for this example, that the source file is in our computer. To import the data with `pd.read_csv`, we have to specify where to find it. In the Mac computer where this is prepared, the Qt Console **working directory** is `/Users/miguel` (remember that the magic command `%pwd` provides this information). The complete path for the source file is `/Users/miguel/Dropbox/py_course/data/aapl.csv`. We can use the **relative path** `Dropbox/py_course/data/aapl.csv` to locate the file.
+Let us suppose, for this example, that the source file is in our computer. To import the data with the function `read_csv()`, we have to specify where to find it. By default, it will be searched in the **working directory** (remember that the magic command `%pwd` provides this information). Assuming that it is in the folder `py_course` of the working directory that we used in lecture PY-09. We can then use the **relative path** `py_course/aapl.csv` to locate the file.
 
-So, in this computer we can import the data from the source file with:
 ```
-In [2]: df = pd.read_csv('Dropbox/py_course/data/aapl.csv')
+In [2]: df = pd.read_csv('py_course/aapl.csv')
 ```
 
-This creates the data frame `df`. To get it in your computer, you have to edit the path to fit the current location of the file. 
+This creates the data frame `df`. If the file is located somewhere else, you have to edit the path to fit the current location of the file. 
 
 ## Exploring the data
 
-Since nothing has been specified about the index, a `RangeIndex` has been assigned. The method `info()` is probably the best weay to start exploring this data frame.
+Since nothing has been specified about the index, a `RangeIndex` has been assigned. The report printed by the method `info()` is probably the best weay to start exploring this data frame.
 
 ```
 In [3]: df.info()
@@ -73,7 +72,7 @@ dtypes: float64(5), int64(1), object(1)
 memory usage: 13.9+ KB
 ```
 
-The dimensions and the column names are what we expected. Since there are 251 entries in the index and 251 non-null entries in every column, there are no missing values. The distinction between `int` and `float` columns is not relevant for a statistical description, so don't pay attention. The column `date` has been read as type `str` (reporting it as `object` does change this fact). 
+The dimensions and the column names are what we expected. Since there are 251 entries in the index and 251 non-null entries in every column, there are no missing values. The distinction between `int` and `float` columns is not relevant for a statistical description, so don't pay attention. The column `date` has been read by `.read_csv()` as type `str` (reporting it as `object` does change this fact). 
 
 We can take a look at the first rows with the method `.head()`. Nothing unexpected here.
 
@@ -95,7 +94,7 @@ Out[4]:
 4   86709100  
 ```
 
-A statistical summary can be printed with the method `.describe()`. Note that the column `date`, which is not numeric, is omitted in the report.
+A statistical summary can be extracted with the method `.describe()`. Note that the column `date`, which is not numeric, is omitted.
 
 ```
 In [5]: df.describe()
@@ -155,10 +154,10 @@ Out[6]:
 
 ## Q2. Line plot for the opening price
 
-Analysts typically explore trends in stock prices. Let us do that with opening price, which we can extract as the series Analysts typically explore price trends in stock prices. Let us do that with opening price. The corresponding column is extracted as the series `df['open']`. The method `.plot()` returns a line plot. The parameters `figsize` and `color` have already appeared in the lecture PY-07. Though `linewidth=1` is a default argument, it has been explicitly included to call your attention. Note that it is possible to get a line plot in Pandas  directly, skipping the Matpotlib pyplot API. In practice, this is what we do, except when extra embellishments are desired.
+Analysts typically explore trends in stock prices. Let us do that with opening price. The corresponding column is extracted as the series `df['open']`. The method `.plot()` returns a line plot. The parameters `figsize` and `color` have already appeared in the lecture PY-07. Though `linewidth=1` is a default argument, it has been explicitly included to call your attention. Note that it is possible to get a line plot in Pandas  directly, skipping the Matpotlib pyplot API. 
 
 ```
-In [7]: df['open'].plot(figsize=(8,5), title = 'Figure 1. Opening price', color='black', linewidth=1)
+In [7]: df['open'].plot(figsize=(8,5), title='Figure 1. Opening price', color='black', linewidth=1)
 ```
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_9.1.png)
@@ -167,7 +166,7 @@ In this case, the line plot does not show an obvious upwards trend, but a sequen
 
 ## Q3. Line plot and histogram for the trading volume
 
-The numbers for the trading volume are high, since it comes as a number of shares. In such cases, rescaling can improve the picture. Here, we express the volume in million of shares: 
+The numbers for the trading volume are high, since it comes as a number of shares. In such cases, rescaling can improve the picture. Here, we express the volume in millions of shares: 
 
 ```
 In [8]: df['volume'] = df['volume']/10**6
@@ -180,7 +179,7 @@ In [9]: df['volume'].plot(figsize=(8,5), title='Figure 2. Trading volume', color
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_9.2.png)
 
-No clear trends here. The trading volume looks quite **stationary**. It may make sense to look at the distribution of the dily volumes, as if they were extracted from a "population". The histogram is a quick and dirty graphical tool for this job. In Pandas, the method `.plot.hist()` returns a histogram. The argument `edgecolor='white'` improves the picture (you may disagree), delineating the border of the histogram bars.
+No clear trends here. The trading volume looks quite **stationary**. It may make sense to look at the distribution of the daily volumes, as if they were extracted from a "population". The histogram is a quick and dirty graphical tool for this job. In Pandas, the method `.plot.hist()` returns a histogram. The argument `edgecolor='white'` improves the picture (you may disagree), delineating the border of the histogram bars.
 
 ```
 In [10]: df['volume'].plot.hist(figsize=(7,5),
@@ -190,11 +189,11 @@ In [10]: df['volume'].plot.hist(figsize=(7,5),
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_9.3.png)
 
-We don't see here the bell-shaped profile of the statisticians' beloved model, the **normal distribution**, but that of a **skewed distribution**. This type of distribution, with a well-defined **right tail**, is typical in series that represent amounts of money.
+We don't see here the bell-shaped profile of the statisticians' beloved model, the **normal distribution**, but that of a **skewed distribution**. This type of distribution, with a well-defined **right tail**, is typical of variables whose values are amounts of money.
 
 ## Q4. Trend and distribution for the daily price variation
 
-You can calculate the daily price variation and keep it a separate series, or add it as a new column to the current data frame `df`. We choose here the second option.
+We could calculate the daily price variation and keep it as a separate series, or add it as a new column to the current data frame `df`. We choose here the second option.
 
 ```
 In [11]: df['dvar'] = df['high'] - df['low']
@@ -250,7 +249,7 @@ In [15]: df.plot.scatter(x='volume', y='dvar',
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_9.6.png)
 
-The scatter plot somewhat confirms our guess of a positive association between the trading volume and the daily variation, though the interpretation of plots is always subjective. Statisticians use the correlation to evaluate the strength of the association. More specifically, it tells us the extent to which one series can be represented as a linear expression of the other series. Correlation can be positive or negative. A strong correlation is one which close to 1 (or -1), and a weak correlation one which close to 0. Correlations in Pandas can be calculated with the method `.corr()`.
+The scatter plot somewhat confirms our guess of a positive association between the trading volume and the daily variation, though the interpretation of plots is always subjective. To be objective, statisticians use the correlation to evaluate the strength of the association. More specifically, it tells us the extent to which one series can be represented as a linear expression of the other series. The correlation can be positive or negative. A strong correlation is one which is close to 1 (or -1), and a weak correlation one which is close to 0. In Pandas, correlations can be calculated with the method `.corr()`.
 
 ```
 In [16]: df['volume'].corr(df['dvar'])
@@ -272,4 +271,4 @@ which can be multiplied by 100 to get percentage scale. Use the method `.pct_cha
 
 2. Instead of calculating the daily return for the opening price as in the preceding exercise, which is the usual practice, calculate a daily return as the difference of the closing price minus the opening price (of the same day) as a percentage of the opening price. Perform a similar analysis and compare the results.
 
-3. The opening price on a particular day is not the same as the closing the day before. As a rule, is it higher or lower? Or there is no clear rule? How big can be the difference of the opening price tomorrow minus the closing price today, as a percentage of the closing price today?
+3. The opening price on a particular day is not the same as the closing price the day before. As a rule, is it higher or lower? Or there is no clear rule? How big can be the difference of the opening price tomorrow minus the closing price today, as a percentage of the closing price today?
