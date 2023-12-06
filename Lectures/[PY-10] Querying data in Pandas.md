@@ -2,9 +2,9 @@
 
 ## Sorting
 
-This last lecture presents a collection of basic procedures for cleaning, exploring and summarizing data stored in Pandas data frames. We start with **sorting** methods. Pandas series can be sorted by the index or by the values, with the methods `.sort_index()` and `.sort_values()`, respectively. Both work for data frames, but, for the second one, you have to specify either the name of a column or a list of column names, which will then be used in the order that you wrote them.
+This last lecture presents a collection of basic procedures for cleaning, exploring and summarizing data stored in Pandas data frames. We start with **sorting** methods. A Pandas series can be sorted by the index or by the values, with the methods `.sort_index()` and `.sort_values()`, respectively. Both methods work for data frames, but, for the second one, you have to specify either the name of a column or a list of column names, which will then be used in the order that you wrote them.
 
-The parameter `ascending` allows you to choose between ascending and descending ways. The default (in Python as in other languages) is `ascending=True`.
+The parameter `ascending` allows you to choose between ascending and descending ways. The default is `ascending=True`.
 
 ## Missing values
 
@@ -22,7 +22,7 @@ Three useful Pandas methods related to missing values, which can be applied to b
 
 There are two useful Pandas methods for managing **duplicates**:
 
-* `.duplicated()` returns a Boolean series indicating the rows which are duplicated. It reads the data top-down, returning `False` for the values occurring for the first time, and `True` for those having occurred before. You can reverse this with the argument `keep=last`.
+* `.duplicated()` returns a Boolean series indicating the rows that are duplicated. The default of this method performs a top-down check of the data, returning `False` for the values occurring for the first time, and `True` for those having occurred before. You can reverse this with the argument `keep=last`.
 
 * `.drop_duplicates()` drops the duplicated rows. It is based on the Boolean mask created by `.duplicated()`. 
 
@@ -32,8 +32,8 @@ When exploring data, we often use tables for discovering patterns. They can be p
 
 * The method `.value_counts()` extracts a **frequency table**. The table contains the counts of the occurrences of every value of a given series. It does not include the missing values.
 
-* The function `crosstab()` extracts a **cross tabulation**. For two series of the same length `s1` and `s2`, the syntax is `pd.crosstab(s1, s2)`. Then `s1` will be placed on the rows and `s2` on the columns. By default, `crosstab()` extracts a frequency table, unless an array of values and an **aggregation function** are passed, *e.g*. as `values=s3` and `aggfunc=fname`.
+* The function `crosstab()` extracts a **cross tabulation**. For two series of the same length `s1` and `s2`, the syntax is `pd.crosstab(s1, s2)`. Then `s1` will be placed on the rows and `s2` on the columns. By default, `crosstab()` extracts a frequency table, unless an array of values (parameter `values`) and an **aggregation function** (parameter `aggfunc`) are passed.
 
-* The function `pivot_table()` extracts a **spreadsheet-style pivot table**. For a Pandas data frame `df`, the syntax is `pd.pivot_table(df, values=cname1, index=cname2)`. This returns a one-way table containing the average value of the column `cname1` for the groups defined by the column `cname2`. Instead of the average, you can get a different summary by adding an argument `aggfunc=[fname1, fname2, ...]`. With an additional argument `columns=cname3`, you get a two-way table. For two-way tables, it works the same as `crosstab()`, but it can only be applied to columns from the same data frame.
+* The function `pivot_table()` extracts a **spreadsheet-style pivot table**. For a Pandas data frame `df`, the syntax is `pd.pivot_table(df, values=col1, index=col2)`. This returns a **one-way table** containing the average value of the column `col1` for the groups defined by the column `col2`. Instead of the average, you can get a different summary by adding an argument `aggfunc=[f1, f2, ...]`. With an additional argument `columns=col3`, you get a **two-way table**. For two-way tables, it works the same as `crosstab()`, but it can only be applied to columns from the same data frame.
 
-* The method `.groupby()` groups the rows of a data frame so that an **aggregation function** can be applied to every group, extracting a **SQL-like table** as a data frame. The syntax is `df.groupby(by=cname).fname()`. To apply more than one aggregation function, use `df.groupby(by=cname).agg([fname1, fname2, ...])`.
+* The method `.groupby()` groups the rows of a data frame so that an **aggregation function** can be applied to every group, extracting a **SQL-like table** as a data frame. The syntax is `df.groupby(by=cname).fname()`. To apply more than one aggregation function, use `df.groupby(by=col).agg([f1, f2, ...])`.
