@@ -2,7 +2,7 @@
 
 ## Introduction
 
-**Airbnb** is a peer-to-peer online marketplace and homestay network, which enables people to list or rent short-term lodging in residential properties, with the cost of such accommodation set by the property owner, called the **host** at Airbnb. The company receives percentage service fees from both guests and hosts in conjunction with every booking. Starting in 2008, it has grown exponentially, and it currently has over 6 million listings in about 200 countries.
+**Airbnb** is a peer-to-peer online marketplace and homestay network, which enables people to list or rent short-term lodging in residential properties, with the cost of accommodation set by the property owner, called the **host** at Airbnb. The company receives percentage service fees from both guests and hosts in conjunction with every booking. Starting in 2008, it has grown exponentially, and it currently has over 6 million listings in about 200 countries.
 
 Airbnb currently releases and updates data at the **Inside Airbnb** site (`www.insideairbnb.com`). The updates posted in March 2023 cover 116 areas, most of them in US and Europe. This example uses data from Barcelona. In Barcelona, vacation apartments are subject to the highest rate of property tax, and platforms must share data with regulators.
 
@@ -16,7 +16,7 @@ The columns of the source file are:
 
 * `host_id`, a unique host's ID.
 
-* `host_since`, the date of the host's first listing in Airbnb, as yyyy-mm-dd.
+* `host_since`, the date of the host's first listing in Airbnb, as 'yyyy-mm-dd'.
 
 * `name`, the listing's name. A minimal description (maximum 35 characters) of the place, intended to be appealing, such as 'Centric Bohemian next Ramblas & Macba'.
 
@@ -36,7 +36,7 @@ The columns of the source file are:
 
 * `review_scores_rating`, the average reviewers' rating of overall experience (*What was your guest’s overall experience?*). Listings are rated in the range 1-100.
 
-Source: `insideairbnb.com/get-the-data`.
+Source: `http://insideairbnb.com/get-the-data`.
 
 ## Questions
 
@@ -57,7 +57,7 @@ We import Pandas as usual.
 ```
 In [1]: import pandas as pd
 ```
-In this example, we use a remote data source. In Pandas, remote source files work the same as local files, the only difference being in the path. The source files for this course can be found in the same GitHub repository as the document that you're reading. The path for these files can be inputted as follows.
+In this example, we use a remote data source. In Pandas, remote source files work the same as local files, the only difference being in the path. The source files for this course can be found in the GitHub repository of this course. The path for these files can be inputted as follows.
 
 ```
 In [2]: path = 'https://raw.githubusercontent.com/cinnData/PythonBootcamp/main/Data/'
@@ -71,7 +71,7 @@ In [3]: df = pd.read_csv(path + 'airbnb.csv', index_col=0)
 
 ## Exploring the data
 
-As you can see in the report extracted by the method `.info()`, the index of our data frame is an `Int64Index`, meaning that all the entries are integers, but not consecutive integers generated automatically as in a `RangeIndex`. Note that `listing_id` is not included in the column list.
+As you can see in the report printted by the method `.info()`, the index of our data frame is an `Int64Index`, meaning that all the entries are integers, but not consecutive integers generated automatically as in a `RangeIndex`. Note that `listing_id` is not included in the column list.
 
 ```
 In [4]: df.info()
@@ -145,7 +145,7 @@ id
 
 Duplicates can be detected with the method `.duplicated()`, which returns a Boolean series. In this example, it makes sense to apply it to the index, to check whether there are duplicated listing ID's. Note that Pandas has no rule against duplicated indexes, though in most applications to real data, in which we take the index as an identifier of the row, duplicated indexes are *wrong*.
 
-In this data set, the listing's ID in this data set is never duplicated, as we see next. The method `.duplicated()` checks whether a particular index value is duplicated (meaning that it has already appeared), returning a `True`/`False` value. These Booleans are stored in the series `df.index.duplicated()`. By applying `.sum()`, we convert the Booleans to integers (1/0), so the sum is equal to the number of `True` values, that is, the number of duplicates. This calculation illustrates how computers count the times an expression is true. Note that, if an index value appears $n$ times, it is counted as $n - 1$ duplicates.
+In this data set, the listing's ID in this data set is never duplicated, as we see next. The method `.duplicated()` uses a top-down search to check whether a particular index label is duplicated (meaning that it has already appeared), returning a `True`/`False` value. These Booleans are stored in the series `df.index.duplicated()`. By applying `.sum()`, we convert the Booleans to integers (1/0), so the sum is equal to the number of `True` values, that is, the number of duplicates. This calculation illustrates how computers count the times an expression is true. Note that, if an index label appears $n$ times, it is counted as $n - 1$ duplicates.
 
 ```
 In [6]: df.index.duplicated().sum()
@@ -174,7 +174,7 @@ Out[9]: (15627, 11)
 
 ## Q2. Proportion of listings with missing ratings
 
-The report extracted with `.info()` is already letting us know that some columns have missing values. In particular, we have a relevant number of listings for which rating scores are not available (many guests don't rate the lodgings). A specific report on this, which can be restricted to some selected columns, can be extracted with the method `.isna()`, which returns a Boolean data frame of the same shape indicating whether an entry is missing. 
+The report extracted with `.info()` was already letting us know that some columns have missing values. In particular, we have a relevant number of listings for which rating scores are not available (many guests don't rate the lodgings). A specific report on this, which can be restricted to some selected columns, can be extracted with the method `.isna()`, which returns a Boolean data frame of the same shape indicating whether an entry is missing. 
 
 By applying `.sum()` after `.isna()`, we would obtain the column totals, that is, the numbers of missing values for every column. By applying `.mean()`, we obtain the number of missing values (*i.e*. the column totals) divided by the number of listings (*i.e*. the number of rows). This is the proportion of missing values.
 
@@ -204,7 +204,7 @@ Out[11]: 0.221
 
 ## Q3. Distribution of the price
 
-A histogram for the prices can be obtained with the method `.plot.hist()`, which has already been used in the previous lecture.
+A histogram for the prices can be obtained with the method `.plot.hist()`, which has already been used in the preceding example.
 
 ```
 In [12]: df['price'].plot.hist(figsize=(7,5), title='Figure 1. Distribution of the price',
@@ -229,13 +229,13 @@ max      90000.000000
 Name: price, dtype: float64
 ```
 
-For a  better picture of the bulk of Airbnb we may **trim the data**. For instance, we can plot a histogram for the listings with prices in a reasonable interval. See an example below. First, we create a filter.
+For a  better picture of the bulk of Airbnb listings we could **trim the data**. For instance, we can plot a histogram for the listings with prices in a reasonable interval. For an example, we create the filter:
 
 ```
 In [14]: filter = df['price'].between(25,175)
 ```
 
-The role of this filter is obvious. An equivalent condition would be `(df['price'] >= 25) & (df['price'] <= 175)`. Note that the method `.between()` includes the two limits of the interval. Now, we draw a histogram which includes the listings that pass the filter.
+The role of this filter is obvious. An equivalent condition would be `(df['price'] >= 25) & (df['price'] <= 175)`. Note that the method `.between()` includes the two limits of the interval. Now, we draw a histogram including the listings that pass the filter.
 
 ```
 In [15]: In [33]: df['price'][filter].plot.hist(figsize=(7,5),
@@ -245,13 +245,13 @@ In [15]: In [33]: df['price'][filter].plot.hist(figsize=(7,5),
 
 ![](https://github.com/cinnData/PythonBootcamp/blob/main/Figures/fig_10.2.png)
 
-The argument `bin s=30` ensures that the intervals is partitioned in subintervals whose limits are multiples of 5, which makes it more appealing. Prices don't change continuously, and hosts prefer prices which are multiples of 10. The histogram also shows that 50, 100 and 150 euros are popular prices.
+The argument `bin s=30` ensures that the intervals is partitioned in subintervals whose limits are multiples of 5, which makes the figure more appealing. Prices don't change continuously, and hosts prefer prices that are multiples of 10. The histogram also shows that 50, 100 and 150 euros are popular prices.
 
-*Note*. The rule for counting the observations in every bin is as follows. For an interval of limits $a$ and $b$, the values $x$ such that $a \le x < b$ are counted. Except for the last interval, for which the right limit is also included.
+*Note*. The default for counting the observations in every bin is: for an interval of limits $a$ and $b$, the values $x$ such that $a \le x < b$ are counted. Except for the last interval, for which the right limit is also counted.
 
 ## Q4. Average price per room type
 
-The average price per room type can be calculated with the method `.pivot_table()`. The parameters `values` and `index` specify the column to be aggregated and the column to be used for grouping, respectively.
+A pivot table with the average price per room type can be calculated with the method `.pivot_table()`. The parameters `values` and `index` specify the column to be aggregated and the column to be used for grouping, respectively.
 
 ```
 In [16]: pd.pivot_table(df, values='price', index='room_type', aggfunc='mean').round()
@@ -264,7 +264,7 @@ Private room     117.0
 Shared room       48.0
 ```
 
-But, how informative is the average price? With skewed distributions, the extreme observations on the right tail "pull" the mean, so it may fall far from the middle of the distribution. In these cases, the **median** gives a better description of the mid prices. To get the median price per room type, just replace the aggregation function mean by median (no need of rounding here). 
+But, how informative is the average price? With skewed distributions, the extreme observations on the right tail "pull" the mean, so it may fall far from the middle of the distribution. In these cases, the **median** gives a better description of the mid prices. To get the median price per room type, we use `aggfunc='median'` (no need of rounding here). 
 
 ```
 In [17]: pd.pivot_table(df, values='price', index='room_type', aggfunc='median')
@@ -308,13 +308,15 @@ la Nova Esquerra de l'Eixample            612
 Name: count, dtype: int64
 ```
 
-Are these neighbourhoods more expensive? We wonder if there is an association between the mid price and the amount of property listed. To get the answer, we could use a pivot table with the neighbourhood in the rows and the number of listings and the mid price in the columns. Instead, we apply here the method `gropuby()`, with two aggregation functions. The function `count` counts the non missing observations.
+Are these neighbourhoods more expensive? We wonder if there is an association between the mid price and the amount of property listed. To get the answer, we could use a pivot table with the neighbourhood in the rows and the number of listings and the mid price in the columns. Instead, we apply here the method `.groupby()`, with two aggregate functions. The function `count()` counts the non missing observations.
 
 Except for la Dreta de l'Eixample, we don't find higher prices associated to more listings. So, the picture is more complex than that.
 
 ```
-In [20]: df.groupby(by='neighbourhood')['price'].agg(['count', 'median']).sort_values(by='count', ascending=False).head(10)
+In [20]: df.groupby(by='neighbourhood')['price'].agg(['count', 'median']).sort_values(by='count',
+    ...:     ascending=False).head(10)
 Out[20]: 
+
                                        count  median
 neighbourhood                                       
 la Dreta de l'Eixample                  2029   159.0
