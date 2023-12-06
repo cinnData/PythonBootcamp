@@ -40,4 +40,5 @@ roomtype_price.plot.bar(figsize=(7,5), legend=False,
 
 # Q5. Top-10 neighbourhoods #
 df['neighbourhood'].value_counts().head(10)
-df.groupby(by='neighbourhood')['price'].agg(['count', 'median']).sort_values(by='count', ascending=False).head(10)
+df.groupby(by='neighbourhood')['price'].agg(['count', 'median']).sort_values(by='count',
+    ascending=False).head(10)
