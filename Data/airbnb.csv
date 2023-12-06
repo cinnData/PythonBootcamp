@@ -1,4 +1,4 @@
-id,host_id,host_since,name,neighbourhood,district,property_type,room_type,bedrooms,price,number_of_reviews,review_scores_rating
+listing_id,host_id,host_since,name,neighbourhood,district,property_type,room_type,bedrooms,price,number_of_reviews,review_scores_rating
 13977576,64903899,2016-03-29,Habitación individual es Barcelona,Hostafrancs,Sants-Montjuïc,Private room in rental unit,Private room,1.0,12.0,1,0.0
 42105584,333969184,2020-02-06,Habitación M&D,la Prosperitat,Nou Barris,Private room in rental unit,Private room,,25.0,0,
 33727898,251710733,2019-03-28,Spacious and bright apartment next to Plaza España,Sant Antoni,Eixample,Entire rental unit,Entire home/apt,3.0,300.0,30,5.0
