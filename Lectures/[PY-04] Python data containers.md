@@ -218,7 +218,7 @@ Out[29]: {'name': 'Martha', 'gender': 'F', 'age': 32, 'job': 'Engineer'}
 
 ## Homework
 
-1. Write a list containing the month names and use it to create a function for **date conversion** that takes '1954-04-30' and returns 'April 30, 1954'.
+1. Write a list containing the month names and use it to create a function for **date conversion** that takes `'1954-04-30'` and returns `'April 30, 1954'`.
 
 2. To write a function that returns more than one result, we specify them in the `return` statement, separated by commas. For instance, if our function must return `result1` and `result2`, we write `return result1, result2` (don't forget the comma). Then, the results will be returned together as a tuple. Write a function that takes a date in the format 'yyyy-mm-dd' and returns the year, the month and the day as three integers. 
 
