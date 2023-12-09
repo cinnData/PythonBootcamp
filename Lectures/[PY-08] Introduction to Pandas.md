@@ -343,6 +343,6 @@ In both cases, if you enter a single specification inside the brackets, it refer
 
 ## Homework
 
-1. Replace the first item of the list `weight` by `None` and redo the calculations. Can you explain all the changes?
+1. Replace the first item of the list `weight` by `None` and recalculate the data frame `bio`. Can you explain all the changes?
 
 2. In this new version, split the data in two parts, using `bio['weight'] <= 67` and `bio['weight'] > 67`. What happened with the first row?
