@@ -53,7 +53,7 @@
 
 * `.sample(n)`: extracts a random sample of size `n` of a series. For sampling with replacement, use `replace=True`. Other parameters allow for more sophistication. 
 
-* `.shift(periods)`: shifts the terms of a series as many places as specified by the parameter `periods`, filling the holes with `NaN` values. The parameter `periods` is an integer that can be negative.
+* `.shift(periods)`: shifts the terms of a series as many places as specified by the parameter `periods`, filling the holes with `NaN` values. The parameter `periods` is an integer that can be negative. The default is `periods=1`.
 
 * `.sort_index()`: sorts a series by the index labels. With `ascending=True`, switches to descending order. It has other parameters with less interest. 
 
