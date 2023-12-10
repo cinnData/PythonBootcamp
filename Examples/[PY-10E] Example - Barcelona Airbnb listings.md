@@ -339,4 +339,4 @@ We find that some popular neighbourhoods have low prices. This seems to happen i
 
 2. A controversial issue about Airbnb is that, in spite of starting as a peer-to-peer platform, it has evolved to one where some hosts can manage many listings, sometimes whole buildings. They could be so affecting the way the "natives" live (the so called gentrification). Do you find many hosts in this situation in Barcelona?
 
-3. As a continuation of the preceding exercise, create a list containing the ID's of the big hosts, with more than 100 listings. Then, extract a data subset containing only the listings managed by the big hosts. The method `.isin()` can help you to write the appropriate filter condition. Do you find these hosts focused on certain neighbourhoods? Do they have higher prices?
+3. As a continuation of the preceding exercise, create a list containing the ID's of the big hosts, with more than 100 listings. Then, extract a data subset containing only the listings managed by the big hosts. The method `.isin()` can help you to write the appropriate filter condition. Do you see these hosts focused on certain neighbourhoods? Do they have higher prices?
