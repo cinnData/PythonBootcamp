@@ -198,7 +198,7 @@ In [21]: round(x=1/3, n=2)
 Out[21]: 0.33
 ```
 
-The same as in Excel. But, when rounding in one shot a whole column of a data set in the package Pandas, we would use a method, `.round(decimals=2)`. Pandas uses methods almost everywhere. Since this is data-oriented course, which makes frequent use of Pandas, this is worth to remember. When in doubt, check which the right approach by googling, or use the cheatsheets of this course.
+The same as in Excel. But, when rounding in one shot a whole column of a data set in the package Pandas, we would use a method, `.round(decimals=2)`. Pandas uses methods almost everywhere. Since this is data-oriented course, which makes frequent use of Pandas, this is worth to note. When in doubt, check which the right approach by googling, or use the cheatsheets of this course.
 
 ## Homework
 
