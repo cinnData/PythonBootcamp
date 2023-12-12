@@ -130,7 +130,7 @@ In [13]: g(2, y=1)
 Out[13]: 0.2
 ```
 
-But the positional arguments go first:
+But the positional arguments must go first:
 
 ```
 In [14]: g(x=2, 1)
