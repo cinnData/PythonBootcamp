@@ -194,7 +194,7 @@ Out[20]: 'bruce sprinsgteen'
 An advantage of methods is that you can apply a sequence of methods one after the other, without getting into a mess with the parentheses. You may have fought with this in Excel. But sometimes the reason for defining some functions is unclear, and may be a source of confusion. Moreover, some functions can appear as functions here and as methods there. An example is the function `round`, which is used to limit the number of decimals retained. As built-in Python function the syntax as shown in the following example:
 
 ```
-In [21]: round(x=1/3, n=2)
+In [21]: round(number=1/3, ndigits=2)
 Out[21]: 0.33
 ```
 
