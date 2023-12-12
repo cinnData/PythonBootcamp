@@ -30,4 +30,4 @@ def root(x, n=2):
 len('Bruce Sprinsgteen')
 'Bruce Sprinsgteen'.replace(old='Bruce', new='The Boss')
 'Bruce Sprinsgteen'.lower()
-round(x=1/3, n=2)
+round(number=1/3, ndigits=2)
