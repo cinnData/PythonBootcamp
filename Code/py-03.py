@@ -25,9 +25,11 @@ g(x=2, 1)
 def root(x, n=2):
 	y = x**(1/n)
 	return y
+root(2)
+root(2, 3)
 
 # Functions and methods #
 len('Bruce Sprinsgteen')
-'Bruce Sprinsgteen'.replace(old='Bruce', new='The Boss')
+'Bruce Sprinsgteen'.replace('Bruce', 'The Boss')
 'Bruce Sprinsgteen'.lower()
 round(number=1/3, ndigits=2)
