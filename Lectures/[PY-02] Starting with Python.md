@@ -345,4 +345,4 @@ and Joe Biden'
 and Joe Biden'''
 ```
 
-8. The package `langid` is one of them many options for **language detection** in Python. You can install it entering `pip install langid` in either the shell or the console. Once it has been installed, you can import it and use the function `langid.classify()` to "detect" the language. Try this with a few sentences in different languages. Please, note that `langid` gets better with longer strings, but often fails with very short ones. Though it may look like a dwarf when compared to a giant like GPT-4, it is a nice example of **machine learning**.
+8. The package `langid` is one of the many options for **language detection** in Python. You can install it entering `pip install langid` in either the shell or the console. Once it has been installed, you can import it and use the function `langid.classify()` to "detect" the language. Try this with a few sentences in different languages. Please, note that `langid` gets better with longer strings, but often fails with very short ones. Though it may look like a dwarf when compared to a giant like GPT-4, it is a nice example of **machine learning**.
