@@ -14,6 +14,7 @@ elif grade >= 5:
     print('B')
 else:
     print('C')
+grade = 3
 if grade >= 8:
     print('Good!')
 elif grade >= 5:
