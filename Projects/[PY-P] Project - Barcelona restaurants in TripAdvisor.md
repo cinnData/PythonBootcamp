@@ -6,7 +6,7 @@
 
 TripAdvisor proposals are grouped in different categories, such as *Hotels*, *Things to do*, *Restaurants*, *Flights*, etc. The data for this project have been scraped from the webpages devoted to Restaurants in Barcelona. The starting URL is `https://www.tripadvisor.com/Restaurants-g187497-Barcelona_Catalonia.html`. Note that `g187497` identifies Barcelona. Replacing `.com` by `.es`, you get the Spanish version. The information is about the same, but `tripadvisor.es` shows reviews on Spanish (some of them are automatic translations from English), while `tripadvisor.com` shows reviews in English.
 
-The data for this example have been captured in April, 2023. At that time, 8,662 restaurants from Barcelona were posted at `tripAdvisor.com`. For this example, only the 450 top ranked restaurants have been selected.
+The data have been captured in April, 2023. At that time, 8,662 restaurants from Barcelona were posted at `tripAdvisor.com`. For this project, only the 450 top ranked restaurants have been selected. In this project you will analyze the TripAdvisor data set from three different points of view, each time using Python.
 
 ## The data set
 
@@ -16,7 +16,7 @@ In the source file `trip.csv` (zipped), every row corresponds to a restaurant. T
 
 * `name`, the name of the restaurant as it appears in the TripAdvisor's URL's. Example: 'BelleBuon'.
 
-* `id`, a unique identifier for the restaurant. This ID is expected to be found as part of the link to the restaurant, in the same way that the ID of Barcelona ('g187497') is found as part of the URL of the restaurants in Barcelona. Example: '12207253'.
+* `id`, a unique identifier for the restaurant. This ID is expected to be found as part of the link to the restaurant, in the same way that the ID of Barcelona ('g187497') is found as part of the URL of the restaurants in Barcelona. Example: 'd12207253'.
 
 * `bubble`, the number of bubbles that approximate the average rating of the restaurant. It comes as a multiple of 0.5.
 
@@ -57,3 +57,23 @@ In the source file `trip.csv` (zipped), every row corresponds to a restaurant. T
 * `revEnglish`, the number of reviews in English.
 
 * `revSpanish`, the number of reviews in Spanish.
+
+## You are a Customer:
+
+🏁 Objective: determine the top-rated restaurants in Madrid for your specific dietary preferences (*e.g*. vegan, gluten-free) within a certain price range that you feel comfortable with (feel free to deviate for privacy reasons).
+
+💡 Analysis: analyze the `trip-mad.csv` data set to filter restaurants based on dietary options, price range, and ratings.
+
+🎯 Findings: summarize the information about the top restaurants that fit the criteria, including their names, locations, and main cuisines offered.
+
+## You are a Business Owner:
+
+🏁 Objective: understand the impact of online visibility features like photo count and availability of online reservation or delivery services on the customer ratings of Madrid restaurants.
+
+💡 Analysis: investigate the association between customer ratings and features such as the number of photos, Thefork, etc.
+
+🎯 Findings: provide insights on which features are associated with higher ratings, suggesting areas for business owners to focus on for improving their TripAdvisor presence.
+
+## You work for TripAdvisor:
+
+You just got your IESE MiM degree and you are starting as a consultant at one of the major consulting firms. Your first mission is to help TripAdvisor management to better understand their business in Madrid. Define and work out a key question which pursues an objective which you think TripAdvisor could be interested in.
