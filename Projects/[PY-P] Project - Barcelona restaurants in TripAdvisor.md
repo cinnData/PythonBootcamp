@@ -76,4 +76,4 @@ In the source file `trip.csv`, every row corresponds to a restaurant. The column
 
 ## You work for TripAdvisor:
 
-You just got your IESE MiM degree and you are starting as a consultant at one of the major consulting firms. Your first mission is to help TripAdvisor management to better understand their business in Madrid. Define and work out a key question which pursues an objective which you think TripAdvisor could be interested in.
+You just got your IESE MiM degree and you are starting as a consultant at one of the major consulting firms. Your first mission is to help TripAdvisor management to better understand their business in Barcelona. Define and work out a key question which pursues an objective which you think TripAdvisor could be interested in.
