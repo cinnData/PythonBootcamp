@@ -8,7 +8,7 @@ This assignment is based on the project **Barcelona restaurants in TripAdvisor**
 
 2. Put your name on top of the document.
 
-3. It is acceptable to use ChatGPT to help you when writing Python code, but you must provide your prompts in your report as well. Make sure to try yourself first and don't only rely on ChatGPT. Purely solving the exercises using ChatGPT will result in a C.
+3. It is acceptable to use ChatGPT to help you when writing Python code, but, in that case, you must provide your prompts in your report as well. Make sure to try yourself first and don't only rely on ChatGPT. Purely solving the exercises using ChatGPT will result in a C.
 
 ### Deadline
 
