@@ -10,7 +10,7 @@ The data have been captured in April, 2023. At that time, 8,662 restaurants from
 
 ## The data set
 
-In the source file `trip.csv` (zipped), every row corresponds to a restaurant. The columns are:
+In the source file `trip.csv`, every row corresponds to a restaurant. The columns are:
 
 * `rank`, the current rank of the restaurant in TripAdvisor.
 
