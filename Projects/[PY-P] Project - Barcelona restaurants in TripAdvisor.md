@@ -62,7 +62,7 @@ In the source file `trip.csv`, every row corresponds to a restaurant. The column
 
 🏁 Objective: determine the top-rated restaurants in Madrid for your specific dietary preferences (*e.g*. vegan, gluten-free) within a certain price range that you feel comfortable with (feel free to deviate for privacy reasons).
 
-💡 Analysis: analyze the `trip-mad.csv` data set to filter restaurants based on dietary options, price range, and ratings.
+💡 Analysis: analyze the data to filter restaurants based on dietary options, price range, and ratings.
 
 🎯 Findings: summarize the information about the top restaurants that fit the criteria, including their names, locations, and main cuisines offered.
 
