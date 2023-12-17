@@ -78,7 +78,7 @@ In [4]: grade = 3
 
 ## While loops
 
-**Loops** are part also common in computer languages. In particular, a `while` loop executes a code chunk until a stopping condition is met. The syntax is:
+**Loops** are also common in computer languages. In particular, a `while` loop executes a code chunk until a stopping condition is met. The syntax is:
 
 ```
 while condition:
