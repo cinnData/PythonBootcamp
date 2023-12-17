@@ -4,7 +4,7 @@ This assignment is based on the project **Barcelona restaurants in TripAdvisor**
 
 ### Submission
 
-1. Submit, through Blackboard, a readable and printable report explaining what you have done, including Python input and output. This can be a Word document, a PDF document or a Jupyter notebook (.ipynb).
+1. Submit, through Blackboard, a readable and printable report, explaining what you have done, including Python input and output. This can be a Word document, a PDF document or a Jupyter notebook (.ipynb).
 
 2. Put your name on top of the document.
 
