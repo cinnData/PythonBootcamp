@@ -1,5 +1,7 @@
 # Assignment
 
+### Introduction
+
 This assignment is based on the project **Barcelona restaurants in TripAdvisor**. You can replace it by **Madrid restaurants in TripAdvisor**, if preferred. In this project you will analyze the TripAdvisor data set from three different points of view, each time using Python.
 
 ### Submission
