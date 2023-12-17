@@ -70,7 +70,7 @@ In the source file `trip-mad.csv` , every row corresponds to a restaurant. The c
 
 🏁 Objective: understand the impact of online visibility features like photo count and availability of online reservation or delivery services on the customer ratings of Madrid restaurants.
 
-💡 Analysis: investigate the association between customer ratings and features such as the number of photos, Thefork, etc.
+💡 Analysis: investigate the association between customer ratings and features such as the number of photos, TheFork, etc.
 
 🎯 Findings: provide insights on which features are associated with higher ratings, suggesting areas for business owners to focus on for improving their TripAdvisor presence.
 
