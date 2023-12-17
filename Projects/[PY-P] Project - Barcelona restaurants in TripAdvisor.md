@@ -60,7 +60,7 @@ In the source file `trip.csv`, every row corresponds to a restaurant. The column
 
 ## You are a Customer:
 
-🏁 Objective: determine the top-rated restaurants in Madrid for your specific dietary preferences (*e.g*. vegan, gluten-free) within a certain price range that you feel comfortable with (feel free to deviate for privacy reasons).
+🏁 Objective: determine the top-rated restaurants in Barcelona for your specific dietary preferences (*e.g*. vegan, gluten-free) within a certain price range that you feel comfortable with (feel free to deviate for privacy reasons).
 
 💡 Analysis: analyze the data to filter restaurants based on dietary options, price range, and ratings.
 
@@ -68,7 +68,7 @@ In the source file `trip.csv`, every row corresponds to a restaurant. The column
 
 ## You are a Business Owner:
 
-🏁 Objective: understand the impact of online visibility features like photo count and availability of online reservation or delivery services on the customer ratings of Madrid restaurants.
+🏁 Objective: understand the impact of online visibility features like photo count and availability of online reservation or delivery services on the customer ratings of Barcelona restaurants.
 
 💡 Analysis: investigate the association between customer ratings and features such as the number of photos, Thefork, etc.
 
