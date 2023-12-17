@@ -64,7 +64,7 @@ In [3]: if grade >= 8:
 A
 ```
 
-The conditions are evaluated by order, so they don't need to be exclusive. In this example, the Python first evaluates the expression. Since the outcome is `True`, it stops there.
+The conditions are evaluated in order, so they don't need to be exclusive. In this example, the Python evaluates the first expression and, since the outcome is `True`, it stops there.
 
 If the `else` statement is omitted (this would be an if-elif conditional), no acion is taken when the `if` and `elif` conditions are false. An example follows.
 
