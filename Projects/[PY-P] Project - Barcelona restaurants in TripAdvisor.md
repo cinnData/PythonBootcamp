@@ -6,7 +6,7 @@
 
 TripAdvisor proposals are grouped in different categories, such as *Hotels*, *Things to do*, *Restaurants*, *Flights*, etc. The data for this project have been scraped from the webpages devoted to Restaurants in Barcelona. The starting URL is `https://www.tripadvisor.com/Restaurants-g187497-Barcelona_Catalonia.html`. Note that `g187497` identifies Barcelona. Replacing `.com` by `.es`, you get the Spanish version. The information is about the same, but `tripadvisor.es` shows reviews on Spanish (some of them are automatic translations from English), while `tripadvisor.com` shows reviews in English.
 
-The data have been captured in April, 2023. At that time, 8,662 restaurants from Barcelona were posted at `tripAdvisor.com`. For this project, only the 450 top ranked restaurants have been selected. In this project you will analyze the TripAdvisor data set from three different points of view, each time using Python.
+The data have been captured in April, 2023. At that time, 8,662 restaurants from Barcelona were posted at `tripadvisor.com`. For this project, only the 450 top ranked restaurants have been selected. In this project you will analyze the TripAdvisor data set from three different points of view, each time using Python.
 
 ## The data set
 
